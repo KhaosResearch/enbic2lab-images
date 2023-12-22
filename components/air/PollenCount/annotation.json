@@ -1,0 +1,109 @@
+{
+    "type": "DataSink",
+    "name": "PollenCount",
+    "label": "Pollen Count",
+    "description": "Count the pollen particules in a set of TIFF images and returns a CSV and a JSON file with the results.",
+    "license": "cc by-nc-nd 4.0",
+    "version": "1.0.2",
+    "dockerImage": "192.168.219.5:8098/enbic2lab/air/pollen_count:1.0.2",
+    "tags": [
+      "enbic2lab-air",
+      "cc by-nc-nd 4.0",
+      "by-nc-nd",
+      "pollen"
+    ],
+    "parameters": [
+      {
+        "name": "--filepath",
+        "label": "ZIP file path",
+        "description": "ZIP file path",
+        "type": "string",
+        "defaultValue": "{{.inputs.input.path}}",
+        "readOnly": true
+      },
+      {
+        "name": "--sample-name",
+        "label": "Sample name",
+        "description": "Name of the experiment to be used as identificator",
+        "type": "string"
+      },
+      {
+        "name": "--sample-date",
+        "label": "Sample date",
+        "description": "Date of the experiment in format dd/mm/yyyy",
+        "defaultValue": null,
+        "type": "string"
+      },
+      {
+        "name": "--delimiter",
+        "label": "Delimiter",
+        "description": "Delimiter to be used in the resultant CSV file",
+        "defaultValue": ",",
+        "type": "string"
+      },
+      {
+        "name": "--output-path",
+        "label": "Output path",
+        "description": "Path to the output folder",
+        "defaultValue": "/mnt/shared/",
+        "type": "string",
+        "readOnly": true
+      }
+    ],
+    "inputs": [
+      {
+        "name": "input",
+        "label": "Input ZIP file",
+        "path": "/mnt/shared/imagesZipped.zip",
+        "type": "zip"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output-csv",
+        "label": "Output CSV",
+        "path": "/mnt/shared/output.csv",
+        "type": "tabulardataset"
+      },
+      {
+        "name": "output-json",
+        "label": "Output JSON",
+        "path": "/mnt/shared/output.json",
+        "type": "json"
+      }
+    ],
+    "mainScriptPath": "main.py",
+    "testPath": "",
+    "dependencies": [
+      {
+        "name": "python",
+        "version": "3.11.5",
+        "license": "PSF",
+        "url": "https://www.python.org/"
+      }
+    ],
+    "resources": {
+      "cores": 1,
+      "memory": 128,
+      "gpuNeeded": false,
+      "gpuMemory": null,
+      "estimatedTimeInMin": 4
+    },
+    "publicationDate": "2023-11-02T10:00:00.000Z",
+    "author": {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"
+    },
+    "contributor": [
+      {
+        "email": "juancaruru@gmail.com",
+        "affiliation": "Khaos Research Group"
+      }
+    ],
+    "maintainer": [
+      {
+        "email": "khaos.research@gmail.com",
+        "affiliation": "Khaos Research Group"
+      }
+    ]
+  }

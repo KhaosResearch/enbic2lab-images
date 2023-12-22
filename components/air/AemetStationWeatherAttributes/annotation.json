@@ -1,0 +1,93 @@
+{
+  "type": "DataCollection",
+  "name": "aemetstationweatherattributes",
+  "label": "AEMET Stations",
+  "description": "Download meteorological data from AEMET for multiple Stations.",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/air/aemet_station_weather_attributes:1.0.0",
+  "tags": [
+    "enbic2lab-air",
+    "cc by-nc-nd 4.0", "by-nc-nd",
+    "attributes"
+  ],
+  "parameters": [
+    {
+      "name": "--output",
+      "label": "Output File path",
+      "description": "Output File path",
+      "readOnly": true,
+      "defaultValue": "/mnt/shared/output.json",
+      "type": "string"
+    },
+    {
+      "name": "--start-date",
+      "label": "Start Date",
+      "description": "Start date of data",
+      "defaultValue": "1991-05-11",
+      "type": "string"
+    },
+    {
+      "name": "--end-date",
+      "label": "End Date",
+      "description": "End date of data",
+      "defaultValue": "2021-09-30",
+      "type": "string"
+    },
+    {
+      "name": "--analysis-stations",
+      "label": "Analysis Stations",
+      "description": "Stations to get data",
+      "defaultValue": "6155A,6172O,6156X",
+      "type": "string"
+    },
+    {
+      "name": "--aemet-api-key",
+      "label": "Aemet API key",
+      "description": "Api Key providing by AEMET web page (https://opendata.aemet.es/centrodedescargas/altaUsuario?).",
+      "type": "string"
+    }
+  ],
+  "inputs": [
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "label": "Output JSON file",
+      "path": "/mnt/shared/output.json",
+      "type": "json"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-10-06T10:00:00.000Z",
+  "author": {
+    "email": "khaos.research@gmail.com",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ],
+  "maintainer": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ]
+}

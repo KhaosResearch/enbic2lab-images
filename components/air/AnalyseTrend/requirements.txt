@@ -1,0 +1,3 @@
+ubuntu/libcurl4-openssl-dev
+ubuntu/libssl-dev
+cran/AeRobiology==2.0.1

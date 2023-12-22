@@ -1,0 +1,109 @@
+{
+    "type": "DataSink",
+    "name": "ComponentHomogeneityPlot",
+    "label": "Homogeneity Plot",
+    "description": "Homogeneity analysis",
+    "license": "cc by-nc-nd 4.0",
+    "version": "1.0.1",
+    "dockerImage": "192.168.219.5:8098/enbic2lab/water/homogeneity_plot:1.0.1",
+    "tags": ["enbic2lab-water", "cc by-nc-nd 4.0", "by-nc-nd", "Sink", "precipitation", "temperature"],
+    "parameters": [
+      {
+        "name": "--filepath-data",
+        "label": "Filepath data",
+        "description": "Path to the completed data CSV file",
+        "defaultValue": "{{.inputs.data.path}}",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--filepath-homogeneity",
+        "label": "Filepath homogeneity",
+        "description": "Path to the homogeneity CSV file",
+        "defaultValue": "{{.inputs.homogeneity.path}}",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--data-type",
+        "label": "Type of data",
+        "description": "Only `precipitation` or `temperature` are allowed",
+        "type": "string"
+      },
+      {
+        "name": "--criteria",
+        "label": "Homogeneity criteria",
+        "description": "Criteria that will be used to test the homogeneity of the data. Possible values: `Pettit Test`, `SNHT Test`, `Buishand Test`. This parameter is case sensitive.",
+        "defaultValue": "Pettit Test",
+        "choices": ["Pettit Test", "SNHT Test", "Buishand Test"],
+        "type": "string"
+
+      },
+      {
+        "name": "--delimiter",
+        "label": "Delimiter",
+        "description": "Delimiter of the csv file",
+        "defaultValue": ";",
+        "type": "string"
+      },
+      {
+        "name": "--output-path",
+        "readOnly": true,
+        "label": "Output path",
+        "description": "Path to the output HTML file",
+        "defaultValue": "/mnt/shared",
+        "type": "string"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "data",
+        "type": "tabulardataset",
+        "label": "Input completed data CSV file",
+        "path": "/mnt/shared/CompletedTarget.csv"
+      },
+      {
+        "name": "homogeneity",
+        "type": "tabulardataset",
+        "label": "Input homogeneity CSV file",
+        "path": "/mnt/shared/HomogeneityTest.csv"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output",
+        "type": "html",
+        "label": "Output HTML file",
+        "path": "/mnt/shared/output.html"
+      }
+    ],
+    "mainScriptPath": "main.py",
+    "testPath": "test_main.py",
+    "dependencies": [
+      {
+        "name": "python",
+        "version": "3.11.5",
+        "license": "PSF",
+        "url": "https://www.python.org/"
+      }
+    ],
+    "resources": {
+      "cores": 1,
+      "memory": 128,
+      "gpuNeeded": false,
+      "gpuMemory": null,
+      "estimatedTimeInMin": 1
+    },
+    "publicationDate": "2023-10-31T11:30:00.000Z",
+    "author": {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"
+    },
+    "contributor": [
+      {
+        "email": "juancaruru@uma.es",
+        "affiliation": "Khaos Research Group"
+      }
+    ]
+  }
+  

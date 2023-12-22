@@ -1,0 +1,84 @@
+{
+    "type": "DataProcessing",
+    "name": "PrecipitationMatrixTransformation",
+    "label": "Precipitation Matrix Transformation",
+    "description": "Change Precipitation Data in Matrix for to Time Series form.",
+    "license": "cc by-nc-nd 4.0",
+    "version": "1.0.4",
+    "dockerImage": "192.168.219.5:8098/enbic2lab/water/precipitation_matrix_transform:1.0.4",
+    "tags": ["enbic2lab-water", "cc by-nc-nd 4.0", "by-nc-nd", "processing"],
+    "parameters": [
+      {
+        "name": "--filepath",
+        "label": "Filepath",
+        "description": "Filepath for the input CSV File",
+        "defaultValue": "{{.inputs.input.path}}",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--delimiter",
+        "label": "Delimiter",
+        "description": "Delimiter of the csv file",
+        "defaultValue": ";",
+        "type": "string"
+      },
+      {
+        "name": "--output-path",
+        "readOnly": true,
+        "label": "Output path",
+        "description": "Output path to the CSV File",
+        "defaultValue": "/mnt/shared",
+        "type": "string"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "input",
+        "type":"tabulardataset",
+        "label": "Input CSV file",
+        "path": "/mnt/shared/precipitation.csv"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output",
+        "type":"tabulardataset",
+        "label": "Output CSV file",
+        "path": "/mnt/shared/PrecipitationTimeSeries.csv"
+      }
+    ],
+    "mainScriptPath": "main.py",
+    "testPath": "test_main.py",
+    "dependencies": [
+      {
+        "name": "python",
+        "version": "3.11.5",
+        "license": "PSF",
+        "url": "https://www.python.org/"
+      }
+    ],
+    "resources": {
+      "cores": 1,
+      "memory": 128,
+      "gpuNeeded": false,
+      "gpuMemory": null,
+      "estimatedTimeInMin": 20
+    },
+    "publicationDate": "2023-10-31T11:30:00.000Z",
+    "author": {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"
+    },
+    "contributor": [
+      {
+        "email": "juancaruru@uma.es",
+        "affiliation": "Khaos Research Group"
+      },
+      {
+        "email": "iresanjim@uma.es",
+        "affiliation":"Khaos Research Group"
+      }
+    ]
+  }
+  

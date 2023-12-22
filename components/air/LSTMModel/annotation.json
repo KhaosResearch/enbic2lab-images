@@ -1,0 +1,130 @@
+{
+  "type": "DataAnalysing",
+  "name": "lstmmodel",
+  "label": "LSTM model",
+  "description": "Given some parameters, builds a ConvLSTM model for timeseries analysis, rReturns the built Keras model and X_test, y_test to make predictions",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/air/lstm_model:1.0.0",
+  "tags": ["enbic2lab-air", "cc by-nc-nd 4.0", "by-nc-nd", "processing"],
+  "parameters": [
+    {
+      "name": "--filepath-X",
+      "label": "File path",
+      "description": "Input NPY file path.",
+      "defaultValue": "{{.inputs.input1.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--filepath-Y",
+      "label": "File path",
+      "description": "Input CSV file path.",
+      "defaultValue": "{{.inputs.input2.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--output",
+      "label": "Outputs path",
+      "description": "Outputs path",
+      "defaultValue": "/mnt/shared/",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--delimiter",
+      "label": "Delimiter",
+      "description": "Delimiter used in CSV.",
+      "defaultValue":";",
+      "type": "string"
+    },
+    {
+      "name": "--n-steps_in",
+      "label": "N Steps In",
+      "description": "Set the seasonality of your pollen",
+      "defaultValue":12,
+      "type": "integer"
+    },
+    {
+      "name": "--n-steps-out",
+      "label": "N Steps Out",
+      "description": "Set the seasonality of your pollen",
+      "defaultValue":12,
+      "type": "integer"
+    },
+    {
+      "name": "--n-neurons",
+      "label": "N Neurons",
+      "description": "Set the seasonality of your pollen",
+      "defaultValue":200,
+      "type": "integer"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input1",
+      "label": "Input NPY file",
+      "path": "/mnt/shared/sequences_X.npy",
+      "type": "tempfile"
+    },
+    {
+      "name": "input2",
+      "label": "Input CSV file",
+      "path": "/mnt/shared/sequences_Y.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output1",
+      "label": "Output NPY file",
+      "path": "/mnt/shared/lstm_X_test.npy",
+      "type": "bin"
+    },
+    {
+      "name": "output2",
+      "label": "Output NPY file",
+      "path": "/mnt/shared/lstm_Y_test.npy",
+      "type": "bin"
+    },
+    {
+      "name": "output3",
+      "label": "Output H5 file",
+      "path": "/mnt/shared/lstm_model.h5",
+      "type": "bin"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-11-17T10:00:00.000Z",
+  "author": {
+    "email": "juansanchezrodriguez1999@uma.es",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "khaos.research@gmail.com"
+    }
+  ],
+  "maintainer": [
+    {
+      "email": "khaos.research@gmail.com"
+    }
+  ]
+}

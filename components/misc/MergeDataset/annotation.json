@@ -1,0 +1,104 @@
+{
+  "type": "DataProcessing",
+  "name": "mergedataset",
+  "label": "Merge Dataset",
+  "description": "Join CSV by rows",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/misc/merge_dataset_pollen:1.0.0",
+  "tags": ["enbic2lab-misc", "cc by-nc-nd 4.0", "by-nc-nd", "join"],
+  "parameters": [
+    {
+      "name": "--filepath1",
+      "label": "Filepath",
+      "description": "Filepath of the first CSV file",
+      "defaultValue": "{{.inputs.input1.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--filepath2",
+      "label": "Filepath",
+      "description": "Filepath of the second CSV file",
+      "defaultValue": "{{.inputs.input2.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--delimiter1",
+      "label": "Delimiter",
+      "description": "Delimiter of the first CSV file",
+      "defaultValue": ";",
+      "type": "string"
+    },
+    {
+      "name": "--delimiter2",
+      "label": "Delimiter",
+      "description": "Delimiter of the second CSV file",
+      "defaultValue": ";",
+      "type": "string"
+    },
+    {
+      "name": "--output",
+      "readOnly": true,
+      "label": "Output path",
+      "description": "Output JSON file",
+      "defaultValue": "/mnt/shared/output.csv",
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input1",
+      "label": "Input CSV file",
+      "path": "/mnt/shared/input1.csv",
+      "type": "tabulardataset"
+    },
+    {
+      "name": "input2",
+      "label": "Input CSV file",
+      "path": "/mnt/shared/input2.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "label": "Output CSV file",
+      "path": "/mnt/shared/output.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-10-06T10:00:00.000Z",
+  "author": {
+    "email": "khaos.research@gmail.com",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ],
+  "maintainer": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ]
+}

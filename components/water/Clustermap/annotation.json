@@ -1,0 +1,126 @@
+{
+    "type": "DataSink",
+    "name": "ComponentClustermap",
+    "label": "Clustermap",
+    "description": "Create a clustermap for precipitation or temperature data",
+    "license": "cc by-nc-nd 4.0",
+    "version": "1.0.1",
+    "dockerImage": "192.168.219.5:8098/enbic2lab/water/clustermap:1.0.1",
+    "tags": ["enbic2lab-water", "cc by-nc-nd 4.0", "by-nc-nd", "Sink"],
+    "parameters": [
+      {
+        "name": "--filepath",
+        "label": "Filepath",
+        "description": "Path to the csv file",
+        "defaultValue": "{{.inputs.input.path}}",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--date-column",
+        "label": "Date column",
+        "description": "Name of the date column",
+        "defaultValue": "Hidrologic Year",
+        "type": "string"
+      },
+      {
+        "name": "--station-column",
+        "label": "Station column",
+        "description": "Name of the station column",
+        "defaultValue": "Station",
+        "type": "string"
+      },
+      {
+        "name": "--square-column",
+        "label": "Name of the statistic to compare",
+        "description": "Name of the statistic to compare",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "--filter-row",
+        "label": "Filter",
+        "description": "Filter the clustermap by `rows` or by `columns`. Any other filter will not be accepted.",
+        "defaultValue": "Rows",
+        "type": "string"
+      },
+      {
+        "name": "--drop-na",
+        "label": "Drop NA",
+        "description": "Wether to drop rows with NAs or substitute them with mean. Use `True` or `False`.",
+        "defaultValue": "False",
+        "type": "string"
+      },
+      {
+        "name": "--palette",
+        "label": "Color palette",
+        "description": "Name of the color palette. For further information about the usable palettes, see [here](https://seaborn.pydata.org/tutorial/color_palettes.html).",
+        "defaultValue": "PuBu",
+        "type": "string"
+      },
+      {
+        "name": "--delimiter",
+        "label": "Delimiter",
+        "description": "Delimiter of the csv file",
+        "defaultValue": ";",
+        "type": "string"
+      },
+      {
+        "name": "--output-path",
+        "label": "Output path",
+        "description": "Path to the output image",
+        "defaultValue": "/mnt/shared",
+        "readOnly": true,
+        "type": "string"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "input",
+        "type": "tabulardataset",
+        "label": "Input CSV file",
+        "path": "/mnt/shared/StatisticalData.csv"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "clustermap",
+        "type": "image",
+        "label": "Output image of the clustermap",
+        "path": "/mnt/shared/clustermap.png"
+      }
+    ],
+    "mainScriptPath": "main.py",
+    "testPath": "test_main.py",
+    "dependencies": [
+      {
+        "name": "python",
+        "version": "3.11.5",
+        "license": "PSF",
+        "url": "https://www.python.org/"
+      }
+    ],
+    "resources": {
+      "cores": 1,
+      "memory": 128,
+      "gpuNeeded": false,
+      "gpuMemory": null,
+      "estimatedTimeInMin": 1
+    },
+    "publicationDate": "2023-10-31T11:30:00.000Z",
+    "author": {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"
+    },
+    "contributor": [
+      {
+        "email": "juancaruru@uma.es",
+        "affiliation": "Khaos Research Group"
+      },
+      {
+        "email": "iresanjim@uma.es",
+        "affiliation":"Khaos Research Group"
+      }
+    ]
+  }
+  

@@ -1,0 +1,89 @@
+{
+  "type": "DataSink",
+  "name": "import2dbsoil",
+  "label": "Import to db soil",
+  "description": "Import a JSON file and images files to a database.",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.1",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/soil/import2db_soil:1.0.1",
+  "tags": ["enbic2lab-soil", "cc by-nc-nd 4.0", "by-nc-nd", "visualization"],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "File path",
+      "description": "Input XLSX file path.",
+      "defaultValue": "{{.inputs.input1.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--compressed-file",
+      "label": "Compressed file path",
+      "description": "Input compressed file path.",
+      "defaultValue": "/mnt/shared/lifewatch-suelos.zip",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--compressed-file2",
+      "label": "Compressed file path",
+      "description": "Input compressed file path.",
+      "defaultValue": "/mnt/shared/Espectro.zip",
+      "readOnly": true,
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input1",
+      "label": "Input XLSX file",
+      "path": "/mnt/shared/parques_naturales.xlsx",
+      "type": "xlsx"
+    },
+    {
+      "name": "input2",
+      "label": "Input zip images file",
+      "path": "/mnt/shared/lifewatch-suelos.zip",
+      "type": "zip"
+    },
+    {
+      "name": "input3",
+      "label": "Input zip spectro file",
+      "path": "/mnt/shared/Espectro.zip",
+      "type": "zip"
+    }
+  ],
+  "outputs": [],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.3",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-10-06T10:00:00.000Z",
+  "author": {
+    "email": "juanasanchezrodriguez1999@uma.es",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "khaos.research@gmail.com"
+    }
+  ],
+  "maintainer": [
+    {
+      "email": "khaos.research@gmail.com"
+    }
+  ]
+}

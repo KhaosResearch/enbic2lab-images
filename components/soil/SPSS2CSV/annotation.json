@@ -1,0 +1,81 @@
+{
+    "type": "DataProcessing",
+    "name": "SPSS2CSV",
+    "label": "SPSS to CSV",
+    "description": "Get a SPSS file and convert it to a CSV file",
+    "license": "cc by-nc-nd 4.0",
+    "version": "1.1.1",
+    "dockerImage": "192.168.219.5:8098/enbic2lab/soil/spss2csv:1.1.1",
+    "tags": ["enbic2lab-soil", "cc by-nc-nd 4.0", "by-nc-nd", "transform"],
+    "parameters": [
+      {
+        "name": "--filepath",
+        "label": "Filepath",
+        "description": "Path to the csv file",
+        "defaultValue": "{{.inputs.input.path}}",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--drop-index",
+        "label": "Drop index",
+        "description": "Drop index of tabular dataset",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name":"--output-path",
+        "readOnly":true,
+        "label": "Output path CSV file",
+        "description": "Path to the output CSV file",
+        "defaultValue": "/mnt/shared",
+        "type": "string"
+      }
+      
+    ],
+    "inputs": [
+      {
+        "name": "input",
+        "label": "Input SSPS file",
+        "path": "/mnt/shared/input.sav",
+        "type": "sav"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output",
+        "label": "Output CSV file",
+        "path": "/mnt/shared/Data.csv",
+        "type": "tabulardataset"
+      }
+    ],
+    "mainScriptPath": "main.py",
+    "testPath": "test_main.py",
+    "dependencies": [
+      {
+        "name": "python",
+        "version": "3.11.5",
+        "license": "PSF",
+        "url": "https://www.python.org/"
+      }
+    ],
+    "resources": {
+      "cores": 1,
+      "memory": 128,
+      "gpuNeeded": false,
+      "gpuMemory": null,
+      "estimatedTimeInMin": 4
+    },
+    "publicationDate": "2023-10-31T11:30:00.000Z",
+    "author": {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"
+    },
+    "contributor": [
+      {
+        "email": "juancaruru@uma.es",
+        "affiliation": "Khaos Research Group"
+      }
+    ]
+  }
+  

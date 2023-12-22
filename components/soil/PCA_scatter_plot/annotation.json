@@ -1,0 +1,105 @@
+{
+    "type": "DataSink",
+    "name": "PCAplot",
+    "label": "PCA plot",
+    "description": "PCA scatter plot of 2 components of the analysis",
+    "license": "cc by-nc-nd 4.0",
+    "version": "1.1.3",
+    "dockerImage": "192.168.219.5:8098/enbic2lab/soil/pca_scatter_plot:1.1.3",
+    "tags": ["enbic2lab-soil", "cc by-nc-nd 4.0", "by-nc-nd", "sink"],
+    "parameters": [
+      {
+        "name": "--filepath",
+        "label": "Filepath",
+        "description": "Filepath for the input normalized CSV File",
+        "defaultValue": "{{.inputs.input.path}}",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--delimiter",
+        "label": "Delimiter",
+        "description": "Set the delimiter of the CSV",
+        "defaultValue": ";",
+        "type": "string"
+      },
+      {
+        "name": "--x-axis",
+        "label": "X axis",
+        "description": "Name of the X axis",
+        "type": "string"
+      },
+      {
+        "name": "--y-axis",
+        "label": "Y axis",
+        "description": "Name of the Y axis",
+        "type": "string"
+      },
+      {
+        "name": "--color-list",
+        "label": "Color list",
+        "description": "List of colors for the target column",
+        "type": "string"
+      },
+      {
+        "name": "--target-column",
+        "label": "Target column",
+        "description": "Name of the target column",
+        "defaultValue": null,
+        "type": "string"
+      },
+      {
+        "name": "--output-path",
+        "readOnly": true,
+        "label": "Output path",
+        "description": "Output file path",
+        "defaultValue": "/mnt/shared",
+        "type": "string"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "input",
+        "label": "Input PCA plot CSV file",
+        "path": "/mnt/shared/PCA_plot.csv",
+        "type": "tabulardataset"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "PCA plot",
+        "label": "Plot of 2 principal components",
+        "path": "/mnt/shared/PCA_plot.pdf",
+        "type": "pdf"
+      }
+    ],
+    "mainScriptPath": "main.py",
+    "testPath": "test_main.py",
+    "dependencies": [
+      {
+        "name": "python",
+        "version": "3.11.5",
+        "license": "PSF",
+        "url": "https://www.python.org/"
+      }
+    ],
+    "resources": {
+      "cores": 1,
+      "memory": 128,
+      "gpuNeeded": false,
+      "gpuMemory": null,
+      "estimatedTimeInMin": 4
+    },
+    "publicationDate": "2023-10-18T16:00:00.000Z",
+    "author": {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"
+    },
+    "contributor": [
+      {
+        "email": "juancaruru@uma.es",
+        "affiliation": "Khaos Research Group"
+      }
+    ]
+  }
+  

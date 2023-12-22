@@ -1,0 +1,112 @@
+{
+    "type": "DataAnalysing",
+    "name": "GenericRandomForest",
+    "label": "Generic Random Forest",
+    "description": "Train a simple Random Forest model",
+    "license": "cc by-nc-nd 4.0",
+    "version": "1.0.0",
+    "dockerImage": "192.168.219.5:8098/enbic2lab/misc/generic_classification_randomforest:1.0.0",
+    "tags": ["enbic2lab-misc", "cc by-nc-nd 4.0", "by-nc-nd", "Analysing", "generic", "classification"],
+    "parameters": [
+      {
+        "name": "--filepath-train",
+        "label": "Filepath train",
+        "description": "Path to the CSV train file",
+        "defaultValue": "{{.inputs.input-train.path}}",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--filepath-test",
+        "label": "Filepath test",
+        "description": "Path to the CSV test file",
+        "defaultValue": "{{.inputs.input-test.path}}",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--target-column",
+        "label": "Target column",
+        "description": "Name of the target column",
+        "type": "string"
+      },
+      {
+        "name": "--delimiter",
+        "label": "Delimiter",
+        "description": "Delimiter of the csv file",
+        "defaultValue": ";",
+        "type": "string"
+      },
+      {
+        "name": "--output-path",
+        "readOnly": true,
+        "label": "Output path",
+        "description": "Path to the output files",
+        "defaultValue": "/mnt/shared",
+        "type": "string"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "input-train",
+        "type": "tabulardataset",
+        "label": "Input CSV train file",
+        "path": "/mnt/shared/train.csv"
+      },
+      {
+        "name": "input-test",
+        "type": "tabulardataset",
+        "label": "Input CSV test file",
+        "path": "/mnt/shared/test.csv"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output-model",
+        "type": "onnx",
+        "label": "Output model file",
+        "path": "/mnt/shared/model.onnx"
+      },
+      {
+        "name": "output-metrics",
+        "type": "image",
+        "label": "Output PNG metrics image",
+        "path": "/mnt/shared/metrics.png"
+      },
+      {
+        "name": "output-forest",
+        "type": "image",
+        "label": "Output PNG forest image",
+        "path": "/mnt/shared/forest.png"
+      }
+    ],
+    "mainScriptPath": "main.py",
+    "testPath": "test_main.py",
+    "dependencies": [
+      {
+        "name": "python",
+        "version": "3.11.5",
+        "license": "PSF",
+        "url": "https://www.python.org/"
+      }
+    ],
+    "resources": {
+      "cores": 1,
+      "memory": 128,
+      "gpuNeeded": false,
+      "gpuMemory": null,
+      "estimatedTimeInMin": 1
+    },
+    "publicationDate": "2023-11-23T14:30:00.000Z",
+    "author": {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"
+    },
+    "contributor": [
+      {
+        "email": "juancaruru@uma.es",
+        "affiliation": "Khaos Research Group"
+      }
+    ]
+  }
+  

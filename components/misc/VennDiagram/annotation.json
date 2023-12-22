@@ -1,0 +1,105 @@
+{
+  "type": "DataSink",
+  "name": "venndiagram",
+  "label": "Venn diagram",
+  "description": "Make Venn diagram",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/misc/venn_diagram:1.0.0",
+  "tags": ["enbic2lab-misc", "cc by-nc-nd 4.0", "by-nc-nd", "plot"],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "Filepath",
+      "description": "Path to the CSV file",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--delimiter",
+      "label": "delimiter",
+      "description": "Delimiter",
+      "defaultValue": ";",
+      "type": "string"
+    },
+    {
+      "name": "--legend",
+      "label": "Legend",
+      "description": "Legend option to Venn diagram",
+      "defaultValue": "True",
+      "type": "string"
+    },
+    {
+      "name":"--output1",
+      "readOnly": true,
+      "label": "Output path csv",
+      "description": "Path to the output CSV file",
+      "defaultValue": "/mnt/shared/diagram.csv",
+      "type": "string"
+    },
+    {
+      "name":"--output2",
+      "readOnly": true,
+      "label": "Output path pdf",
+      "description": "Path to the output PDF file",
+      "defaultValue": "/mnt/shared/diagram.pdf",
+      "type": "string"
+    }
+    
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input file",
+      "path": "/mnt/shared/natural_park_species.csv.",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output1",
+      "label": "Output file csv",
+      "path": "/mnt/shared/diagram.csv",
+      "type": "tabulardataset"
+    },
+    {
+      "name": "output2",
+      "label": "Output file pdf",
+      "path": "/mnt/shared/diagram.pdf",
+      "type": "pdf"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-10-06T10:00:00.000Z",
+  "author": {
+    "email": "juanasanchezrodriguez1999@uma.es",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "khaos.research@gmail.com"
+    }
+  ],
+  "maintainer": [
+    {
+      "email": "khaos.research@gmail.com"
+    }
+  ]
+}

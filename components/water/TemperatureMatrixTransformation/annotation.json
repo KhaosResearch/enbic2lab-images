@@ -1,0 +1,90 @@
+{
+    "type": "DataProcessing",
+    "name": "ComponentTemperatureMatrixTransformation",
+    "label": "Temperature Matrix Transformation",
+    "description": "Transform temperature data in Matrix form into 2 files in timeseries form.",
+    "license": "cc by-nc-nd 4.0",
+    "version": "1.0.2",
+    "dockerImage": "192.168.219.5:8098/enbic2lab/water/temperature_matrix_transformation:1.0.2",
+    "tags": ["enbic2lab-water", "cc by-nc-nd 4.0", "by-nc-nd", "processing", "temperature"],
+    "parameters": [
+      {
+        "name": "--filepath",
+        "label": "Filepath",
+        "description": "Path to the XLSX file",
+        "defaultValue": "{{.inputs.input.path}}",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--delimiter",
+        "label": "Delimiter",
+        "description": "Delimiter of the csv file",
+        "defaultValue": ";",
+        "type": "string"
+      },
+      {
+        "name": "--output-path",
+        "label": "Output path",
+        "description": "Path to the output folder",
+        "defaultValue": "/mnt/shared",
+        "type": "string",
+        "readOnly": true
+      }
+    ],
+    "inputs": [
+      {
+        "name": "input",
+        "type":"xlsx",
+        "label": "Input CSV file",
+        "path": "/mnt/shared/temperature.xlsx"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output_min",
+        "type":"tabulardataset",
+        "label": "Output of the min CSV file",
+        "path": "/mnt/shared/MinTempTimeSeries.csv"
+      },
+      {
+        "name": "output_max",
+        "type":"tabulardataset",
+        "label": "Output of the max CSV file",
+        "path": "/mnt/shared/MaxTempTimeSeries.csv"
+      }
+    ],
+    "mainScriptPath": "main.py",
+    "testPath": "test_main.py",
+    "dependencies": [
+      {
+        "name": "python",
+        "version": "3.11.5",
+        "license": "PSF",
+        "url": "https://www.python.org/"
+      }
+    ],
+    "resources": {
+      "cores": 1,
+      "memory": 128,
+      "gpuNeeded": false,
+      "gpuMemory": null,
+      "estimatedTimeInMin": 20
+    },
+    "publicationDate": "2023-10-31T11:30:00.000Z",
+    "author": {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"
+    },
+    "contributor": [
+      {
+        "email": "juancaruru@uma.es",
+        "affiliation": "Khaos Research Group"
+      },
+      {
+        "email": "iresanjim@uma.es",
+        "affiliation":"Khaos Research Group"
+      }
+    ]
+  }
+  

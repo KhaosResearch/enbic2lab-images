@@ -1,0 +1,73 @@
+{
+  "type": "DataProcessing",
+  "name": "inventory-transformation",
+  "label": "Inventory Transformation",
+  "description": "This script performs an inventory data transformation using the Python programming language. It reads a CSV file, transposes it, and then applies various data transformations to the columns. Finally, it saves the transformed data to a new CSV file.",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.1",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/flora/inventory_transformation:1.0.1",
+  "tags": ["enbic2lab-flora", "cc by-nc-nd 4.0", "by-nc-nd", "transformation"],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "File path",
+      "description": "Filepath for the input CSV File",
+      "defaultValue": "{{.inputs.inventories.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--delimiter",
+      "label": "Delimiter",
+      "description": "Delimiter of the classes in the input CSV File",
+      "defaultValue": ";",
+      "type": "string"
+    },
+    {
+      "name": "--output-path",
+      "label": "Output path",
+      "description": "Path to the output image",
+      "defaultValue": "/mnt/shared",
+      "readOnly": true,
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "inventories",
+      "label": "Input CSV file",
+      "path": "/mnt/shared/inventories.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "inventory_transformation.csv",
+      "label": "Output CSV file",
+      "path": "/mnt/shared/inventory_transformation.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-09-26T10:00:00.000Z",
+  "author": {
+    "email": "juansanchezrodriguez1999@uma.es",
+    "affiliation": "Khaos Research Group"
+  }
+}

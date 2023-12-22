@@ -1,0 +1,94 @@
+{
+    "type": "DataSink",
+    "name": "SKLearnPredictor",
+    "label": "SKLearn Predictor",
+    "description": "General predictor for SKLearn models",
+    "license": "cc by-nc-nd 4.0",
+    "version": "1.0.1",
+    "dockerImage": "192.168.219.5:8098/enbic2lab/misc/sklearn_predictor:1.0.1",
+    "tags": ["enbic2lab-misc", "cc by-nc-nd 4.0", "by-nc-nd", "Sink", "Machine Learning"],
+    "parameters": [
+      {
+        "name": "--filepath-model",
+        "label": "Filepath model",
+        "description": "Path to the model file",
+        "defaultValue": "{{.inputs.input-model.path}}",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--filepath-data",
+        "label": "Filepath data",
+        "description": "Path to the data to predict CSV file",
+        "defaultValue": "{{.inputs.input-data.path}}",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--delimiter",
+        "label": "Delimiter",
+        "description": "Delimiter of the csv file",
+        "defaultValue": ";",
+        "type": "string"
+      },
+      {
+        "name": "--output-path",
+        "readOnly": true,
+        "label": "Output path",
+        "description": "Path to the output files",
+        "defaultValue": "/mnt/shared",
+        "type": "string"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "input-model",
+        "type": "onnx",
+        "label": "Input ONNX model",
+        "path": "/mnt/shared/model.onnx"
+      },
+      {
+        "name": "input-data",
+        "type": "tabulardataset",
+        "label": "Input data to predict CSV file",
+        "path": "/mnt/shared/predict.csv"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output",
+        "type": "tabulardataset",
+        "label": "Output predicted data",
+        "path": "/mnt/shared/predictions.csv"
+      }
+    ],
+    "mainScriptPath": "main.py",
+    "testPath": "test_main.py",
+    "dependencies": [
+      {
+        "name": "python",
+        "version": "3.11.5",
+        "license": "PSF",
+        "url": "https://www.python.org/"
+      }
+    ],
+    "resources": {
+      "cores": 1,
+      "memory": 128,
+      "gpuNeeded": false,
+      "gpuMemory": null,
+      "estimatedTimeInMin": 1
+    },
+    "publicationDate": "2023-12-05T14:30:00.000Z",
+    "author": {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"
+    },
+    "contributor": [
+      {
+        "email": "juancaruru@uma.es",
+        "affiliation": "Khaos Research Group"
+      }
+    ]
+  }
+  

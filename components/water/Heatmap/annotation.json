@@ -1,0 +1,111 @@
+{
+    "type": "DataSink",
+    "name": "ComponentHeatmap",
+    "label": "Heatmap",
+    "description": "Generate heatmap from precipitation data",
+    "license": "cc by-nc-nd 4.0",
+    "version": "1.0.0",
+    "dockerImage": "192.168.219.5:8098/enbic2lab/water/heatmap:1.0.0",
+    "tags": ["enbic2lab-water", "cc by-nc-nd 4.0", "by-nc-nd", "Sink"],
+    "parameters": [
+      {
+        "name": "--filepath",
+        "label": "Filepath",
+        "description": "Filepath for the input CSV File",
+        "defaultValue": "{{.inputs.input.path}}",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--date-column",
+        "label": "Date column",
+        "description": "Name of the date column",
+        "defaultValue": "Hidrologic Year",
+        "type": "string"
+      },
+      {
+        "name": "--station-column",
+        "label": "Station column",
+        "description": "Name of the station column",
+        "defaultValue": "Station",
+        "type": "string"
+      },
+      {
+        "name": "--percentage-column",
+        "label": "Percentage column",
+        "description": "Name of the percentage column",
+        "type": "string"
+      },
+      {
+        "name": "--palette",
+        "label": "Palette",
+        "description": "Name of the color palette. For further information about the usable palettes, see [here](https://seaborn.pydata.org/tutorial/color_palettes.html).",
+        "defaultValue": "RdYlBu_r",
+        "type": "string"
+      },
+      {
+        "name": "--delimiter",
+        "label": "Delimiter",
+        "description": "Delimiter of the csv file",
+        "defaultValue": ";",
+        "type": "string"
+      },
+      {
+        "name": "--output-path",
+        "readOnly": true,
+        "label": "Output path",
+        "description": "Path of the output image",
+        "defaultValue": "/mnt/shared",
+        "type": "string"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "input",
+        "type": "tabulardataset",
+        "label": "Input CSV file",
+        "path": "/mnt/shared/StatisticalData.csv"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "water_heatmap",
+        "type": "image",
+        "label": "Output image of the heatmap",
+        "path": "/mnt/shared/water_heatmap.png"
+      }
+    ],
+    "mainScriptPath": "main.py",
+    "testPath": "test_main.py",
+    "dependencies": [
+      {
+        "name": "python",
+        "version": "3.11.5",
+        "license": "PSF",
+        "url": "https://www.python.org/"
+      }
+    ],
+    "resources": {
+      "cores": 1,
+      "memory": 128,
+      "gpuNeeded": false,
+      "gpuMemory": null,
+      "estimatedTimeInMin": 1
+    },
+    "publicationDate": "2023-10-31T11:30:00.000Z",
+    "author": {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"
+    },
+    "contributor": [
+      {
+        "email": "juancaruru@uma.es",
+        "affiliation": "Khaos Research Group"
+      },
+      {
+        "email": "iresanjim@uma.es",
+        "affiliation":"Khaos Research Group"
+      }
+    ]
+  }
+  

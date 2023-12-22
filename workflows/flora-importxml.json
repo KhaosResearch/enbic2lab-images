@@ -1,0 +1,79 @@
+{
+  "id": "workflow-123",
+  "label": "",
+  "tasks": [
+    {
+      "id": "t1",
+      "name": "ImportFile",
+      "label": "latest",
+      "image": "enbic2lab/misc/importfile:1.1.0",
+      "parameters": [
+        {
+          "name": "--url",
+          "value": "minio://enbic2lab/samples/sample.xml"
+        }
+      ],
+      "outputs": [
+        {
+          "name": null,
+          "path": "/mnt/shared/sample.xml"
+        }
+      ]
+    },
+    {
+      "id": "t2",
+      "name": "xml2json",
+      "label": "latest",
+      "image": "enbic2lab/flora/xml2json:1.0.0",
+      "parameters": [
+        {
+          "name": "--filepath",
+          "value": "/mnt/shared/sample.xml"
+        },
+        {
+          "name": "--natural-site",
+          "value": "example"
+        }
+      ],
+      "inputs": [
+        {
+          "name": null,
+          "path": "/mnt/shared/sample.xml"
+        }
+      ],
+      "outputs": [
+        {
+          "name": null,
+          "path": "/mnt/shared/output.json"
+        }
+      ],
+      "depends_on": [
+        "t1"
+      ]
+    },
+    {
+      "id": "t3",
+      "name": "import2db",
+      "label": "latest",
+      "image": "enbic2lab/flora/import2db:1.0.0",
+      "parameters": [
+        {
+          "name": "--filepath",
+          "value": "/mnt/shared/output.json"
+        }
+      ],
+      "inputs": [
+        {
+          "name": null,
+          "path": "/mnt/shared/output.json"
+        }
+      ],
+      "depends_on": [
+        "t2"
+      ]
+    }
+  ],
+  "metadata": {
+    "author": "khaosuser"
+  }
+}

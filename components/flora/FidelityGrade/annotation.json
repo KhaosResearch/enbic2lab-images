@@ -1,0 +1,99 @@
+{
+    "type": "DataAnalysing",
+    "name": "fidelity-grade",
+    "label": "Fidelity grade",
+    "description": "Fidelity Grade Network Graph Generator",
+    "license": "cc by-nc-nd 4.0",
+    "version": "1.0.1",
+    "dockerImage": "192.168.219.5:8098/enbic2lab/flora/fidelity-grade:1.0.1",
+    "tags": [
+      "enbic2lab-flora",
+      "cc by-nc-nd 4.0", "by-nc-nd",
+      "network"
+    ],
+    "parameters": [
+      {
+        "name": "--filepath",
+        "label": "Filepath",
+        "description": "File path for the input CSV",
+        "defaultValue": "{{.inputs.input.path}}",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--species",
+        "label": "Species",
+        "description": "Target species",
+        "type": "string"
+      },
+      {
+        "name": "--grade",
+        "label": "Grade",
+        "description": "Maximum degree of neighbours to include in the graph",
+        "type": "string"
+      },
+      {
+        "name": "--output-path",
+        "label": "Output path",
+        "description": "Path to the output image",
+        "defaultValue": "/mnt/shared",
+        "readOnly": true,
+        "type": "string"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "input",
+        "label": "Input CSV file",
+        "path": "/mnt/shared/ETP_Hargreaves_complete.csv",
+        "type": "tabulardataset"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "outputCSV",
+        "label": "Output CSV file",
+        "path": "/mnt/shared/outputCSV.csv",
+        "type": "tabulardataset"
+      },
+      {
+        "name": "outputHTML",
+        "label": "Output HTML file",
+        "path": "/mnt/shared/outputHTML.html",
+        "type": "html"
+      }
+    ],
+
+    "mainScriptPath": "main.py",
+    "testPath": "test_main.py",
+    "dependencies": [
+      {
+        "name": "python",
+        "version": "3.11.5",
+        "license": "PSF",
+        "url": "https://www.python.org/"
+      }
+    ],
+    "resources": {
+      "cores": 1,
+      "memory": 128,
+      "gpuNeeded": false,
+      "gpuMemory": null,
+      "estimatedTimeInMin": 4
+    },
+    "publicationDate": "2023-12-01T10:00:00.000Z",
+    "author": {
+      "email": "rodriguezrevellojj@uma.es",
+      "affiliation": "Khaos Research Group"
+    },
+    "contributor": [
+      {
+        "email": "khaos.research@gmail.com"
+      }
+    ],
+    "maintainer": [
+      {
+        "email": "khaos.research@gmail.com"
+      }
+    ]
+  }

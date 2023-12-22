@@ -1,0 +1,370 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://enbic2lab.uma.es/components.schema.json",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Specifies the category of the component within the data workflow.",
+      "enum": [
+        "DataProcessing",
+        "DataAnalysing",
+        "DataSink",
+        "DataCollection",
+        "DataFlow"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the component with no spaces or special characters."
+    },
+    "label": {
+      "type": "string",
+      "description": "A concise, descriptive name for the component that will be displayed in user interfaces."
+    },
+    "description": {
+      "type": "string",
+      "description": "A detailed description of the component's purpose and functionality."
+    },
+    "license": {
+      "type": "string",
+      "description": "Software license governing the component's use and distribution."
+    },
+    "version": {
+      "type": "string",
+      "description": "The release version of the component, following semantic versioning when applicable.",
+      "default": "0.0.1"
+    },
+    "dockerImage": {
+      "type": "string",
+      "description": "The full identifier for the Docker image used to execute the component, including the repository and tag.",
+      "default": "docker.io/docker/hello-world:latest"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "An array of keywords to facilitate search and categorization of the component.",
+      "uniqueItems": true
+    },
+    "parameters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The unique name used internally by the component to identify the parameter."
+          },
+          "label": {
+            "type": "string",
+            "description": "A readable name for the parameter used in user interfaces."
+          },
+          "description": {
+            "type": "string",
+            "description": "Explains what the parameter does and how it affects the component's behavior."
+          },
+          "type": {
+            "type": "string",
+            "description": "Specifies the expected data type for the parameter value.",
+            "enum": [
+              "string",
+              "number",
+              "integer",
+              "float",
+              "boolean"
+            ]
+          },
+          "defaultValue": {
+            "type": [
+              "number",
+              "string",
+              "null"
+            ],
+            "description": "Provides a default value for the parameter, to be used when no value is explicitly provided.",
+            "properties": {}
+          },
+          "readOnly": {
+            "type": "boolean",
+            "default": false,
+            "description": "Indicates whether this parameter should not be modified by the user. If set to 'true', the parameter is considered read-only and cannot be altered by the user."
+          }
+        },
+        "required": [
+          "type",
+          "name",
+          "label",
+          "description"
+        ],
+        "description": "Parameters that can be configured for the component."
+      },
+      "uniqueItems": true
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The unique name identifying each input required by the component."
+          },
+          "label": {
+            "type": "string",
+            "description": "A label providing a human-readable name for the input."
+          },
+          "path": {
+            "type": "string",
+            "description": "The location or source path where the input data can be found."
+          },
+          "type": {
+            "type": "string",
+            "description": "The data type of the input.",
+            "enum": [
+              "bin",
+              "fastq",
+              "image",
+              "map",
+              "pdf",
+              "rar",
+              "sav",
+              "shp",
+              "tempfile",
+              "text",
+              "tabulardataset",
+              "docx",
+              "xlsx",
+              "html",
+              "json",
+              "rdf",
+              "xml",
+              "tiff",
+              "zip",
+              "pkl",
+              "onnx"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "label",
+          "path",
+          "type"
+        ],
+        "description": "Input data sources for the component."
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The unique name identifying each output generated by the component."
+          },
+          "label": {
+            "type": "string",
+            "description": "A label providing a human-readable name for the output."
+          },
+          "path": {
+            "type": "string",
+            "description": "The destination path where output data will be written."
+          },
+          "type": {
+            "type": "string",
+            "description": "The data type of the output.",
+            "enum": [
+              "bin",
+              "fastq",
+              "image",
+              "map",
+              "pdf",
+              "rar",
+              "sav",
+              "shp",
+              "tempfile",
+              "text",
+              "tabulardataset",
+              "docx",
+              "xlsx",
+              "html",
+              "json",
+              "rdf",
+              "xml",
+              "tiff",
+              "zip",
+              "pkl",
+              "onnx"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "label",
+          "path",
+          "type"
+        ],
+        "description": "Output data destinations for the component."
+      }
+    },
+    "mainScriptPath": {
+      "type": "string",
+      "description": "The filesystem path to the executable script."
+    },
+    "testPath": {
+      "type": "string",
+      "description": "The filesystem path to the component's test script or suite."
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of an external library or service that this component relies on-"
+          },
+          "version": {
+            "type": "string",
+            "description": "The specified version of the dependency that is known to be compatible with this component."
+          },
+          "license": {
+            "type": "string",
+            "description": "The license governing the dependency, which may impact the overall licensing of the component."
+          },
+          "url": {
+            "type": "string",
+            "description": "A URL or other locator where the dependency can be accessed or reviewed."
+          }
+        },
+        "required": [
+          "name",
+          "version",
+          "license"
+        ],
+        "description": "Dependencies required to run the component."
+      }
+    },
+    "resources": {
+      "type": "object",
+      "properties": {
+        "cores": {
+          "type": "integer",
+          "description": "The number of CPU cores requested for processing."
+        },
+        "memory": {
+          "type": "integer",
+          "description": "The quantity of RAM required for the component, specified in Megabytes (MB)."
+        },
+        "gpuNeeded": {
+          "type": "boolean",
+          "description": "Flag to indicate whether the component requires GPU support.",
+          "default": false
+        },
+        "gpuMemory": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The amount of GPU memory required, specified in Megabytes (MB), applicable if `gpuNeeded` is true."
+        },
+        "estimatedTimeInMin": {
+          "type": "integer",
+          "description": "An approximate time in minutes that the component will take to execute."
+        }
+      },
+      "required": [
+        "cores",
+        "memory",
+        "gpuNeeded",
+        "gpuMemory",
+        "estimatedTimeInMin"
+      ],
+      "description": "Resource requirements for running the component."
+    },
+    "publicationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time when the component was officially made available."
+    },
+    "author": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Author email."
+        },
+        "affiliation": {
+          "type": "string",
+          "description": "The institution or organization with which the author is associated."
+        }
+      },
+      "required": [
+        "email",
+        "affiliation"
+      ],
+      "description": "Identifies the individual or organization responsible for creating the component."
+    },
+    "contributor": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "default": "Contact email.",
+            "description": "Contributor email."
+          },
+          "affiliation": {
+            "type": "string",
+            "description": "The institution or organization with which the contributor is associated."
+          }
+        },
+        "required": [
+          "email"
+        ]
+      },
+      "description": "Contact information for the component's author or contributor."
+    },
+    "maintainer": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "default": "Contact email.",
+            "description": "Maintainer email."
+          },
+          "affiliation": {
+            "type": "string",
+            "description": "The institution or organization with which the maintainer is associated."
+          }
+        },
+        "required": [
+          "email"
+        ]
+      },
+      "description": "Contact information for the component's author or maintainers."
+    }
+  },
+  "required": [
+    "type",
+    "name",
+    "label",
+    "description",
+    "license",
+    "version",
+    "dockerImage",
+    "outputs",
+    "mainScriptPath",
+    "dependencies",
+    "resources",
+    "publicationDate",
+    "author"
+  ]
+}

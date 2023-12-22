@@ -1,0 +1,132 @@
+{
+  "type": "DataProcessing",
+  "name": "updatedataset",
+  "label": "Update Dataset",
+  "description": "Update a CSV main file using data from another CSV aux file.",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.1",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/misc/update_dataset:1.0.1",
+  "tags": ["enbic2lab-misc", "cc by-nc-nd 4.0", "by-nc-nd", "conversion"],
+  "parameters": [
+    {
+      "name": "--first-file",
+      "label": "First filepath",
+      "description": "Input path to the first CSV file",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--second-file",
+      "label": "Second filepath",
+      "description": "Path to the second CSV file",
+      "defaultValue": "{{.inputs.input2.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--col-first-file",
+      "label": "Column name first file",
+      "description": "Column name to update first file",
+      "defaultValue": "prec",
+      "type": "string"
+    },
+    {
+      "name": "--col-second-file",
+      "label": "Column name second file",
+      "defaultValue": "6155A",
+      "description": "Column name in second file to update first file",
+      "type": "string"
+    },
+    {
+      "name": "--name-column-date-first-file",
+      "label": "Name column date first",
+      "defaultValue": "fecha",
+      "description": "Name column date in first file",
+      "type": "string"
+    },
+    {
+      "name": "--name-column-date-second-file",
+      "label": "Name column date second",
+      "defaultValue": "DATE",
+      "description": "Name column date in second file",
+      "type": "string"
+    },
+    {
+      "name": "--delimiter-first-file",
+      "label": "Delimiter first file",
+      "description": "Delimiter first file",
+      "defaultValue": ";",
+      "type": "string"
+    },
+    {
+      "name": "--delimiter-second-file",
+      "label": "Delimiter second file",
+      "description": "Delimiter second file",
+      "defaultValue": ";",
+      "type": "string"
+    },
+    {
+      "name":"--output",
+      "readOnly": true,
+      "label": "Output path",
+      "description": "Path to the output CSV file",
+      "defaultValue": "/mnt/shared/output.csv",
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input first file",
+      "path": "/mnt/shared/6155A_aemet_pollen_meteo_platanus_data_split.csv",
+      "type": "tabulardataset"
+    },
+    {
+      "name": "input2",
+      "label": "Input second file",
+      "path": "/mnt/shared/6155A_completed.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "label": "Output file",
+      "path": "/mnt/shared/output.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-10-06T10:00:00.000Z",
+  "author": {
+    "email": "khaos.research@gmail.com",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ],
+  "maintainer": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ]
+}

@@ -1,0 +1,217 @@
+{
+  "type": "DataSink",
+  "name": "pollen-calendar",
+  "label": "Pollen Calendar",
+  "description": "Plot pollen callendar for a specific range of years",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/air/pollen_calendar:1.0.0",
+  "tags": [
+    "enbic2lab-air",
+    "cc by-nc-nd 4.0", "by-nc-nd",
+    "plot",
+    "calendar"
+  ],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "Input Filepath",
+      "description": "Input file path",
+      "type": "string",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true
+    },
+    {
+      "name": "--method",
+      "label": "Method",
+      "description": "Method to calculate and generate the pollen calendar (options: heatplot, violinplot or phenological, default: heatplot)",
+      "type": "string",
+      "defaultValue": "heatplot"
+    },
+    {
+      "name": "--nTypes",
+      "label": "Number of Types",
+      "description": "Number of most abundant pollen types to be represented in the pollen calendar (default: 15)",
+      "type": "number",
+      "defaultValue": 15
+    },
+    {
+      "name": "--startMonth",
+      "label": "Start Month",
+      "description": "Month (1-12) when the pollen calendar starts (default: 1)",
+      "type": "number",
+      "defaultValue": 1
+    },
+    {
+      "name": "--yStart",
+      "label": "Start Year",
+      "description": "Start year for the pollen calendar (default: NULL)",
+      "type": "number",
+      "defaultValue": null
+    },
+    {
+      "name": "--yEnd",
+      "label": "End Year",
+      "description": "End year for the pollen calendar (default: NULL)",
+      "type": "number",
+      "defaultValue": null
+    },
+    {
+      "name": "--perc1",
+      "label": "Percentage 1",
+      "description": "Percentage (0-100) for main pollination period (default: 80)",
+      "type": "number",
+      "defaultValue": 80
+    },
+    {
+      "name": "--perc2",
+      "label": "Percentage 2",
+      "description": "Percentage (0-100) for early/late pollination period (default: 99)",
+      "type": "number",
+      "defaultValue": 99
+    },
+    {
+      "name": "--thPollen",
+      "label": "Pollen Threshold",
+      "description": "Minimum threshold of average pollen concentration (default: 1)",
+      "type": "number",
+      "defaultValue": 1
+    },
+    {
+      "name": "--averageMethod",
+      "label": "Average Method",
+      "description": "Moment of the application of the average (options: avg_before or avg_after, default: avg_before)",
+      "type": "string",
+      "defaultValue": "avg_before"
+    },
+    {
+      "name": "--period",
+      "label": "Period",
+      "description": "Interval time for the pollen calendar (options: daily or weekly, default: daily)",
+      "type": "string",
+      "defaultValue": "daily"
+    },
+    {
+      "name": "--methodClasses",
+      "label": "Method for Classes",
+      "description": "Method to define classes for classifying average pollen concentrations (default: exponential)",
+      "type": "string",
+      "defaultValue": "exponential"
+    },
+    {
+      "name": "--nClasses",
+      "label": "Number of Classes",
+      "description": "Number of classes for classifying average pollen concentrations (default: 5)",
+      "type": "number",
+      "defaultValue": 5
+    },
+    {
+      "name": "--classes",
+      "label": "Classes",
+      "description": "Thresholds for defining different classes (comma-separated)",
+      "type": "string",
+      "defaultValue": "25, 50, 100, 300"
+    },
+    {
+      "name": "--color",
+      "label": "Color Palette",
+      "description": "Color palette for the pollen calendar plot (options: green, red, blue, purple or black, default: green)",
+      "type": "string",
+      "defaultValue": "green"
+    },
+    {
+      "name": "--interpolation",
+      "label": "Interpolation",
+      "description": "Apply interpolation to complete gaps in the pollen data (default: TRUE)",
+      "type": "string",
+      "defaultValue": "true"
+    },
+    {
+      "name": "--intMethod",
+      "label": "Interpolation Method",
+      "description": "Interpolation method (options: lineal, movingmean, spline or tseries, default: lineal)",
+      "type": "string",
+      "defaultValue": "lineal"
+    },
+    {
+      "name": "--naRemove",
+      "label": "Remove NA Values",
+      "description": "Remove NA values for the pollen calendar (default: TRUE)",
+      "type": "string",
+      "defaultValue": "true"
+    },
+    {
+      "name": "--result",
+      "label": "Result Type",
+      "description": "Output type for the function (options: plot or table, default: plot)",
+      "type": "string",
+      "defaultValue": "plot"
+    },
+    {
+      "name": "--legendName",
+      "label": "Legend Title",
+      "description": "Title of the legend in the plot (default: Pollen / m3)",
+      "type": "string",
+      "defaultValue": "Pollen / m3"
+    },
+    {
+      "name": "--delimiter",
+      "label": "Delimiter",
+      "description": "Dataframe delimiter (default: ,)",
+      "type": "string",
+      "defaultValue": ","
+    },
+    {
+      "name": "--output-folder",
+      "label": "Output directory",
+      "description": "Path to the output directory",
+      "defaultValue": "/mnt/shared/",
+      "readOnly": true,
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input CSV file",
+      "path": "/mnt/shared/input.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "label": "Output PDF file",
+      "path": "/mnt/shared/output.pdf",
+      "type": "pdf"
+    }
+  ],
+  "mainScriptPath": "main.R",
+  "testPath": "test_main.R",
+  "dependencies": [
+    {
+      "name": "r",
+      "version": "4.3.1",
+      "license": "PSF",
+      "url": "https://www.r-project.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-11-01T10:00:00.000Z",
+  "author": {
+    "email": "khaos.research@gmail.com",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "adrianseor.99@uma.es",
+      "affiliation": "Khaos Research Group"
+    }
+  ]
+}

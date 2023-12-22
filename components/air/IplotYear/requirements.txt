@@ -1,0 +1,10 @@
+ubuntu/libcurl4-openssl-dev
+ubuntu/default-libmysqlclient-dev
+ubuntu/libssl-dev
+ubuntu/libxml2-dev
+ubuntu/librsvg2-dev
+ubuntu/libudunits2-dev
+ubuntu/pandoc
+cran/dplyr==1.1.3
+cran/plotly==4.10.3
+cran/htmlwidgets==1.6.2

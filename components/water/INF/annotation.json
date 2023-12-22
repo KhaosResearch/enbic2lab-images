@@ -1,0 +1,94 @@
+{
+  "type": "DataProcessing",
+  "name": "inf",
+  "label": "INF",
+  "description": "Calculate infiltration from an input CSV file.",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.1",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/water/inf:1.0.1",
+  "tags": [
+    "enbic2lab-water",
+    "cc by-nc-nd 4.0", "by-nc-nd",
+    "conversion"
+  ],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "Filepath",
+      "description": "Path to the csv file",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--delimiter",
+      "label": "Delimiter",
+      "description": "Delimiter of the csv file",
+      "defaultValue": ";",
+      "type": "string"
+    },
+    {
+      "name": "--p_zero",
+      "label": "P_Zero",
+      "description": "Inf constant",
+      "defaultValue": "0",
+      "type": "string"
+    },
+    {
+      "name": "--output",
+      "label": "Output",
+      "description": "Path to the csv file",
+      "defaultValue": "/mnt/shared/InfiltrationData.csv",
+      "readOnly": true,
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input CSV file",
+      "path": "/mnt/shared/ComponentLLU.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "label": "Output CSV file",
+      "path": "/mnt/shared/InfiltrationData.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-11-09T10:00:00.000Z",
+  "author": {
+    "email": "juanasanchezrodriguez1999@uma.es",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "khaos.research@gmail.com"
+    }
+  ],
+  "maintainer": [
+    {
+      "email": "khaos.research@gmail.com"
+    }
+  ]
+}

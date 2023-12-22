@@ -1,0 +1,86 @@
+{
+  "type": "DataProcessing",
+  "name": "deleteNA",
+  "label": "Delete NA",
+  "description": "Delete from a CSV all columns or rows that have all their values in NA (excluding header)",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.1",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/misc/delete_na:1.0.1",
+  "tags": ["enbic2lab-misc", "cc by-nc-nd 4.0", "by-nc-nd", "processing"],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "Filepath",
+      "description": "Path to the csv file",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--delete-option",
+      "label": "Delete option",
+      "description": "Delete rows or columns or both",
+      "defaultValue": "both",
+      "type": "string"
+    },
+    {
+      "name": "--delimiter",
+      "label": "Delimiter",
+      "description": "Delimiter of the output file",
+      "defaultValue": ";",
+      "type": "string"
+    },
+    {
+      "name": "--output-path",
+      "readOnly": true,
+      "label": "Output path",
+      "description": "Path to the output file",
+      "defaultValue": "/mnt/shared",
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input file",
+      "path": "/mnt/shared/input.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "label": "Output file",
+      "path": "/mnt/shared/output.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-10-06T10:00:00.000Z",
+  "author": {
+    "email": "khaos.research@gmail.com",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "juancaruru@uma.es",
+      "affiliation": "Khaos Research Group"
+    }
+  ]
+}

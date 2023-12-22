@@ -1,0 +1,210 @@
+{
+  "type": "DataSink",
+  "name": "iplot-pheno",
+  "label": "Iplot Pheno",
+  "description": "Plot phenological parameters",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/air/iplot_pheno:1.0.0",
+  "tags": [
+    "enbic2lab-air",
+    "cc by-nc-nd 4.0", "by-nc-nd",
+    "plot",
+    "pheno"
+  ],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "Input Filepath",
+      "description": "Input file path",
+      "type": "string",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true
+    },
+    {
+      "name": "--method",
+      "label": "Pollen Season Calculation Method",
+      "description": "Method for calculating the pollen season",
+      "type": "string",
+      "defaultValue": "percentage"
+    },
+    {
+      "name": "--nTypes",
+      "label": "Number of Abundant Pollen Types",
+      "description": "Number of abundant pollen types in the calendar",
+      "type": "number",
+      "defaultValue": 15
+    },
+    {
+      "name": "--thDay",
+      "label": "Threshold for Counting Days",
+      "description": "Threshold for counting days when pollen level is exceeded",
+      "type": "number",
+      "defaultValue": 100
+    },
+    {
+      "name": "--perc",
+      "label": "Percentage of Total Annual Pollen",
+      "description": "Percentage of total annual pollen for pollen season",
+      "type": "number",
+      "defaultValue": 95
+    },
+    {
+      "name": "--defSeason",
+      "label": "Method for Selecting Annual Period",
+      "description": "Method for selecting annual period (natural, interannual, peak)",
+      "type": "string",
+      "defaultValue": "natural"
+    },
+    {
+      "name": "--reduction",
+      "label": "Reduce Peaks in Pollen Data",
+      "description": "Reduce peaks in pollen data (only for logistic method)",
+      "type": "string",
+      "defaultValue": "false"
+    },
+    {
+      "name": "--redLevel",
+      "label": "Percentile for Reducing Peaks",
+      "description": "Percentile for reducing peaks (only for logistic method)",
+      "type": "number",
+      "defaultValue": 0.9
+    },
+    {
+      "name": "--derivative",
+      "label": "Derivative for Logistic Method",
+      "description": "Derivative for logistic method",
+      "type": "number",
+      "defaultValue": 5
+    },
+    {
+      "name": "--man",
+      "label": "Order of Moving Average",
+      "description": "Order of moving average (only for moving method)",
+      "type": "number",
+      "defaultValue": 11
+    },
+    {
+      "name": "--thMa",
+      "label": "Threshold for Moving Method",
+      "description": "Threshold for moving method",
+      "type": "number",
+      "defaultValue": 5
+    },
+    {
+      "name": "--nClinical",
+      "label": "Number of Days for Clinical Method",
+      "description": "Number of days for clinical method",
+      "type": "number",
+      "defaultValue": 5
+    },
+    {
+      "name": "--windowClinical",
+      "label": "Time Window for Clinical Method",
+      "description": "Time window for clinical method",
+      "type": "number",
+      "defaultValue": 7
+    },
+    {
+      "name": "--windowGrains",
+      "label": "Time Window for Grains Method",
+      "description": "Time window for grains method",
+      "type": "number",
+      "defaultValue": 5
+    },
+    {
+      "name": "--thPollen",
+      "label": "Threshold for Clinical and Grains Methods",
+      "description": "Threshold for clinical and grains methods",
+      "type": "number",
+      "defaultValue": 10
+    },
+    {
+      "name": "--thSum",
+      "label": "Pollen Threshold for Sum in Clinical Method",
+      "description": "Pollen threshold for sum in clinical method",
+      "type": "number",
+      "defaultValue": 100
+    },
+    {
+      "name": "--type",
+      "label": "Pollen Type for Clinical Method",
+      "description": "Pollen type for clinical method (birch, grasses, cypress, olive, ragweed)",
+      "type": "string",
+      "defaultValue": "none"
+    },
+    {
+      "name": "--interpolation",
+      "label": "Apply Interpolation",
+      "description": "Apply interpolation to fill gaps (default: TRUE)",
+      "type": "string",
+      "defaultValue": "true"
+    },
+    {
+      "name": "--intMethod",
+      "label": "Interpolation Method",
+      "description": "Interpolation method (lineal, movingmean, spline, tseries)",
+      "type": "string",
+      "defaultValue": "lineal"
+    },
+    {
+      "name": "--delimiter",
+      "label": "Dataframe Delimiter",
+      "description": "Dataframe delimiter",
+      "type": "string",
+      "defaultValue": ","
+    },
+    {
+      "name": "--output-folder",
+      "label": "Output directory",
+      "description": "Path to the output directory",
+      "defaultValue": "/mnt/shared/",
+      "readOnly": true,
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input CSV file",
+      "path": "/mnt/shared/input.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "label": "Output PDF file",
+      "path": "/mnt/shared/output.pdf",
+      "type": "pdf"
+    }
+  ],
+  "mainScriptPath": "main.R",
+  "testPath": "test_main.R",
+  "dependencies": [
+    {
+      "name": "r",
+      "version": "4.3.1",
+      "license": "PSF",
+      "url": "https://www.r-project.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-11-07T10:00:00.000Z",
+  "author": {
+    "email": "khaos.research@gmail.com",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "adrianseor.99@uma.es",
+      "affiliation": "Khaos Research Group"
+    }
+  ]
+}

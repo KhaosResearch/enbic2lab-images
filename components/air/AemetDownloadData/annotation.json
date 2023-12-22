@@ -1,0 +1,100 @@
+{
+  "type": "DataCollection",
+  "name": "aemetdownloaddata",
+  "label": "AEMET Download",
+  "description": "Download meteorological data from AEMET",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/air/aemet_download_data:1.0.0",
+  "tags": [
+    "enbic2lab-air",
+    "cc by-nc-nd 4.0", "by-nc-nd",
+    "download"
+  ],
+  "parameters": [
+    {
+      "name": "--output",
+      "label": "Output Filepath",
+      "description": "Output Filepath",
+      "readOnly": true,
+      "defaultValue": "/mnt/shared/AEMETdownload.csv",
+      "type": "string"
+    },
+    {
+      "name": "--start-date",
+      "label": "Start Date",
+      "description": "Start date of data",
+      "defaultValue": "1991-05-11",
+      "type": "string"
+    },
+    {
+      "name": "--end-date",
+      "label": "End Date",
+      "description": "End date of data",
+      "defaultValue": "2021-09-30",
+      "type": "string"
+    },
+    {
+      "name": "--station",
+      "label": "Stations",
+      "description": "Station to get data",
+      "defaultValue": "6155A",
+      "type": "string"
+    },
+    {
+      "name": "--delimiter",
+      "label": "Delimiter",
+      "description": "Delimiter of CSV output file",
+      "defaultValue": ";",
+      "type": "string"
+    },
+    {
+      "name": "--aemet-api-key",
+      "label": "Aemet API key",
+      "description": "Api Key providing by AEMET web page (https://opendata.aemet.es/centrodedescargas/altaUsuario?).",
+      "type": "string"
+    }
+  ],
+  "inputs": [
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "label": "Output CSV file",
+      "path": "/mnt/shared/AEMETdownload.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-10-06T10:00:00.000Z",
+  "author": {
+    "email": "khaos.research@gmail.com",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ],
+  "maintainer": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ]
+}

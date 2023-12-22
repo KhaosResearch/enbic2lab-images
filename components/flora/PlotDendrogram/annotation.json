@@ -1,0 +1,128 @@
+{
+  "type": "DataAnalysing",
+  "name": "plot-dendrogram",
+  "label": "Dendrogram",
+  "description": "Plot dendrogram from a CSV file",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.1",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/flora/plot_dendrogram:1.0.1",
+  "tags": ["enbic2lab-flora", "cc by-nc-nd 4.0", "by-nc-nd", "dendrogram"],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "Filepath",
+      "description": "Name of the CSV file",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--delimiter",
+      "label": "Delimiter",
+      "description": "Delimiter of the CSV file",
+      "defaultValue": ";",
+      "type": "string"
+    },
+    {
+      "name": "--metrdendrogram",
+      "label": "Metric Dendrogram",
+      "description": "Distance functions between numeric vectors",
+      "defaultValue": "euclidean",
+      "type": "string",
+      "choices": [
+        "braycurtis",
+        "canberra",
+        "chebyshev",
+        "cityblock",
+        "correlation",
+        "cosine",
+        "dice",
+        "euclidean",
+        "hamming",
+        "jaccard",
+        "jensenshannon",
+        "kulczynski1",
+        "mahalanobis",
+        "matching",
+        "minkowski",
+        "rogerstanimoto",
+        "russellrao",
+        "seuclidean",
+        "sokalmichener",
+        "sokalsneath",
+        "sqeuclidean",
+        "yule"
+      ]
+    },
+    {
+      "name": "--methdendrogram",
+      "label": "Method Dendrogram",
+      "description": "Methods for calculating the distance between the newly formed cluster",
+      "defaultValue": "ward",
+      "type": "string",
+      "choices": [
+        "single",
+        "complete",
+        "average",
+        "weighted",
+        "median",
+        "ward",
+        "centroid"
+      ]
+    },
+    {
+      "name": "--oriendendrogram",
+      "label": "Orientation Dendrogram",
+      "description": "The orientation of the dendrogram for visualization",
+      "defaultValue": "top",
+      "type": "string",
+      "choices": ["top", "left", "bottom", "right"]
+    },
+    {
+      "name": "--output-path",
+      "label": "Output path",
+      "description": "Path to the output image",
+      "defaultValue": "/mnt/shared",
+      "readOnly": true,
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input CSV file",
+      "path": "/mnt/shared/input.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "label": "Output PDF file",
+      "path": "/mnt/shared/output.pdf",
+      "type": "pdf"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-09-28T10:00:00.000Z",
+  "author": {
+    "email": "adrianseor.99@uma.es",
+    "affiliation": "Khaos Research Group"
+  }
+}

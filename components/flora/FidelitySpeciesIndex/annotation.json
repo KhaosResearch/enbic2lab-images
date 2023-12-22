@@ -1,0 +1,93 @@
+{
+  "type": "DataAnalysing",
+  "name": "fidelity-species-index",
+  "label": "Fidelity Species Index",
+  "description": "Establishes the probability that one or more plant species appear together in the same phytosociological inventory",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.1",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/flora/fidelity_species_index:1.0.1",
+  "tags": ["enbic2lab-flora", "cc by-nc-nd 4.0", "by-nc-nd", "analysis"],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "File path",
+      "description": "Filepath for the input CSV File",
+      "defaultValue": "{{.inputs.inventory_transformation.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--delimiter",
+      "label": "Delimiter",
+      "description": "Delimiter of the classes in the input CSV File",
+      "defaultValue": ";",
+      "type": "string"
+    },
+    {
+      "name": "--min_support",
+      "label": "Minimum support",
+      "description": "",
+      "defaultValue": 0.05,
+      "type": "float"
+    },
+    {
+      "name": "--min_threshold",
+      "label": "Minimum threshold",
+      "description": "",
+      "defaultValue": 0.85,
+      "type": "float"
+    },
+    {
+      "name": "--output-path",
+      "label": "Output path",
+      "description": "Path to the output image",
+      "defaultValue": "/mnt/shared",
+      "readOnly": true,
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "inventory_transformation",
+      "label": "Input CSV file",
+      "path": "/mnt/shared/inventory_transformation.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "support.csv",
+      "label": "Output Support CSV file",
+      "path": "/mnt/shared/support.csv",
+      "type": "tabulardataset"
+    },
+    {
+      "name": "support_predict.csv",
+      "label": "Output Predict CSV file",
+      "path": "/mnt/shared/support_predict.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-09-26T10:00:00.000Z",
+  "author": {
+    "email": "adrianseor.99@uma.es",
+    "affiliation": "Khaos Research Group"
+  }
+}

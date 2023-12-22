@@ -1,0 +1,143 @@
+{
+  "type": "DataAnalysing",
+  "name": "ComponentSeriesCompletionPollen",
+  "label": "Series Completion Pollen",
+  "description": "Complete the data series using several tests and criteria",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0..0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/air/series_completion_pollen:1.0.0",
+  "tags": ["enbic2lab-air", "cc by-nc-nd 4.0", "by-nc-nd", "Analysing", "pollen"],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "Filepath",
+      "description": "Filepath for the input CSV File",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--start-date",
+      "label": "Start Date",
+      "description": "Start date of the time series",
+      "defaultValue": "1991-05-11",
+      "type": "string"
+    },
+    {
+      "name": "--end-date",
+      "label": "End Date",
+      "description": "End date of the time series",
+      "defaultValue": "2021-09-30",
+      "type": "string"
+    },
+    {
+      "name": "--target-station",
+      "label": "Target Station",
+      "defaultValue":"6155A",
+      "description": "Target station to complete",
+      "type": "string"
+    },
+    {
+      "name": "--analysis-stations",
+      "label": "Stations to analyze (comma separated)",
+      "defaultValue":"6172O,6156X",
+      "description": "Stations to use for the analysis",
+      "type": "string"
+    },
+    {
+      "name": "--completion-criteria",
+      "label": "Completion Criteria",
+      "description": "List of criteria that will be used to complete the target station. Values that can be included in the list are 'r2','slope','pair'. By default, every criteria will be used.",
+      "defaultValue": "r2, slope, pair",
+      "type": "string"
+    },
+    {
+      "name": "--tests",
+      "label": "Homogeneity tests",
+      "description": "Homogeneity tests to perform. Values that can be included in the list are 'pettit','snht','buishand'. By default, every test will be performed.",
+      "defaultValue": "pettit",
+      "type": "string"
+    },
+    {
+      "name": "--delimiter",
+      "label": "Delimiter",
+      "description": "Delimiter of the csv file",
+      "defaultValue": ";",
+      "type": "string"
+    },
+    {
+      "name": "--output-path",
+      "readOnly": true,
+      "label": "Output path",
+      "description": "Path for the output files",
+      "defaultValue": "/mnt/shared",
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "type": "tabulardataset",
+      "label": "Input TimeSeries CSV file",
+      "path": "/mnt/shared/input.csv"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output_completed_data",
+      "type": "tabulardataset",
+      "label": "Output CSV file of the completed data",
+      "path": "/mnt/shared/CompletedData.csv"
+    },
+    {
+      "name": "StationsAnalysis",
+      "type": "tabulardataset",
+      "label": "Output CSV file of the stations analysis",
+      "path": "/mnt/shared/StationsAnalysis.csv"
+    },
+    {
+      "name": "TargetCompleted",
+      "type": "tabulardataset",
+      "label": "Output CSV file of the target completion",
+      "path": "/mnt/shared/TargetCompleted.csv"
+    },
+    {
+      "name": "HomogeneityTests",
+      "type": "tabulardataset",
+      "label": "Output CSV file of the homogeneity tests realized",
+      "path": "/mnt/shared/HomogeneityTests.csv"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 20
+  },
+  "publicationDate": "2023-10-06T10:00:00.000Z",
+  "author": {
+    "email": "khaos.research@gmail.com",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ],
+  "maintainer": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "type": "DataAnalysing",
+  "name": "studystationaryandseasonality",
+  "label": "Seasonality",
+  "description": "Analyse stationary and seasonality based on ARIMA methods.",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.1",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/air/seasonality:1.0.1",
+  "tags": ["enbic2lab-air", "cc by-nc-nd 4.0", "by-nc-nd", "analysing"],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "File path",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true,
+      "description": "Input CSV file path.",
+      "type": "string"
+    },
+    {
+      "name": "--delimiter",
+      "label": "Delimiter",
+      "description": "Delimiter used in CSV.",
+      "defaultValue":";",
+      "type": "string"
+    },
+    {
+      "name": "--date-column",
+      "label": "Date Column",
+      "description": "Date column in CSV",
+      "defaultValue":"fecha",
+      "type": "string"
+    },
+    {
+      "name": "--pollen-column",
+      "label": "Pollen Column",
+      "description": "Pollen type to be studied",
+      "type": "string"
+    },
+    {
+      "name": "--year",
+      "label": "Year",
+      "description": "Last year to be considered in the study",
+      "defaultValue": 2021,
+      "type": "integer"
+    },
+    {
+      "name": "--output-path",
+      "label": "Output path",
+      "description": "Path to the output image",
+      "defaultValue": "/mnt/shared/",
+      "readOnly": true,
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input CSV file",
+      "path": "/mnt/shared/input.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "DickeyFuller_plot_png",
+      "label": "Output DickeyFuller_plot PNG file",
+      "path": "/mnt/shared/DickeyFuller_plot.png",
+      "type": "image"
+    },
+    {
+      "name": "seasonality_pdf",
+      "label": "Output seasonality PDF file",
+      "path": "/mnt/shared/seasonality.pdf",
+      "type": "pdf"
+
+    },
+    {
+      "name": "DickerFuller_seasonality_csv",
+      "label": "Output DickerFuller_seasonality CSV file",
+      "path": "/mnt/shared/DickerFuller_seasonality.csv",
+      "type": "tabulardataset"
+    },
+    {
+      "name": "SARIMAX_plots_pdf",
+      "label": "Output SARIMAX_plots.pdf file",
+      "path": "/mnt/shared/SARIMAX_plots.pdf",
+      "type": "pdf"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-10-06T10:00:00.000Z",
+  "author": {
+    "email": "khaos.research@gmail.com",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ],
+  "maintainer": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ]
+}
+
+
