@@ -1,0 +1,101 @@
+{
+  "type": "DataProcessing",
+  "name": "aemetaddstatistic",
+  "label": "Dataset Statistics",
+  "description": "Create a CSV File with extra columns based on statistics",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/air/aemet_add_statistics:1.0.0",
+  "tags": [
+    "enbic2lab-air",
+    "cc by-nc-nd 4.0", "by-nc-nd",
+    "statistic"
+  ],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "Filepath",
+      "description": "Path to the csv file",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--delimiter",
+      "label": "Delimiter",
+      "description": "Delimiter of the csv file",
+      "defaultValue": ";",
+      "type": "string"
+    },
+    {
+      "name": "--output",
+      "label": "Output File Name",
+      "description": "Output File Name",
+      "readOnly": true,
+      "defaultValue": "/mnt/shared/Statistics.csv",
+      "type": "string"
+    },
+    {
+      "name": "--mm-list-attr",
+      "label": "MM statistic atributes",
+      "description": "List of attributes for mm statistic ',' separated",
+      "defaultValue": "tmed,tmax,tmin,dir,velmedia,racha,sol,presMax,presMin,Index,prec,Urticaceae,CALMA,Hum rel.,Vto 1º CUAD.,Vto 2º CUAD.,Vto 3º CUAD.,Vto 4º CUAD.",
+      "type": "string"
+    },
+    {
+      "name": "--acum-list-attr",
+      "label": "Atributes list",
+      "description": "List of attributes for doing statistics with them ',' separated",
+      "defaultValue": "sol,pred,Hum rel.,Urticaceae",
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input CSV file",
+      "path": "/mnt/shared/input.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "label": "Output CSV file",
+      "path": "/mnt/shared/Statistics.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-10-06T10:00:00.000Z",
+  "author": {
+    "email": "khaos.research@gmail.com",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ],
+  "maintainer": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ]
+}

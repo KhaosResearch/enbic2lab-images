@@ -1,0 +1,89 @@
+{
+  "type": "DataSink",
+  "name": "iplot-pollen",
+  "label": "Iplot pollen",
+  "description": "Plot the pollen samples for each day in a specific year",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/air/iplot_pollen:1.0.0",
+  "tags": [
+    "enbic2lab-air",
+    "cc by-nc-nd 4.0", "by-nc-nd",
+    "plot"
+  ],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "Input Filepath",
+      "description": "Input file path",
+      "type": "string",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true
+    },
+    {
+      "name": "--year",
+      "label": "Year",
+      "description": "Year of samples",
+      "type": "number"
+    },
+    {
+      "name": "--delimiter",
+      "label": "Delimiter",
+      "description": "Delimiter of the CSV file",
+      "defaultValue": ",",
+      "type": "string"
+    },
+    {
+      "name": "--output-folder",
+      "label": "Output directory",
+      "description": "Path to the output directory",
+      "defaultValue": "/mnt/shared/",
+      "readOnly": true,
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input CSV file",
+      "path": "/mnt/shared/input.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "label": "Output HTML file",
+      "path": "/mnt/shared/output.html",
+      "type": "html"
+    }
+  ],
+  "mainScriptPath": "main.R",
+  "testPath": "test_main.R",
+  "dependencies": [
+    {
+      "name": "r",
+      "version": "4.3.1",
+      "license": "PSF",
+      "url": "https://www.r-project.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-10-27T10:00:00.000Z",
+  "author": {
+    "email": "khaos.research@gmail.com",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "adrianseor.99@uma.es",
+      "affiliation": "Khaos Research Group"
+    }
+  ]
+}

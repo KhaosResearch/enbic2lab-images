@@ -1,0 +1,114 @@
+{
+    "type": "DataCollection",
+    "name": "LoadDBSoil",
+    "label": "Load from DB Soil",
+    "description": "Create a csv file from our MongoDB database with soil data.",
+    "license": "cc by-nc-nd 4.0",
+    "version": "1.1.4",
+    "dockerImage": "192.168.219.5:8098/enbic2lab/soil/db2csv_soil:1.1.4",
+    "tags": ["enbic2lab-soil", "cc by-nc-nd 4.0", "by-nc-nd", "collection"],
+    "parameters": [
+      {
+        "name": "--id",
+        "label": "Query by ID",
+        "description": "ID of the soil sample to query",
+        "defaultValue": null,
+        "type": "string"
+      },
+      {
+        "name": "--author",
+        "label": "Query by list of authors",
+        "description": "List of authors of the soil sample to query",
+        "defaultValue": null,
+        "type": "string"
+      },
+      {
+        "name": "--description",
+        "label": "Query by key word in description",
+        "description": "Description of the soil sample to query",
+        "defaultValue": null,
+        "type": "string"
+      },
+      {
+        "name": "--natural-site-list",
+        "label": "Query by natural site list",
+        "description": "List of natural sites of the soil sample to query",
+        "defaultValue": null,
+        "type": "string"
+      },
+      {
+        "name": "--project",
+        "label": "Query by project",
+        "description": "Project of the soil sample to query",
+        "defaultValue": null,
+        "type": "string"
+      },
+      {
+        "name": "--start-date",
+        "label": "Query by start date",
+        "description": "Start date of the soil sample to query",
+        "defaultValue": null,
+        "type": "string"
+      },
+      {
+        "name": "--end-date",
+        "label": "Query by end date",
+        "description": "End date of the soil sample to query",
+        "defaultValue": null,
+        "type": "string"
+      },
+      {
+        "name": "--delimiter",
+        "label": "Delimiter",
+        "description": "Delimiter of the csv file",
+        "defaultValue": ";",
+        "type": "string"
+      },
+      {
+        "name": "--output-path",
+        "readOnly": true,
+        "label": "Output path",
+        "description": "Path to the output csv file",
+        "defaultValue": "/mnt/shared",
+        "type": "string"
+      }
+    ],
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "output",
+        "label": "Output CSV file",
+        "path": "/mnt/shared/soil.csv",
+        "type": "tabulardataset"
+      }
+    ],
+    "mainScriptPath": "main.py",
+    "testPath": "test_main.py",
+    "dependencies": [
+      {
+        "name": "python",
+        "version": "3.11.5",
+        "license": "PSF",
+        "url": "https://www.python.org/"
+      }
+    ],
+    "resources": {
+      "cores": 1,
+      "memory": 128,
+      "gpuNeeded": false,
+      "gpuMemory": null,
+      "estimatedTimeInMin": 4
+    },
+    "publicationDate": "2023-10-31T11:30:00.000Z",
+    "author": {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"
+    },
+    "contributor": [
+      {
+        "email": "juancaruru@uma.es",
+        "affiliation": "Khaos Research Group"
+      }
+    ]
+  }
+  

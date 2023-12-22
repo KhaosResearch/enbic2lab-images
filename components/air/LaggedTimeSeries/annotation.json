@@ -1,0 +1,107 @@
+{
+  "type": "DataProcessing",
+  "name": "LaggedTimeSeries",
+  "label": "Lagged Time Series",
+  "description": "Given a pollen dataframe and number of lags, it produces a lagged dataframe.",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/air/lagged_time_series:1.0.0",
+  "tags": ["enbic2lab-air", "cc by-nc-nd 4.0", "by-nc-nd", "processing"],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "Input file path",
+      "description": "Input CSV file path.",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--output",
+      "label": "Output file path",
+      "description": "Output CSV file path.",
+      "defaultValue":"/mnt/shared/lagged_time_series.csv",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--delimiter",
+      "label": "Delimiter",
+      "description": "Delimiter used in CSV.",
+      "defaultValue":";",
+      "type": "string"
+    },
+    {
+      "name": "--date-column",
+      "label": "Date Column",
+      "description": "Date column in CSV",
+      "defaultValue":"fecha",
+      "type": "string"
+    },
+    {
+      "name": "--lags",
+      "label": "Start Date",
+      "description": "Start date to split dataset",
+      "defaultValue":12,
+      "required": true,
+      "type": "integer"
+    },
+    {
+      "name": "--pollen-column",
+      "label": "Pollen column",
+      "defaultValue":"Platanus",
+      "description": "Name of pollen column",
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input CSV file",
+      "path": "/mnt/shared/split_dataset.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "label": "output CSV file",
+      "path": "/mnt/shared/lagged_time_series.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-10-06T10:00:00.000Z",
+  "author": {
+    "email": "khaos.research@gmail.com",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ],
+  "maintainer": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ]
+}
+
+

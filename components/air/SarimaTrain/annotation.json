@@ -1,0 +1,129 @@
+{
+  "type": "DataAnalysing",
+  "name": "SARIMAtrain",
+  "label": "Sarima train",
+  "description": "Train SARIMA model with a specific scaled dataset and evaluate it to obtain its metrics.",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/air/sarima_train:1.0.0",
+  "tags": ["enbic2lab-air", "cc by-nc-nd 4.0", "by-nc-nd", "processing"],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "File path",
+      "description": "Input CSV file path.",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--output",
+      "label": "Putput file path",
+      "description": "Putput file path",
+      "defaultValue": "/mnt/shared/",
+      "type": "string",
+      "readOnly": true
+    },
+    {
+      "name": "--seasonality",
+      "label": "Seasonality",
+      "description": "Set the seasonality of your pollen",
+      "defaultValue":12,
+      "type": "integer"
+    },
+    {
+      "name": "--date-column",
+      "label": "Date column",
+      "description": "Name of the date column of your dataset",
+      "defaultValue": "fecha",
+      "type": "string"
+    },
+    {
+      "name": "--pollen-column",
+      "label": "Pollen column",
+      "description": "Name of the pollen column of your dataset",
+      "defaultValue": "Platanus",
+      "type": "string"
+    },
+    {
+      "name": "--validation-time",
+      "label": "Validation date",
+      "description": "Indicate from which period of time you want to make the validation",
+      "defaultValue": "2020-01-01",
+      "type": "string"
+    },
+    {
+      "name": "--delimiter",
+      "label": "Delimiter",
+      "description": "Delimiter used in CSV.",
+      "defaultValue":";",
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input CSV file",
+      "path": "/mnt/shared/split_dataset.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output1",
+      "label": "Output features CSV file",
+      "path": "/mnt/shared/features.csv",
+      "type": "tabulardataset"
+    },
+    {
+      "name": "output2",
+      "label": "Output target CSV file",
+      "path": "/mnt/shared/target.csv",
+      "type": "tabulardataset"
+    },
+    {
+      "name": "output3",
+      "label": "Output metrics CSV file",
+      "path": "/mnt/shared/Sarima_metrics.csv",
+      "type": "tabulardataset"
+    },
+    {
+      "name": "output4",
+      "label": "Output predictions CSV file",
+      "path": "/mnt/shared/Sarima_predictions.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-11-17T10:00:00.000Z",
+  "author": {
+    "email": "juancaruru@uma.es",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "khaos.research@gmail.com"
+    }
+  ],
+  "maintainer": [
+    {
+      "email": "khaos.research@gmail.com"
+    }
+  ]
+}

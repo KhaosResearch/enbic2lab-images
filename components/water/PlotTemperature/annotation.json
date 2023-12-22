@@ -1,0 +1,94 @@
+{
+  "type": "DataAnalysing",
+  "name": "temperatureplot",
+  "label": "Temperature Plot",
+  "description": "From the input CSV file, this component is responsible for plotting the maximum and minimum temperature per day on a graph.",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/water/temperature_plot_component:1.0.0",
+  "tags": [
+    "enbic2lab-water",
+    "cc by-nc-nd 4.0", "by-nc-nd",
+    "conversion"
+  ],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "Filepath",
+      "description": "Path to the csv file",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--delimiter",
+      "label": "Delimiter",
+      "description": "Delimiter of the csv file",
+      "defaultValue": ";",
+      "type": "string"
+    },
+    {
+      "name": "--mode",
+      "label": "Mode",
+      "description": "Plot mode",
+      "defaultValue": "both",
+      "type": "string"
+    },
+    {
+      "name": "--output",
+      "label": "Output",
+      "description": "Path to the html file",
+      "defaultValue": "/mnt/shared/Temperature_plot.html",
+      "readOnly": true,
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input CSV file",
+      "path": "/mnt/shared/ComponentINF.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "label": "Output HTML file",
+      "path": "/mnt/shared/Temperature_plot.html",
+      "type": "html"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-11-09T10:00:00.000Z",
+  "author": {
+    "email": "juansanchezrodriguez1999@uma.es",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "khaos.research@gmail.com"
+    }
+  ],
+  "maintainer": [
+    {
+      "email": "khaos.research@gmail.com"
+    }
+  ]
+}

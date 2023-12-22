@@ -1,0 +1,94 @@
+{
+    "type": "DataProcessing",
+    "name": "ImageExtraction",
+    "label": "Image Extraction",
+    "description": "Extract the experiment images from a ZIP file in a given extension and save them inside another ZIP file",
+    "license": "GPL2",
+    "version": "1.0.0",
+    "dockerImage": "192.168.219.5:8098/enbic2lab/air/image_extract:1.0.0",
+    "tags": ["enbic2lab-misc", "GPL2-licensed", "Analysing", "pollen"],
+    "parameters": [
+      {
+        "name": "--filepath",
+        "label": "Filepath",
+        "description": "Path to the ZIP file",
+        "defaultValue": "{{.inputs.input.path}}",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--file-extension",
+        "label": "File extension",
+        "description": "Extension of the files to extract. For further information about the supported formats visit [this page](https://docs.openmicroscopy.org/bio-formats/6.6.0/supported-formats.html).",
+        "defaultValue": "vsi",
+        "type": "string"
+      },
+      {
+        "name": "--image-name-regex",
+        "label": "Image name regular expression",
+        "description": "Regular expression to filter the images by its name",
+        "defaultValue": null,
+        "type": "string"
+      },
+      {
+        "name": "--min-image-size",
+        "label": "Minimum image size",
+        "description": "Minimum image size in pixels",
+        "defaultValue": 10000,
+        "type": "integer"
+      },
+      {
+        "name": "--output-path",
+        "label": "Output path",
+        "description": "Path to the output ZIP file",
+        "defaultValue": "/mnt/shared/",
+        "readOnly": true,
+        "type": "string"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "input",
+        "type": "zip",
+        "label": "Input ZIP file",
+        "path": "/mnt/shared/sampleImage.zip"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output",
+        "type": "zip",
+        "label": "Output images ZIP file",
+        "path": "/mnt/shared/imagesZipped.zip"
+      }
+    ],
+    "mainScriptPath": "main.py",
+    "testPath": "",
+    "dependencies": [
+      {
+        "name": "python",
+        "version": "3.9.7",
+        "license": "PSF",
+        "url": "https://www.python.org/"
+      }
+    ],
+    "resources": {
+      "cores": 1,
+      "memory": 128,
+      "gpuNeeded": false,
+      "gpuMemory": null,
+      "estimatedTimeInMin": 5
+    },
+    "publicationDate": "2023-11-23T14:30:00.000Z",
+    "author": {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"
+    },
+    "contributor": [
+      {
+        "email": "juancaruru@uma.es",
+        "affiliation": "Khaos Research Group"
+      }
+    ]
+  }
+  

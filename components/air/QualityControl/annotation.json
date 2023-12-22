@@ -1,0 +1,124 @@
+{
+  "type": "DataSink",
+  "name": "quality-control",
+  "label": "Quality Control",
+  "description": "Perform quality control over pollen data",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/air/quality_control:1.0.0",
+  "tags": [
+    "enbic2lab-air",
+    "cc by-nc-nd 4.0", "by-nc-nd",
+    "quality"
+  ],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "Input Filepath",
+      "description": "Input file path",
+      "type": "string",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true
+    },
+    {
+      "name": "--window",
+      "label": "Window",
+      "description": "A numeric (integer) value bigger or equal to 1",
+      "type": "number",
+      "defaultValue": 2
+    },
+    {
+      "name": "--perc_miss",
+      "label": "Percentage of Missing Data",
+      "description": "A numeric (integer) value between 0 and 100",
+      "type": "number",
+      "defaultValue": 20
+    },
+    {
+      "name": "--ps_method",
+      "label": "Pollen Season Calculation Method",
+      "description": "A character string specifying the method applied to calculate the pollen season",
+      "type": "string",
+      "defaultValue": "percentage"
+    },
+    {
+      "name": "--perc",
+      "label": "Percentage",
+      "description": "A numeric (integer) value between 0 and 100",
+      "type": "number",
+      "defaultValue": 95
+    },
+    {
+      "name": "--result",
+      "label": "Result Format",
+      "description": "A character string specifying the format of the results (table or plot)",
+      "type": "string",
+      "defaultValue": "plot"
+    },
+    {
+      "name": "--delimiter",
+      "label": "Delimiter",
+      "description": "Dataframe delimiter",
+      "type": "string",
+      "defaultValue": ","
+    },
+    {
+      "name": "--output-folder",
+      "label": "Output directory",
+      "description": "Path to the output directory",
+      "defaultValue": "/mnt/shared/",
+      "readOnly": true,
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input CSV file",
+      "path": "/mnt/shared/input.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output pdf",
+      "label": "Output PDF file",
+      "path": "/mnt/shared/output.pdf",
+      "type": "pdf"
+    },
+    {
+      "name": "output csv",
+      "label": "Output CSV file",
+      "path": "/mnt/shared/output.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "mainScriptPath": "main.R",
+  "testPath": "test_main.R",
+  "dependencies": [
+    {
+      "name": "r",
+      "version": "4.3.1",
+      "license": "PSF",
+      "url": "https://www.r-project.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-10-31T10:00:00.000Z",
+  "author": {
+    "email": "khaos.research@gmail.com",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "adrianseor.99@uma.es",
+      "affiliation": "Khaos Research Group"
+    }
+  ]
+}

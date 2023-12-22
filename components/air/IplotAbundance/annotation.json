@@ -1,0 +1,133 @@
+{
+  "type": "DataSink",
+  "name": "iplot-abundance",
+  "label": "Iplot abundance",
+  "description": "Plot relative abundance of each type of pollen in a certain range of years",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/air/iplot_abundance:1.0.0",
+  "tags": [
+    "enbic2lab-air",
+    "cc by-nc-nd 4.0", "by-nc-nd",
+    "plot",
+    "relative-abundance"
+  ],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "Input Filepath",
+      "description": "Input file path",
+      "type": "string",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true
+    },
+    {
+      "name": "--nTypes",
+      "label": "Number of Pollen Types",
+      "description": "Number of most abundant pollen types to be represented in the plot of the relative abundance",
+      "type": "number",
+      "defaultValue": 15
+    },
+    {
+      "name": "--yStart",
+      "label": "Start Year",
+      "description": "Start year for calculating relative abundances of pollen types",
+      "type": "number",
+      "defaultValue": null
+    },
+    {
+      "name": "--yEnd",
+      "label": "End Year",
+      "description": "End year for calculating relative abundances of pollen types",
+      "type": "number",
+      "defaultValue": null
+    },
+    {
+      "name": "--interpolation",
+      "label": "Apply Interpolation",
+      "description": "Apply interpolation to complete gaps with no data",
+      "type": "string",
+      "defaultValue": "true"
+    },
+    {
+      "name": "--intMethod",
+      "label": "Interpolation Method",
+      "description": "Interpolation method (options: lineal, movingmean, spline or tseries)",
+      "type": "string",
+      "defaultValue": "lineal"
+    },
+    {
+      "name": "--colBar",
+      "label": "Bar Color",
+      "description": "Color of the bars for the plot",
+      "type": "string",
+      "defaultValue": "#E69F00"
+    },
+    {
+      "name": "--exclude",
+      "label": "Excluded Pollen Types",
+      "description": "Names of pollen types to be excluded from the plot",
+      "type": "string",
+      "defaultValue": ""
+    },
+    {
+      "name": "--delimiter",
+      "label": "Dataframe Delimiter",
+      "description": "Dataframe delimiter",
+      "type": "string",
+      "defaultValue": ","
+    },
+    {
+      "name": "--output-folder",
+      "label": "Output directory",
+      "description": "Path to the output directory",
+      "defaultValue": "/mnt/shared/",
+      "readOnly": true,
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input CSV file",
+      "path": "/mnt/shared/input.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "label": "Output PDF file",
+      "path": "/mnt/shared/output.pdf",
+      "type": "pdf"
+    }
+  ],
+  "mainScriptPath": "main.R",
+  "testPath": "test_main.R",
+  "dependencies": [
+    {
+      "name": "r",
+      "version": "4.3.1",
+      "license": "PSF",
+      "url": "https://www.r-project.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-11-03T10:00:00.000Z",
+  "author": {
+    "email": "khaos.research@gmail.com",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "adrianseor.99@uma.es",
+      "affiliation": "Khaos Research Group"
+    }
+  ]
+}

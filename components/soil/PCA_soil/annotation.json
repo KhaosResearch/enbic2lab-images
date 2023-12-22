@@ -1,0 +1,119 @@
+{
+    "type": "DataAnalysing",
+    "name": "PCAsoil",
+    "label": "PCA Soil",
+    "description": "Perform a Principal Component Analysis (PCA)",
+    "license": "cc by-nc-nd 4.0",
+    "version": "1.0.2",
+    "dockerImage": "192.168.219.5:8098/enbic2lab/soil/pca_soil:1.0.2",
+    "tags": ["enbic2lab-soil", "cc by-nc-nd 4.0", "by-nc-nd", "analysing"],
+    "parameters": [
+      {
+        "name": "--filepath",
+        "label": "Filepath",
+        "description": "Filepath for the input normalized CSV File",
+        "defaultValue": "{{.inputs.input.path}}",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--number-components",
+        "label": "Number of components",
+        "description": "Set the number of components to calculate from the CSV file",
+        "defaultValue": null,
+        "type": "integer"
+      },
+      {
+        "name": "--variance-explained",
+        "label": "Variance Explained",
+        "description": "Set the variance to explain to calculate the number of components from the CSV file",
+        "defaultValue": 75,
+        "type": "integer"
+      },
+      {
+        "name": "--delimiter",
+        "label": "Delimiter",
+        "description": "Set the delimiter of the CSV",
+        "defaultValue": ";",
+        "type": "string"
+      },
+      {
+        "name": "--target-column",
+        "label": "Target column",
+        "description": "Set the target column of the CSV",
+        "defaultValue": null,
+        "type": "string"
+      },
+      {
+        "name": "--output-path",
+        "readOnly": true,
+        "label": "Output Path",
+        "description": "Set the output path for the CSV files",
+        "defaultValue": "/mnt/shared",
+        "type": "string"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "input",
+        "label": "Input normalized CSV file",
+        "path": "/mnt/shared/DataNormalized.csv",
+        "type": "tabulardataset"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "correlation_matrix_heatmap",
+        "label": "Correlation matrix CSV file",
+        "path": "/mnt/shared/correlation_matrix_heatmap.csv",
+        "type": "tabulardataset"
+      },
+      {
+        "name": "covariance_matrix",
+        "label": "Covariance matrix CSV file",
+        "path": "/mnt/shared/covariance_matrix.csv",
+        "type": "tabulardataset"
+      },
+      {
+        "name": "PCA_plot",
+        "label": "PCA components CSV file",
+        "path": "/mnt/shared/PCA_plot.csv",
+        "type": "tabulardataset"
+      },
+      {
+        "name": "scree_plot",
+        "label": "Scree plot CSV file",
+        "path": "/mnt/shared/scree_plot.csv",
+        "type": "tabulardataset"
+      }
+    ],
+    "mainScriptPath": "main.py",
+    "testPath": "test_main.py",
+    "dependencies": [
+      {
+        "name": "python",
+        "version": "3.11.5",
+        "license": "PSF",
+        "url": "https://www.python.org/"
+      }
+    ],
+    "resources": {
+      "cores": 1,
+      "memory": 128,
+      "gpuNeeded": false,
+      "gpuMemory": null,
+      "estimatedTimeInMin": 4
+    },
+    "publicationDate": "2023-10-31T11:30:00.000Z",
+    "author": {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"
+    },
+    "contributor": [
+      {
+        "email": "juancaruru@uma.es",
+        "affiliation": "Khaos Research Group"
+      }
+    ]
+  }
+  

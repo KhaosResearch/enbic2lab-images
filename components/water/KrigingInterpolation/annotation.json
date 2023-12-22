@@ -1,0 +1,115 @@
+{
+  "type": "DataProcessing",
+  "name": "kriging-interpolation",
+  "label": "Kriging interpolation",
+  "description": "Apply the kriging algorithm to interpolate data from a Shapefile.",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.2",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/water/kriging_interpolation:1.0.2",
+  "tags": ["enbic2lab-water", "cc by-nc-nd 4.0", "by-nc-nd"],
+  "parameters": [
+    {
+      "name": "--shp-path",
+      "label": "Zip file path with a shapefile",
+      "description": "Input zip file path that contains a Shapefile.",
+      "type": "string",
+      "defaultValue": "{{.inputs.input-shapefile.path}}",
+      "readOnly": true
+    },
+    {
+      "name": "--dem-path",
+      "label": "DEM path",
+      "description": "Digital Elevation Model (DEM) path in tiff format path.",
+      "type": "string",
+      "defaultValue": "{{.inputs.input-dem.path}}",
+      "readOnly": true
+    },
+    {
+      "name": "--column-name",
+      "label": "Column name",
+      "description": "Name of the column to be interpolated.",
+      "type": "string"
+    },
+    {
+      "name": "--use-shp-height",
+      "label": "Use height from SHP",
+      "description": "Use height from SHP file. If false, take the height values from the DEM instead.",
+      "defaultValue": "true",
+      "type": "string"
+    },
+    {
+      "name": "--grid-size",
+      "label": "Grid size",
+      "description": "Size of the grid to use in pixels.",
+      "type": "integer"
+    },
+    {
+      "name": "--output",
+      "label": "Output path",
+      "description": "Output path of the file",
+      "defaultValue": "/mnt/shared/",
+      "type": "string",
+      "readOnly": true
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input-shapefile",
+      "label": "Input Zip file with a shapefile",
+      "path": "/mnt/shared/input-shapefile.shp.zip",
+      "type": "shp"
+    },
+    {
+      "name": "input-dem",
+      "label": "Input DEM file in tif format",
+      "path": "/mnt/shared/input-dem.tif",
+      "type": "tiff"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output-graph",
+      "label": "Output PNG file",
+      "path": "/mnt/shared/output.png",
+      "type": "image"
+    },
+    {
+      "name": "output-csv",
+      "label": "Output CSV file",
+      "path": "/mnt/shared/output.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-11-02T10:00:00.000Z",
+  "author": {
+    "email": "khaos.research@gmail.com",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "ireero99@uma.es",
+      "affiliation": "Khaos Research Group"
+    },
+    {
+      "email": "jfaldanam@uma.es",
+      "affiliation":"Khaos Research Group"
+    }
+  ]
+}

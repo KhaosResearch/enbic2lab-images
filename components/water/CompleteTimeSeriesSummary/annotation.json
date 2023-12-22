@@ -1,0 +1,101 @@
+{
+    "type": "DataSink",
+    "name": "CompleteTimeseriesSummary",
+    "label": "Complete Timeseries Summary",
+    "description": "Show a summary of the complete timeseries in an HTML table",
+    "license": "cc by-nc-nd 4.0",
+    "version": "1.0.2",
+    "dockerImage": "192.168.219.5:8098/enbic2lab/water/complete_timeseries_summary:1.0.2",
+    "tags": ["enbic2lab-water", "cc by-nc-nd 4.0", "by-nc-nd", "Sink", "Precipitation"],
+    "parameters": [
+      {
+        "name": "--filepath-completed",
+        "label": "Filepath to the completed timeseries",
+        "description": "Path to the csv file",
+        "defaultValue": "{{.inputs.input_completed.path}}",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--filepath-replaced",
+        "label": "Filepath to the replaced values",
+        "description": "Path to the csv file",
+        "defaultValue": "{{.inputs.input_replaced.path}}",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--color",
+        "label": "Color of the highlighted cells",
+        "description": "Color of the highlighted cells. You may use rgb(), rgba(), #hex or color names",
+        "defaultValue": "cyan",
+        "type": "string"
+      },
+      {
+        "name": "--delimiter",
+        "label": "Delimiter",
+        "description": "Delimiter of the csv file",
+        "defaultValue": ";",
+        "type": "string"
+      },
+      {
+        "name": "--output-path",
+        "readOnly": true,
+        "label": "Output path",
+        "description": "Path to the output file",
+        "defaultValue": "/mnt/shared",
+        "type": "string"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "input_completed",
+        "type": "tabulardataset",
+        "label": "Completed CSV file",
+        "path": "/mnt/shared/TargetCompleted.csv"
+      },
+      {
+        "name": "input_replaced",
+        "type": "tabulardataset",
+        "label": "Replacements CSV file",
+        "path": "/mnt/shared/CompletedData.csv"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output",
+        "type": "html",
+        "label": "Output HTML file",
+        "path": "/mnt/shared/CompleteSeriesSummary.html"
+      }
+    ],
+    "mainScriptPath": "main.py",
+    "testPath": "test_main.py",
+    "dependencies": [
+      {
+        "name": "python",
+        "version": "3.11.5",
+        "license": "PSF",
+        "url": "https://www.python.org/"
+      }
+    ],
+    "resources": {
+      "cores": 1,
+      "memory": 128,
+      "gpuNeeded": false,
+      "gpuMemory": null,
+      "estimatedTimeInMin": 1
+    },
+    "publicationDate": "2023-10-31T11:30:00.000Z",
+    "author": {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"
+    },
+    "contributor": [
+      {
+        "email": "juancaruru@uma.es",
+        "affiliation": "Khaos Research Group"
+      }
+    ]
+  }
+  

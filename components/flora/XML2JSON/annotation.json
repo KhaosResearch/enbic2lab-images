@@ -1,0 +1,64 @@
+{
+  "type": "DataProcessing",
+  "name": "xml2json",
+  "label": "XML to JSON",
+  "description": "Transform a XML file to JSON format.",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/flora/xml2json:1.0.0",
+  "tags": ["enbic2lab-flora", "cc by-nc-nd 4.0", "by-nc-nd", "visualization"],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "File path",
+      "description": "Input XML file path.",
+      "defaultValue": "{{.inputs.input.path}}",
+      "type": "string"
+    },
+    {
+      "name": "--natural-site",
+      "label": "Natural site",
+      "description": "Natural site name",
+      "defaultValue": "Cabo de gata",
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input XML file",
+      "path": "/mnt/shared/input.xml",
+      "type": "xml"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "label": "Output JSON file",
+      "path": "/mnt/shared/output.json",
+      "type": "json"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.3",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-09-07T10:00:00.000Z",
+  "author": {
+    "email": "ireero99@uma.es",
+    "affiliation": "Khaos Research Group"
+  }
+}

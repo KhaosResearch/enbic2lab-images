@@ -1,0 +1,191 @@
+{
+  "type": "DataCollection",
+  "name": "load-inventory",
+  "label": "Load Inventory",
+  "description": "Get inventory flora data in CSV format via JSON collection filtering.",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.1",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/flora/load_inventory:1.0.1",
+  "tags": ["enbic2lab-flora", "cc by-nc-nd 4.0", "by-nc-nd", "Load"],
+  "parameters": [
+    {
+      "name": "--start-date",
+      "label": "Start Date",
+      "description": "Initial date from which inventories are to be loaded",
+      "defaultValue": "''",
+      "type": "string"
+    },
+    {
+      "name": "--end-date",
+      "label": "End Date",
+      "description": "End date up to which inventories are to be loaded",
+      "defaultValue": "''",
+      "type": "string"
+    },
+    {
+      "name": "--community-start-year",
+      "label": "Community Start Year",
+      "description": "Community initial year from which inventories are to be loaded",
+      "defaultValue": "''",
+      "type": "string"
+    },
+    {
+      "name": "--community-end-year",
+      "label": "Community End Year",
+      "description": "Community end year up to which inventories are to be loaded",
+      "defaultValue": "''",
+      "type": "string"
+    },
+    {
+      "name": "--subcommunity-start-year",
+      "label": "Subcommunity Start Year",
+      "description": "Subcommunity initial year from which inventories are to be loaded",
+      "defaultValue": "''",
+      "type": "string"
+    },
+    {
+      "name": "--subcommunity-end-year",
+      "label": "Subcommunity End Year",
+      "description": "Subcommunity end year up to which inventories are to be loaded",
+      "defaultValue": "''",
+      "type": "string"
+    },
+    {
+      "name": "--project",
+      "label": "Project",
+      "description": "Project",
+      "defaultValue": "''",
+      "type": "string"
+    },
+    {
+      "name": "--natural-site",
+      "label": "Natural Site",
+      "description": "Natural Site",
+      "defaultValue": "'Cabo de Gata'",
+      "type": "string"
+    },
+    {
+      "name": "--altitude",
+      "label": "Altitude",
+      "description": "Altitude",
+      "defaultValue": "''",
+      "type": "string"
+    },
+    {
+      "name": "--lithology",
+      "label": "Lithology",
+      "description": "Lithology",
+      "defaultValue": "''",
+      "type": "string"
+    },
+    {
+      "name": "--plot-orientation",
+      "label": "Plot Orientation",
+      "description": "Plot Orientation",
+      "defaultValue": "''",
+      "type": "string"
+    },
+    {
+      "name": "--plot-slope",
+      "label": "Plot Slope",
+      "description": "Plot Slope",
+      "defaultValue": "''",
+      "type": "string"
+    },
+    {
+      "name": "--phyto-index",
+      "label": "Phytosociological Index",
+      "description": "Phytosociological index",
+      "defaultValue": "''",
+      "type": "string"
+    },
+    {
+      "name": "--num-species",
+      "label": "Number of Species",
+      "description": "Number of species",
+      "defaultValue": "''",
+      "type": "string"
+    },
+    {
+      "name": "--community",
+      "label": "Community",
+      "description": "List of communities to filter",
+      "defaultValue": "''",
+      "type": "string"
+    },
+    {
+      "name": "--location",
+      "label": "Location",
+      "description": "List of locations to filter",
+      "defaultValue": "''",
+      "type": "string"
+    },
+    {
+      "name": "--author",
+      "label": "Author",
+      "description": "List of authors to filter",
+      "defaultValue": "''",
+      "type": "string"
+    },
+    {
+      "name": "--community-author",
+      "label": "Community Author",
+      "description": "List of community authors to filter",
+      "defaultValue": "''",
+      "type": "string"
+    },
+    {
+      "name": "--subcommunity-author",
+      "label": "Subcommunity Author",
+      "description": "List of subcommunity authors to filter",
+      "defaultValue": "''",
+      "type": "string"
+    },
+    {
+      "name": "--species",
+      "label": "Species",
+      "description": "List of species to filter",
+      "defaultValue": "''",
+      "type": "string"
+    },
+    {
+      "name": "--output-path",
+      "label": "Output path",
+      "description": "Path to the output image",
+      "defaultValue": "/mnt/shared",
+      "readOnly": true,
+      "type": "string"
+    }
+  ],
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "output",
+      "label": "Output CSV file",
+      "path": "/mnt/shared/output.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-09-21T10:00:00.000Z",
+  "author": {
+    "email": "adrianseor.99@uma.es",
+    "affiliation": "Khaos Research Group"
+  }
+}

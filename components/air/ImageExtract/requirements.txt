@@ -1,0 +1,3 @@
+numpy~=1.26.2
+python-javabridge~=4.0.2
+python-bioformats~=4.0.7

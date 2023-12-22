@@ -1,0 +1,5 @@
+ubuntu/libcurl4-openssl-dev
+ubuntu/libssl-dev
+ubuntu/libpoppler-cpp-dev
+cran/AeRobiology==2.0.1
+cran/pdftools==3.4.0

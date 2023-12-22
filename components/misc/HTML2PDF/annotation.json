@@ -1,0 +1,77 @@
+{
+    "type": "DataSink",
+    "name": "ComponentHTML2PDF",
+    "label": "HTML to PDF",
+    "description": "Generate a PDF from an HTML file",
+    "license": "cc by-nc-nd 4.0",
+    "version": "1.0.0",
+    "dockerImage": "192.168.219.5:8098/enbic2lab/misc/html2pdf:1.0.0",
+    "tags": ["enbic2lab-water", "cc by-nc-nd 4.0", "by-nc-nd", "Sink"],
+    "parameters": [
+      {
+        "name": "--filepath",
+        "label": "Filepath",
+        "description": "Path to the html file",
+        "defaultValue": "{{.inputs.input.path}}",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--output-path",
+        "label": "Output path",
+        "description": "Path to the output pdf file",
+        "defaultValue": "/mnt/shared",
+        "readOnly": true,
+        "type": "string"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "input",
+        "type": "html",
+        "label": "Input HTML file",
+        "path": "/mnt/shared/input.html"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output",
+        "type": "pdf",
+        "label": "Output PDF file",
+        "path": "/mnt/shared/output.pdf"
+      }
+    ],
+    "mainScriptPath": "main.py",
+    "testPath": "test_main.py",
+    "dependencies": [
+      {
+        "name": "python",
+        "version": "3.11.5",
+        "license": "PSF",
+        "url": "https://www.python.org/"
+      }
+    ],
+    "resources": {
+      "cores": 1,
+      "memory": 128,
+      "gpuNeeded": false,
+      "gpuMemory": null,
+      "estimatedTimeInMin": 1
+    },
+    "publicationDate": "2023-10-31T11:30:00.000Z",
+    "author": {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"
+    },
+    "contributor": [
+      {
+        "email": "juancaruru@uma.es",
+        "affiliation": "Khaos Research Group"
+      },
+      {
+        "email": "dandobjim@uma.es",
+        "affiliation": "Khaos Research Group"
+      }
+    ]
+  }
+  

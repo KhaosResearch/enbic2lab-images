@@ -1,0 +1,123 @@
+{
+  "type": "DataSink",
+  "name": "plot-ps",
+  "label": "Plot PS",
+  "description": "Plot pollen grains concentration for one pollen type in a specific year",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/air/plot_ps:1.0.0",
+  "tags": [
+    "enbic2lab-air",
+    "cc by-nc-nd 4.0", "by-nc-nd",
+    "pollen-season"
+  ],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "Input Filepath",
+      "description": "Input file path",
+      "type": "string",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true
+    },
+    {
+      "name": "--pollenType",
+      "label": "Pollen Type",
+      "description": "Name of the pollen type to be plotted",
+      "type": "string"
+    },
+    {
+      "name": "--year",
+      "label": "Year",
+      "description": "Season to be plotted",
+      "type": "number"
+    },
+    {
+      "name": "--days",
+      "label": "Number of Days",
+      "description": "Number of days beyond each side of the main pollen season to be represented",
+      "type": "number",
+      "defaultValue": 30
+    },
+    {
+      "name": "--filCol",
+      "label": "Fill Color",
+      "description": "Color to fill the main pollen season in the plot",
+      "type": "string",
+      "defaultValue": "turquoise4"
+    },
+    {
+      "name": "--axisname",
+      "label": "Y Axis Title",
+      "description": "Y axis title of the plot",
+      "type": "string",
+      "defaultValue": "Pollen grains / m ^ 3"
+    },
+    {
+      "name": "--intMethod",
+      "label": "Interpolation Method",
+      "description": "Interpolation method (options: lineal, movingmean, spline or tseries)",
+      "type": "string",
+      "defaultValue": "lineal"
+    },
+    {
+      "name": "--delimiter",
+      "label": "Delimiter",
+      "description": "Dataframe delimiter",
+      "type": "string",
+      "defaultValue": ","
+    },
+    {
+      "name": "--output-folder",
+      "label": "Output directory",
+      "description": "Path to the output directory",
+      "defaultValue": "/mnt/shared/",
+      "readOnly": true,
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input CSV file",
+      "path": "/mnt/shared/input.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "label": "Output PDF file",
+      "path": "/mnt/shared/output.pdf",
+      "type": "pdf"
+    }
+  ],
+  "mainScriptPath": "main.R",
+  "testPath": "test_main.R",
+  "dependencies": [
+    {
+      "name": "r",
+      "version": "4.3.1",
+      "license": "PSF",
+      "url": "https://www.r-project.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-11-01T10:00:00.000Z",
+  "author": {
+    "email": "khaos.research@gmail.com",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "adrianseor.99@uma.es",
+      "affiliation": "Khaos Research Group"
+    }
+  ]
+}

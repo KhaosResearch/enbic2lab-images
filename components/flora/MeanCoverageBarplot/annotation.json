@@ -1,0 +1,87 @@
+{
+  "type": "DataAnalysing",
+  "name": "mean-coverage-barplot",
+  "label": "Mean Coverage Bar plot",
+  "description": "Plot the Mean Coverage per community from a CSV File.",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.1",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/flora/mean_coverage_barplot:1.0.1",
+  "tags": ["enbic2lab-flora", "cc by-nc-nd 4.0", "by-nc-nd", "barplot"],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "Filepath",
+      "description": "Filepath of the CSV file",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--delimiter",
+      "label": "Delimiter",
+      "description": "Delimiter of the CSV file",
+      "defaultValue": ";",
+      "type": "string"
+    },
+    {
+      "name": "--n-samples",
+      "label": "Number of Samples",
+      "description": "Number of samples that will appear in the plot",
+      "defaultValue": 10,
+      "type": "integer"
+    },
+    {
+      "name": "--color-plot",
+      "label": "Color Plot",
+      "description": "Hexadecimal code for color plot",
+      "defaultValue": "#006400",
+      "type": "string"
+    },
+    {
+      "name": "--output-path",
+      "label": "Output path",
+      "description": "Path to the output image",
+      "defaultValue": "/mnt/shared",
+      "readOnly": true,
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input CSV file",
+      "path": "/mnt/shared/input.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "label": "Output PDF file",
+      "path": "/mnt/shared/output.pdf",
+      "type": "pdf"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-09-29T10:00:00.000Z",
+  "author": {
+    "email": "adrianseor.99@uma.es",
+    "affiliation": "Khaos Research Group"
+  }
+}

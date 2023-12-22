@@ -1,0 +1,90 @@
+{
+  "type": "DataProcessing",
+  "name": "changecolumnnames",
+  "label": "Change columns CSV names",
+  "description": "Change column names ",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/misc/change_column_name:1.0.0",
+  "tags": ["enbic2lab-misc", "cc by-nc-nd 4.0", "by-nc-nd", "conversion"],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "Filepath",
+      "description": "Path to the CSV file",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--labels",
+      "label": "Column names",
+      "description": "Column names separated with comma",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "--delimiter",
+      "label": "delimiter",
+      "description": "Delimiter",
+      "defaultValue": ";",
+      "type": "string"
+    },
+    {
+      "name":"--output",
+      "readOnly": true,
+      "label": "Output path",
+      "description": "Path to the output CSV file",
+      "defaultValue": "/mnt/shared/output.csv",
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input file",
+      "path": "/mnt/shared/species_statistics.csv.",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "label": "Output file",
+      "path": "/mnt/shared/output.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-10-06T10:00:00.000Z",
+  "author": {
+    "email": "juanasanchezrodriguez1999@uma.es",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "khaos.research@gmail.com"
+    }
+  ],
+  "maintainer": [
+    {
+      "email": "khaos.research@gmail.com"
+    }
+  ]
+}

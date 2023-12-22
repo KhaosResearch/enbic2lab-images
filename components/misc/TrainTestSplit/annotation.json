@@ -1,0 +1,113 @@
+{
+    "type": "DataProcessing",
+    "name": "TrainTestSplitter",
+    "label": "Train Test Split",
+    "description": "Splits a dataset into prediction, training and testing sets",
+    "license": "cc by-nc-nd 4.0",
+    "version": "1.0.2",
+    "dockerImage": "192.168.219.5:8098/enbic2lab/misc/train_test_split:1.0.2",
+    "tags": ["enbic2lab-misc", "cc by-nc-nd 4.0", "by-nc-nd", "Processing"],
+    "parameters": [
+      {
+        "name": "--filepath",
+        "label": "Filepath",
+        "description": "Path to the CSV file",
+        "defaultValue": "{{.inputs.input.path}}",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--predict-split",
+        "label": "Prediction set split",
+        "description": "Percentage of dataset for prediction set",
+        "defaultValue": 0.1,
+        "type": "float"
+      },
+      {
+        "name": "--train-split",
+        "label": "Train set split",
+        "description": "Percentage of dataset for training set",
+        "defaultValue": 0.8,
+        "type": "float"
+      },
+      {
+        "name": "--target-column",
+        "label": "Target column",
+        "description": "Name of target column if any",
+        "defaultValue": null,
+        "type": "string"
+      },
+      {
+        "name": "--delimiter",
+        "label": "Delimiter",
+        "description": "Delimiter of the csv file",
+        "defaultValue": ";",
+        "type": "string"
+      },
+      {
+        "name": "--output-path",
+        "readOnly": true,
+        "label": "Output path",
+        "description": "Path to the output files",
+        "defaultValue": "/mnt/shared",
+        "type": "string"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "input",
+        "type": "tabulardataset",
+        "label": "Input CSV file",
+        "path": "/mnt/shared/input.csv"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output-train",
+        "type": "tabulardataset",
+        "label": "Output train set",
+        "path": "/mnt/shared/train.csv"
+      },
+      {
+        "name": "output-test",
+        "type": "tabulardataset",
+        "label": "Output test set",
+        "path": "/mnt/shared/test.csv"
+      },
+      {
+        "name": "output-predict",
+        "type": "tabulardataset",
+        "label": "Output predict set",
+        "path": "/mnt/shared/predict.csv"
+      }
+    ],
+    "mainScriptPath": "main.py",
+    "testPath": "test_main.py",
+    "dependencies": [
+      {
+        "name": "python",
+        "version": "3.11.5",
+        "license": "PSF",
+        "url": "https://www.python.org/"
+      }
+    ],
+    "resources": {
+      "cores": 1,
+      "memory": 128,
+      "gpuNeeded": false,
+      "gpuMemory": null,
+      "estimatedTimeInMin": 1
+    },
+    "publicationDate": "2023-12-05T14:30:00.000Z",
+    "author": {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"
+    },
+    "contributor": [
+      {
+        "email": "juancaruru@uma.es",
+        "affiliation": "Khaos Research Group"
+      }
+    ]
+  }
+  

@@ -1,0 +1,302 @@
+ [{
+    "_id": "S-P25532",
+    "Alt_Veg": 4,
+    "Altitude": 1720,
+    "Authors": [],
+    "Community": "Rhamno pumili-Saxifragetum granatensis",
+    "Community_Authors": [
+      "Pérez Latorre",
+      "Cabezudo"
+    ],
+    "Community_Year": 1998,
+    "Coverage": 100,
+    "Date": null,
+    "Ecology": null,
+    "Group": "Flora",
+    "Latitude": 36.682396874521615,
+    "Lithology": null,
+    "Location": "Malaga. P.N. S. de las Nieves. Tolox. Cerro Plazoleta. por detras del pilar de Tolox",
+    "Longitude": -4.997761664922841,
+    "Natural_Site": "Sierra de las Nieves",
+    "Pictures": [],
+    "Plot_Area": 300,
+    "Plot_Orientation": "NE",
+    "Plot_Slope": 10,
+    "Project": null,
+    "Species": [
+      {
+        "Name": "Abies pinsapo",
+        "Ind": "+"
+      },
+      {
+        "Name": "Armeria villosa",
+        "Ind": "+"
+      },
+      {
+        "Name": "Achillea odorata",
+        "Ind": "+"
+      },
+      {
+        "Name": "Daphne laureola",
+        "Ind": "2"
+      },
+      {
+        "Name": "Helleborus foetidus",
+        "Ind": "+"
+      },
+      {
+        "Name": "Quercus faginea",
+        "Ind": "1"
+      },
+      {
+        "Name": "Acer monspessulanum",
+        "Ind": "+"
+      },
+      {
+        "Name": "Crataegus monogyna",
+        "Ind": "4"
+      },
+      {
+        "Name": "Hyacinthoides hispanica",
+        "Ind": "+"
+      },
+      {
+        "Name": "Ulex baeticus subsp. baeticus",
+        "Ind": "+"
+      },
+      {
+        "Name": "Prunus spinosa",
+        "Ind": "+"
+      },
+      {
+        "Name": "Helichrysum stoechas",
+        "Ind": "+"
+      },
+      {
+        "Name": "Cerastium gibraltaricum",
+        "Ind": "+"
+      },
+      {
+        "Name": "Viscum cruciatum",
+        "Ind": "1"
+      },
+      {
+        "Name": "Aristolochia paucinervis",
+        "Ind": "+"
+      },
+      {
+        "Name": "Tamus communis",
+        "Ind": "+"
+      },
+      {
+        "Name": "Lotus edulis",
+        "Ind": "+"
+      },
+      {
+        "Name": "Geranium molle",
+        "Ind": "1"
+      },
+      {
+        "Name": "Scrophularia scorodonia",
+        "Ind": "+"
+      },
+      {
+        "Name": "Silene vulgaris subsp. vulgaris",
+        "Ind": "+"
+      },
+      {
+        "Name": "Paeonia coriacea",
+        "Ind": "2"
+      },
+      {
+        "Name": "Quercus rotundifolia",
+        "Ind": "+"
+      },
+      {
+        "Name": "Sorbus aria",
+        "Ind": "+"
+      }
+    ],
+    "Subcommunity": "galietosum pulvinati",
+    "Subcommunity_Authors": [
+      "Pérez Latorre",
+      "Cabezudo"
+    ],
+    "Subcommunity_Year": 1999,
+    "MGRS": "30SUF2161",
+    "dataOrigin": "SIVIM"
+  },{
+    "_id": "S-P25723",
+    "Alt_Veg": 0.2,
+    "Altitude": 1710,
+    "Authors": [],
+    "Community": "Rhamno pumili-Saxifragetum granatensis",
+    "Community_Authors": [
+      "Pérez Latorre",
+      "Cabezudo"
+    ],
+    "Community_Year": 1998,
+    "Coverage": 30,
+    "Date": null,
+    "Ecology": null,
+    "Group": "Flora",
+    "Latitude": 36.682396874521615,
+    "Lithology": null,
+    "Location": "Malaga. P.N. S. de las Nieves. Tolox. Cerro Plazoleta. por detras del pilar de Tolox",
+    "Longitude": -4.997761664922841,
+    "Natural_Site": "Sierra de las Nieves",
+    "Pictures": [],
+    "Plot_Area": 2,
+    "Plot_Orientation": "N",
+    "Plot_Slope": 90,
+    "Project": null,
+    "Species": [
+      {
+        "Name": "Rhamnus pumila",
+        "Ind": "+"
+      },
+      {
+        "Name": "Saxifraga globulifera",
+        "Ind": "2"
+      },
+      {
+        "Name": "Silene andryalifolia",
+        "Ind": "+"
+      },
+      {
+        "Name": "Asplenium ruta-muraria",
+        "Ind": "1"
+      },
+      {
+        "Name": "Draba hispanica",
+        "Ind": "+"
+      },
+      {
+        "Name": "Erinus alpinus",
+        "Ind": "+"
+      },
+      {
+        "Name": "Galium nevadense",
+        "Ind": "+"
+      },
+      {
+        "Name": "Hieracium loscosianum",
+        "Ind": "1"
+      },
+      {
+        "Name": "Asplenium trichomanes subsp. quadrivalens",
+        "Ind": "+"
+      },
+      {
+        "Name": "Chaenorhinum villosum",
+        "Ind": "+"
+      },
+      {
+        "Name": "Cystopteris dickieana",
+        "Ind": "1"
+      },
+      {
+        "Name": "Cystopteris fragilis",
+        "Ind": "1"
+      },
+      {
+        "Name": "Sedum dasyphyllum",
+        "Ind": "+"
+      },
+      {
+        "Name": "Taraxacum obovatum",
+        "Ind": "+"
+      },
+      {
+        "Name": "Bunium alpinum",
+        "Ind": "1"
+      },
+      {
+        "Name": "Cerastium gibraltaricum",
+        "Ind": "1"
+      },
+      {
+        "Name": "Sisymbrium crassifolium",
+        "Ind": "+"
+      }
+    ],
+    "Subcommunity": "galietosum pulvinati",
+    "Subcommunity_Authors": [
+      "Pérez Latorre",
+      "Cabezudo"
+    ],
+    "Subcommunity_Year": 1999,
+    "MGRS": "30SUF2161",
+    "dataOrigin": "SIVIM"
+  },{
+    "_id": "S-P25724",
+    "Alt_Veg": 0.2,
+    "Altitude": 1710,
+    "Authors": [],
+    "Community": "Rhamno pumili-Saxifragetum granatensis",
+    "Community_Authors": [
+      "Pérez Latorre",
+      "Cabezudo"
+    ],
+    "Community_Year": 1998,
+    "Coverage": 5,
+    "Date": null,
+    "Ecology": null,
+    "Group": "Flora",
+    "Latitude": 36.682396874521615,
+    "Lithology": null,
+    "Location": "Malaga. P.N. S. de las Nieves. Tolox. Cerro Plazoleta. por detras del pilar de Tolox",
+    "Longitude": -4.997761664922841,
+    "Natural_Site": "Sierra de las Nieves",
+    "Pictures": [],
+    "Plot_Area": 4,
+    "Plot_Orientation": "E",
+    "Plot_Slope": 100,
+    "Project": null,
+    "Species": [
+      {
+        "Name": "Rhamnus pumila",
+        "Ind": "1"
+      },
+      {
+        "Name": "Silene andryalifolia",
+        "Ind": "+"
+      },
+      {
+        "Name": "Draba hispanica",
+        "Ind": "+"
+      },
+      {
+        "Name": "Hieracium loscosianum",
+        "Ind": "+"
+      },
+      {
+        "Name": "Jasione foliosa subsp. foliosa",
+        "Ind": "1"
+      },
+      {
+        "Name": "Asplenium trichomanes",
+        "Ind": "+"
+      },
+      {
+        "Name": "Chaenorhinum villosum",
+        "Ind": "1"
+      },
+      {
+        "Name": "Leontodon taraxacoides",
+        "Ind": "+"
+      },
+      {
+        "Name": "Festuca hystrix",
+        "Ind": "+"
+      }
+    ],
+    "Subcommunity": "galietosum pulvinati",
+    "Subcommunity_Authors": [
+      "Pérez Latorre",
+      "Cabezudo"
+    ],
+    "Subcommunity_Year": 1999,
+    "MGRS": "30SUF2161",
+    "dataOrigin": "SIVIM"
+  }]

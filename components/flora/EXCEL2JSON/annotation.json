@@ -1,0 +1,89 @@
+{
+  "type": "DataProcessing",
+  "name": "excel2json",
+  "label": "Excel to JSON",
+  "description": "Transforms XLSX file with flora inventory data into a JSON file.",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.1",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/flora/excel2json:1.0.1",
+  "tags": ["enbic2lab-flora", "cc by-nc-nd 4.0", "by-nc-nd", "conversor"],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "File path",
+      "description": "Filepath for the input XSLX File",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--natural-site",
+      "label": "Natural Site",
+      "description": "Name of the Natural Site associated to the inventory",
+      "type": "string"
+    },
+    {
+      "name": "--mgrs-zone",
+      "label": "MGRS Zone",
+      "description": "MGRS grid with the zone number followed by the zone letter",
+      "defaultValue": "30S",
+      "type": "string"
+    },
+    {
+      "name": "--output-path",
+      "label": "Output path",
+      "description": "Path to the output image",
+      "defaultValue": "/mnt/shared",
+      "readOnly": true,
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input XSLX file",
+      "path": "/mnt/shared/input.xslx",
+      "type": "xlsx"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "label": "Output JSON file",
+      "path": "/mnt/shared/output.json",
+      "type": "json"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-10-10T10:00:00.000Z",
+  "author": {
+    "email": "adrianseor.99@uma.es",
+    "affiliation": "Khaos Research Group"
+  },
+   "contributor": [
+    {
+      "email": "antonio.b@uma.es",
+      "affiliation": "Antonio Benítez Hidalgo; Khaos Research Group"
+  	}
+  ],
+  "contact": {
+    "email": "khaos.research@gmail.com",
+    "url": "https://www.khaos.uma.es"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "type": "DataProcessing",
+  "name": "upload2db",
+  "label": "Upload to DB Pollen",
+  "description": "Aemet Upload to Database",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/air/upload2db:1.0.0",
+  "tags": ["enbic2lab-air", "cc by-nc-nd 4.0", "by-nc-nd", "processing"],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "File path",
+      "description": "Input CSV file path.",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--user",
+      "label": "User",
+      "description": "User",
+      "type": "string"
+    },
+    {
+      "name": "--password",
+      "label": "Password",
+      "description": "Password",
+      "type": "string"
+    },
+    {
+      "name": "--path",
+      "label": "Path",
+      "description": "Path",
+      "type": "string"
+    },    
+    {
+      "name": "--collection",
+      "label": "Collection",
+      "description": "Collection",
+      "type": "string"
+    },    
+    {
+      "name": "--database",
+      "label": "database",
+      "description": "database",
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input CSV file",
+      "path": "/mnt/shared/6155A_aemet_pollen_meteo_platanus_data_updated_linear_interpolation_statistics.json",
+      "type": "json"
+    }
+  ],
+  "outputs": [
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-10-06T10:00:00.000Z",
+  "author": {
+    "email": "khaos.research@gmail.com",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ],
+  "maintainer": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ]
+}

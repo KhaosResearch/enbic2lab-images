@@ -1,0 +1,78 @@
+{
+    "type": "DataCollection",
+    "name": "importSavFile",
+    "label": "Import SAV File",
+    "description": "Imports a .sav file from an online resource given its url.",
+    "license": "cc by-nc-nd 4.0",
+    "version": "1.1.0",
+    "dockerImage": "192.168.219.5:8098/enbic2lab/misc/importfile:1.1.0",
+    "tags": ["cc by-nc-nd 4.0", "by-nc-nd", "conversion"],
+    "parameters": [
+      {
+        "name": "--url",
+        "label": "URL",
+        "description": "URL of the file",
+        "type": "string"
+      },
+      {
+        "name": "--query-string",
+        "label": "Query string",
+        "description": "Query string to be added to the URL",
+        "defaultValue": null,
+        "type": "string"
+      },
+      {
+        "name": "--rename",
+        "label": "Rename to",
+        "description": "Rename the file to the given name",
+        "defaultValue": "output.sav",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--output",
+        "label": "Output directory",
+        "description": "Path to the output directory",
+        "defaultValue": "/mnt/shared/",
+        "readOnly": true,
+        "type": "string"
+      }
+    ],
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "output",
+        "label": "Output file",
+        "path": "/mnt/shared/output.sav",
+        "type": "text"
+      }
+    ],
+    "mainScriptPath": "main.py",
+    "testPath": "test_main.py",
+    "dependencies": [
+      {
+        "name": "python",
+        "version": "3.11.5",
+        "license": "PSF",
+        "url": "https://www.python.org/"
+      }
+    ],
+    "resources": {
+      "cores": 1,
+      "memory": 128,
+      "gpuNeeded": false,
+      "gpuMemory": null,
+      "estimatedTimeInMin": 4
+    },
+    "publicationDate": "2023-10-06T10:00:00.000Z",
+    "author": {
+      "email": "ireero99@uma.es",
+      "affiliation": "Irene Romero; Khaos Research Group"
+    },
+     "contributor": [
+      {
+        "email": "juancaruru@uma.es",
+        "affiliation": "Juan Carlos Ruiz Ruiz; Khaos Research Group"
+        }
+    ]
+  }

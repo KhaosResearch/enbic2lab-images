@@ -1,0 +1,94 @@
+{
+  "type": "DataProcessing",
+  "name": "aemetcreatestationsdataset",
+  "label": "Stations Attribute",
+  "description": "Create a CSV File with data about an attribute from Aemet for differents stations.",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/air/create_stations_dataset:1.0.0",
+  "tags": [
+    "enbic2lab-air",
+    "cc by-nc-nd 4.0", "by-nc-nd",
+    "stations"
+  ],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "Filepath",
+      "description": "Input path to the JSON file",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--delimiter",
+      "label": "Delimiter",
+      "description": "Delimiter of the csv file",
+      "defaultValue": ";",
+      "type": "string"
+    },
+    {
+      "name": "--output",
+      "label": "Output File Name",
+      "description": "Output File Name",
+      "readOnly": true,
+      "defaultValue": "/mnt/shared/output.csv",
+      "type": "string"
+    },
+    {
+      "name": "--attribute",
+      "label": "Attribute",
+      "description": "Attribute to create dataset",
+      "defaultValue": "prec",
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input JSON file",
+      "path": "/mnt/shared/input.json",
+      "type": "json"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "label": "Output CSV file",
+      "path": "/mnt/shared/output.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-10-06T10:00:00.000Z",
+  "author": {
+    "email": "khaos.research@gmail.com",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ],
+  "maintainer": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ]
+}

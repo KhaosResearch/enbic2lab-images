@@ -1,0 +1,119 @@
+{
+  "type": "DataProcessing",
+  "name": "SplitSequencesMultivariable",
+  "label": "Split Sequences Multivariable",
+  "description": "Generates supervised data from a multidimensional array for LSTM Time series Model.",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/air/split_sequences_multivariable:1.0.0",
+  "tags": ["enbic2lab-air", "cc by-nc-nd 4.0", "by-nc-nd", "processing"],
+  "parameters": [
+    {
+      "name": "--filepath-features",
+      "label": "File path features",
+      "description": "File path of the features csv file",
+      "defaultValue": "{{.inputs.input1.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--filepath-target",
+      "label": "File path target",
+      "description": "File path of the target csv file",
+      "defaultValue": "{{.inputs.input2.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--output",
+      "label": "Output file path",
+      "description": "Output file path",
+      "readOnly": true,
+      "defaultValue": "/mnt/shared/",
+      "type": "string"
+    },
+    {
+      "name": "--delimiter",
+      "label": "Delimiter",
+      "description": "Delimiter used in CSV.",
+      "defaultValue":";",
+      "type": "string"
+    },
+    {
+      "name": "--n-steps-in",
+      "label": "Number Steps In (Time Window)",
+      "description": "Select time window to train the model",
+      "defaultValue":12,
+      "type": "integer"
+    },
+    {
+      "name": "--n-steps-out",
+      "label": "Number Steps Out (Time prediction)",
+      "defaultValue":12,
+      "description": "Select period of time to predict",
+      "type": "integer"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input1",
+      "label": "Input features CSV",
+      "path": "/mnt/shared/features.csv",
+      "type": "tabulardataset"
+    },
+    {
+      "name": "input2",
+      "label": "Input target CSV",
+      "path": "/mnt/shared/target.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output1",
+      "label": "Output NPY sequenceX",
+      "path": "/mnt/shared/sequenceX.npy",
+      "type": "tempfile"
+    },
+    {
+      "name": "output2",
+      "label": "Output CSV sequenceY",
+      "path": "/mnt/shared/sequenceY.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-10-06T10:00:00.000Z",
+  "author": {
+    "email": "khaos.research@gmail.com",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ],
+  "maintainer": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ]
+}
+
+

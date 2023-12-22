@@ -1,0 +1,5 @@
+datetime~=5.2
+numpy~=1.26.1
+pandas~=2.1.2
+pathlib~=1.0.1
+plotly.express~=0.4.1

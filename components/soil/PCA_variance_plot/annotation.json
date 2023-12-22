@@ -1,0 +1,80 @@
+{
+    "type": "DataSink",
+    "name": "ScreePlot",
+    "label": "Scree Plot",
+    "description": "Scree plot of the variance of PCA analysis",
+    "license": "cc by-nc-nd 4.0",
+    "version": "1.1.1",
+    "dockerImage": "192.168.219.5:8098/enbic2lab/soil/pca_variance_plot:1.1.1",
+    "tags": ["enbic2lab-soil", "cc by-nc-nd 4.0", "by-nc-nd", "sink"],
+    "parameters": [
+      {
+        "name": "--filepath",
+        "label": "Filepath",
+        "description": "Filepath for the input normalized CSV File",
+        "defaultValue": "{{.inputs.input.path}}",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--delimiter",
+        "label": "Delimiter",
+        "description": "Set the delimiter of the CSV",
+        "defaultValue": ";",
+        "type": "string"
+      },
+      {
+        "name": "--output-path",
+        "readOnly": true,
+        "label": "Output path",
+        "description": "Output file path",
+        "defaultValue": "/mnt/shared",
+        "type": "string"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "input",
+        "label": "Input scree plot CSV file",
+        "path": "/mnt/shared/scree_plot.csv",
+        "type": "tabulardataset"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Scree Plot",
+        "label": "Plot of the PCA variance plot",
+        "path": "/mnt/shared/scree_plot.pdf",
+        "type": "pdf"
+      }
+    ],
+    "mainScriptPath": "main.py",
+    "testPath": "test_main.py",
+    "dependencies": [
+      {
+        "name": "python",
+        "version": "3.11.5",
+        "license": "PSF",
+        "url": "https://www.python.org/"
+      }
+    ],
+    "resources": {
+      "cores": 1,
+      "memory": 128,
+      "gpuNeeded": false,
+      "gpuMemory": null,
+      "estimatedTimeInMin": 4
+    },
+    "publicationDate": "2023-10-18T16:00:00.000Z",
+    "author": {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"
+    },
+    "contributor": [
+      {
+        "email": "juancaruru@uma.es",
+        "affiliation": "Khaos Research Group"
+      }
+    ]
+  }
+  

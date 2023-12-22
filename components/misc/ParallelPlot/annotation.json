@@ -1,0 +1,114 @@
+{
+    "type": "DataSink",
+    "name": "GenericParallelPlot",
+    "label": "Parallel Plot",
+    "description": "Generic simple Parallel plot",
+    "license": "cc by-nc-nd 4.0",
+    "version": "1.0.0",
+    "dockerImage": "192.168.219.5:8098/enbic2lab/misc/generic_parallelplot:1.0.0",
+    "tags": ["enbic2lab-misc", "cc by-nc-nd 4.0", "by-nc-nd", "Sink", "generic"],
+    "parameters": [
+      {
+        "name": "--filepath",
+        "label": "Filepath",
+        "description": "Path to the CSV file",
+        "defaultValue": "{{.inputs.input.path}}",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--column",
+        "label": "Column to plot",
+        "description": "Column to plot",
+        "type": "string"
+      },
+      {
+        "name": "--palette",
+        "label": "Palette",
+        "description": "Color palette",
+        "defaultValue": "veridis",
+        "type": "string"
+      },
+      {
+        "name": "--title",
+        "label": "Title",
+        "description": "Title of the plot",
+        "defaultValue": null,
+        "type": "string"
+      },
+      {
+        "name": "--delimiter",
+        "label": "Delimiter",
+        "description": "Delimiter of the csv file",
+        "defaultValue": ",",
+        "type": "string"
+      },
+      {
+        "name": "--output-path",
+        "readOnly": true,
+        "label": "Output path",
+        "description": "Path to the output files",
+        "defaultValue": "/mnt/shared",
+        "type": "string"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "input",
+        "type": "tabulardataset",
+        "label": "Input CSV file",
+        "path": "/mnt/shared/input.csv"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output-pdf",
+        "type": "pdf",
+        "label": "Output PDF file",
+        "path": "/mnt/shared/parallel_plot.pdf"
+      },
+      {
+        "name": "output-png",
+        "type": "image",
+        "label": "Output PNG image",
+        "path": "/mnt/shared/parallel_plot.png"
+      },
+      {
+        "name": "output-svg",
+        "type": "image",
+        "label": "Output SVG image",
+        "path": "/mnt/shared/parallel_plot.svg"
+      }
+    ],
+    "mainScriptPath": "main.py",
+    "testPath": "test_main.py",
+    "dependencies": [
+      {
+        "name": "python",
+        "version": "3.11.5",
+        "license": "PSF",
+        "url": "https://www.python.org/"
+      }
+    ],
+    "resources": {
+      "cores": 1,
+      "memory": 128,
+      "gpuNeeded": false,
+      "gpuMemory": null,
+      "estimatedTimeInMin": 1
+    },
+    "publicationDate": "2023-11-23T14:30:00.000Z",
+    "author": {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"
+    },
+    "contributor": [
+      {
+        "email": "juancaruru@uma.es",
+        "affiliation": "Khaos Research Group"
+      },
+      {
+        "email": "dandobjim@uma.es"
+      }
+    ]
+  }

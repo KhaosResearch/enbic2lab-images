@@ -1,0 +1,94 @@
+{
+  "type": "DataProcessing",
+  "name": "dataframeInterpolation",
+  "label": "Interpolation",
+  "description": "Fill NaN values using pandas interpolation",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.1",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/misc/dataframe_interpolation:1.0.1",
+  "tags": ["enbic2lab-misc", "cc by-nc-nd 4.0", "by-nc-nd", "processing"],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "Filepath",
+      "description": "Path to the csv file",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--interpolation-method",
+      "label": "interpolation method",
+      "description": "Select interpolation method to use. See https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.interpolate.html for more information",
+      "defaultValue": "none",
+      "type": "string"
+    },
+    {
+      "name": "--exclude-columns",
+      "label": "exclude columns",
+      "description": "Columns to exclude from interpolation separated by commas (,)",
+      "defaultValue": null,
+      "type": "string"
+    },
+    {
+      "name": "--delimiter",
+      "label": "delimiter",
+      "description": "Delimiter of the output file",
+      "defaultValue": ";",
+      "type": "string"
+    },
+    {
+      "name": "--output-path",
+      "readOnly": true,
+      "label": "Output path",
+      "description": "Path to the output file",
+      "defaultValue": "/mnt/shared",
+      "type": "string"
+    }
+
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input file",
+      "path": "/mnt/shared/input.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "label": "Output file",
+      "path": "/mnt/shared/output.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-10-06T10:00:00.000Z",
+  "author": {
+    "email": "khaos.research@gmail.com",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "juancaruru@uma.es",
+      "affiliation": "Khaos Research Group"
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "type": "DataProcessing",
+  "name": "DataNormalizationPollen",
+  "label": "Data Normalization Pollen",
+  "description": "Normalize pollen time series data",
+  "license": "cc by-nc-nd 4.0",
+  "version": "1.0.0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/air/data_normalization:1.0.0",
+  "tags": ["enbic2lab-air", "cc by-nc-nd 4.0", "by-nc-nd", "processing"],
+  "parameters": [
+    {
+      "name": "--filepath",
+      "label": "File path",
+      "description": "Input CSV file path.",
+      "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true,
+      "type": "string"
+    },
+    {
+      "name": "--output",
+      "label": "Output path",
+      "description": "Input path.",
+      "defaultValue":"/mnt/shared/",
+      "type": "string"
+    },
+    {
+      "name": "--delimiter",
+      "label": "Delimiter",
+      "description": "Delimiter used in CSV.",
+      "defaultValue":";",
+      "type": "string"
+    },
+    {
+      "name": "--date-column",
+      "label": "Date Column",
+      "description": "Date column in CSV",
+      "defaultValue":"fecha",
+      "type": "string"
+    },
+    {
+      "name": "--pollen-column",
+      "label": "Pollen Column",
+      "description": "Name of pollen column",
+      "type": "string"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "input",
+      "label": "Input CSV file",
+      "path": "/mnt/shared/pca.csv",
+      "type": "tabulardataset"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "features_csv",
+      "label": "Normalize features CSV",
+      "path": "/mnt/shared/features.csv",
+      "type": "tabulardataset"
+    },
+     {
+      "name": "target_csv",
+      "label": "Normalize target pollen CSV",
+      "path": "/mnt/shared/target.csv",
+      "type": "tabulardataset"
+    },
+     {
+      "name": "scaler_features_pkl",
+      "label": "Scaler features PKL format",
+      "path": "/mnt/shared/scaler_features.pkl",
+      "type": "tempfile"
+    },
+     {
+      "name": "scaler_target_pkl",
+      "label": "Scaler target PKL format",
+      "path": "/mnt/shared/scaler_target.pkl",
+      "type": "tempfile"
+    }
+  ],
+  "mainScriptPath": "main.py",
+  "testPath": "test_main.py",
+  "dependencies": [
+    {
+      "name": "python",
+      "version": "3.11.5",
+      "license": "PSF",
+      "url": "https://www.python.org/"
+    }
+  ],
+  "resources": {
+    "cores": 1,
+    "memory": 128,
+    "gpuNeeded": false,
+    "gpuMemory": null,
+    "estimatedTimeInMin": 4
+  },
+  "publicationDate": "2023-10-06T10:00:00.000Z",
+  "author": {
+    "email": "khaos.research@gmail.com",
+    "affiliation": "Khaos Research Group"
+  },
+  "contributor": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ],
+  "maintainer": [
+    {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"    }
+  ]
+}
+
+

@@ -1,0 +1,96 @@
+{
+    "type": "DataSink",
+    "name": "ComponentStationComparison",
+    "label": "Station Comparison",
+    "description": "Compares the precipitation in 2 stations through the time",
+    "license": "cc by-nc-nd 4.0",
+    "version": "1.0.2",
+    "dockerImage": "192.168.219.5:8098/enbic2lab/water/station_comparison:1.0.2",
+    "tags": ["enbic2lab-water", "cc by-nc-nd 4.0", "by-nc-nd", "Sink"],
+    "parameters": [
+      {
+        "name": "--filepath",
+        "label": "Filepath",
+        "description": "Path to the csv file",
+        "defaultValue": "{{.inputs.input.path}}",
+        "readOnly": true,
+        "type": "string"
+      },
+      {
+        "name": "--stationA",
+        "label": "First compared station",
+        "description": "Name of the first station",
+        "type": "string"
+      },
+      {
+        "name": "--stationB",
+        "label": "Second compared station",
+        "description": "Name of the second station",
+        "type": "string"
+      },
+      {
+        "name": "--delimiter",
+        "label": "Delimiter",
+        "description": "Delimiter of the csv file",
+        "defaultValue": ";",
+        "type": "string"
+      },
+      {
+        "name": "--output-path",
+        "readOnly": true,
+        "label": "Output path",
+        "description": "Path to the output file",
+        "defaultValue": "/mnt/shared",
+        "type": "string"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "input",
+        "type": "tabulardataset",
+        "label": "Input TimeSeries CSV file",
+        "path": "/mnt/shared/PrecipitationTimeSeries.csv"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output",
+        "type": "html",
+        "label": "Output HTML file",
+        "path": "/mnt/shared/output.html"
+      }
+    ],
+    "mainScriptPath": "main.py",
+    "testPath": "test_main.py",
+    "dependencies": [
+      {
+        "name": "python",
+        "version": "3.11.5",
+        "license": "PSF",
+        "url": "https://www.python.org/"
+      }
+    ],
+    "resources": {
+      "cores": 1,
+      "memory": 128,
+      "gpuNeeded": false,
+      "gpuMemory": null,
+      "estimatedTimeInMin": 1
+    },
+    "publicationDate": "2023-10-31T11:30:00.000Z",
+    "author": {
+      "email": "khaos.research@gmail.com",
+      "affiliation": "Khaos Research Group"
+    },
+    "contributor": [
+      {
+        "email": "juancaruru@uma.es",
+        "affiliation": "Khaos Research Group"
+      },
+      {
+        "email": "iresanjim@uma.es",
+        "affiliation":"Khaos Research Group"
+      }
+    ]
+  }
+  
