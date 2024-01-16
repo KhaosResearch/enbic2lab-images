@@ -1,71 +1,71 @@
 {
   "type": "DataProcessing",
-  "name": "xml2json",
-  "label": "XML to JSON",
-  "description": "Transform a XML file to JSON format.",
+  "name": "Zipxml2json",
+  "label": "Zipxml to JSON",
+  "description": "Transforms a Zip file to a standard flora JSON file",
   "license": "cc by-nc-nd 4.0",
   "version": "1.0.0",
-  "dockerImage": "192.168.219.5:8098/enbic2lab/flora/xml2json:1.0.0",
-  "tags": ["enbic2lab-flora", "cc by-nc-nd 4.0", "by-nc-nd", "visualization"],
+  "dockerImage": "enbic2lab/flora/zipxml2json",
+  "tags": ["enbic2lab-flora", "cc by-nc-nd 4.0", "by-nc-nd", "conversion"],
   "parameters": [
     {
-      "name": "--filepath",
+      "name": "filepath",
       "label": "File path",
-      "description": "Input XML file path.",
+      "description": "Filepath for the input Zip File",
       "defaultValue": "{{.inputs.input.path}}",
       "readOnly": true,
-      "type": "string"
+      "type": "String"
     },
     {
-      "name": "--natural-site",
-      "label": "Natural site",
-      "description": "Name of the natural site where the sample was taken.",
-      "defaultValue": "Cabo de gata",
-      "type": "string"
+      "name": "natural-site",
+      "label": "Natural Site",
+      "description": "Name of the natural site",
+      "defaultValue": "Cado de Gata",
+      "type": "String"
+    },
+    {
+      "name": "output-path",
+      "label": "Output path",
+      "description": "Path to the output image",
+      "defaultValue": "/mnt/outputs",
+      "readOnly": true,
+      "type": "String"
     }
+
   ],
   "inputs": [
     {
       "name": "input",
-      "label": "Input XML file",
-      "path": "/mnt/shared/input.xml",
-      "type": "xml"
+      "label": "Input Zip file",
+      "description": "Input Zip file with the XML files to be converted",
+      "path": "/mnt/inputs/input.zip",
+      "type": "Zip"
     }
   ],
   "outputs": [
     {
       "name": "output",
       "label": "Output JSON file",
-      "path": "/mnt/shared/output.json",
-      "type": "json"
+      "description": "Output JSON file with the converted data",
+      "path": "/mnt/outputs/output.json",
+      "type": "Json"
     }
   ],
-  "mainScriptPath": "main.py",
   "testPath": "test_main.py",
-  "dependencies": [
-    {
-      "name": "python",
-      "version": "3.11.3",
-      "license": "PSF",
-      "url": "https://www.python.org/"
-    }
-  ],
+  "dependencies": [],
   "resources": {
     "cores": 1,
     "memory": 128,
     "gpuNeeded": false,
-    "gpuMemory": null,
-    "estimatedTimeInMin": 4
+    "gpuMemory": 0,
+    "estimatedTime": 4
   },
-  "publicationDate": "2023-09-07T10:00:00.000Z",
-  "author": {
-    "email": "ireero99@uma.es",
-    "affiliation": "Khaos Research Group"
+  "publicationDate": "2023-12-18T10:00:00.000Z",
+  "author": "Khaos Research Group",
+  "citation": "",
+  "bugs": {
+    "email": "khaos.research@gmail.com",
+    "url": "https://khaos.uma.es/"
   },
-  "contributor": [
-    {
-      "email": "juancaruru@uma.es",
-      "affiliation": "Khaos Research Group"
-    }
-  ]
+  "metaDataCatalogueUrl": "https://metadatacatalogue.lifewatch.eu/srv/eng/catalog.search#/metadata/f9bd669f-bca8-4784-bb17-d53bfb37594e"
 }
