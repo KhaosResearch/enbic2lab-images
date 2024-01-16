@@ -13,12 +13,13 @@
       "label": "File path",
       "description": "Input XML file path.",
       "defaultValue": "{{.inputs.input.path}}",
+      "readOnly": true,
       "type": "string"
     },
     {
       "name": "--natural-site",
       "label": "Natural site",
-      "description": "Natural site name",
+      "description": "Name of the natural site where the sample was taken.",
       "defaultValue": "Cabo de gata",
       "type": "string"
     }
@@ -60,5 +61,11 @@
   "author": {
     "email": "ireero99@uma.es",
     "affiliation": "Khaos Research Group"
-  }
+  },
+  "contributor": [
+    {
+      "email": "juancaruru@uma.es",
+      "affiliation": "Khaos Research Group"
+    }
+  ]
 }
