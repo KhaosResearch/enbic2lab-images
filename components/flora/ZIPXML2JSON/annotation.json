@@ -1,44 +1,35 @@
 {
   "type": "DataProcessing",
-  "name": "zipxml2json",
-  "label": "Zipxml to JSON",
-  "description": "Transforms a Zip file to a standard flora JSON file",
+  "name": "xml2json",
+  "label": "XML to JSON",
+  "description": "Transform a XML file to JSON format.",
   "license": "cc by-nc-nd 4.0",
-  "version": "1.0.1",
-  "dockerImage": "192.168.219.5:8098/enbic2lab/flora/zipxml2json:1.0.1",
-  "tags": ["enbic2lab-flora", "cc by-nc-nd 4.0", "by-nc-nd", "conversion"],
+  "version": "1.0.0",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/flora/xml2json:1.0.0",
+  "tags": ["enbic2lab-flora", "cc by-nc-nd 4.0", "by-nc-nd", "visualization"],
   "parameters": [
     {
       "name": "--filepath",
       "label": "File path",
-      "description": "Filepath for the input Zip File",
+      "description": "Input XML file path.",
       "defaultValue": "{{.inputs.input.path}}",
       "readOnly": true,
       "type": "string"
     },
     {
       "name": "--natural-site",
-      "label": "Natural Site",
-      "description": "Name of the natural site",
-      "defaultValue": "Cado de Gata",
-      "type": "string"
-    },
-    {
-      "name": "--output-path",
-      "label": "Output path",
-      "description": "Path to the output image",
-      "defaultValue": "/mnt/shared",
-      "readOnly": true,
+      "label": "Natural site",
+      "description": "Name of the natural site where the sample was taken.",
+      "defaultValue": "Cabo de gata",
       "type": "string"
     }
-
   ],
   "inputs": [
     {
       "name": "input",
-      "label": "Input Zip file",
-      "path": "/mnt/shared/input.zip",
-      "type": "zip"
+      "label": "Input XML file",
+      "path": "/mnt/shared/input.xml",
+      "type": "xml"
     }
   ],
   "outputs": [
@@ -54,7 +45,7 @@
   "dependencies": [
     {
       "name": "python",
-      "version": "3.11.5",
+      "version": "3.11.3",
       "license": "PSF",
       "url": "https://www.python.org/"
     }
@@ -66,9 +57,15 @@
     "gpuMemory": null,
     "estimatedTimeInMin": 4
   },
-  "publicationDate": "2023-10-20T10:00:00.000Z",
+  "publicationDate": "2023-09-07T10:00:00.000Z",
   "author": {
-    "email": "adrianseor.99@uma.es",
+    "email": "ireero99@uma.es",
     "affiliation": "Khaos Research Group"
-  }
+  },
+  "contributor": [
+    {
+      "email": "juancaruru@uma.es",
+      "affiliation": "Khaos Research Group"
+    }
+  ]
 }
