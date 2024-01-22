@@ -19,5 +19,7 @@ ARG mongo_access_key
 ENV MONGO_ACCESS_KEY=${mongo_access_key}
 ARG mongo_database
 ENV MONGO_DATABASE=${mongo_database}
+ARG mongo_collection
+ENV MONGO_COLLECTION=${mongo_collection}
 
 ENTRYPOINT ["python", "main.py"]
