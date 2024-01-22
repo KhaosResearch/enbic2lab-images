@@ -3,6 +3,7 @@ import datetime
 import pandas as pd
 from numpy import NaN
 from tqdm import tqdm
+import re
 
 
 def __get_station_data(data: pd.Series, output_df: pd.DataFrame) -> None:
@@ -65,11 +66,7 @@ def precipitation_matrix_transformation(
     """
 
     # create dataframe
-    matrix_df = pd.read_csv(filepath, sep=delimiter, encoding="latin1")
-
-    # change column name if it is wrong
-    if "AﾑO" in matrix_df.columns:
-        matrix_df.rename(columns={"AﾑO": "AÑO"}, inplace=True)
+    matrix_df = pd.read_csv(filepath, sep=delimiter, encoding="utf8")
 
     # replace precipitation with values -3 and -4 to 0
     matrix_df = matrix_df.replace([-3, -4], 0)
@@ -110,9 +107,9 @@ def precipitation_matrix_transformation(
     # drop columns with NaN values
     if NaN in final_pd.columns:
         final_pd = final_pd.drop(NaN, axis="columns")
-    
+
     final_pd.reset_index(inplace=True)
-    final_pd.rename(columns={"index": "DATE"}, inplace=True)    
+    final_pd.rename(columns={"index": "DATE"}, inplace=True)
 
     final_pd.to_csv(output, sep=delimiter, index=False)
 
@@ -152,5 +149,5 @@ if __name__ == "__main__":
     precipitation_matrix_transformation(
         filepath=args.filepath,
         delimiter=args.delimiter,
-        output=args.output+"/PrecipitationTimeSeries.csv",
+        output=args.output + "/PrecipitationTimeSeries.csv",
     )
