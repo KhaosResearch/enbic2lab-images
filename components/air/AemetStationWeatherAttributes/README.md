@@ -45,5 +45,5 @@ docker run --rm enbic2lab/air/aemet_station_weather_attributes:1.0.0 --help
 
 e.g.
 ```sh
-docker run --rm -v $(pwd)/data:/mnt/shared/ enbic2lab/air/aemet_station_weather_attributes:1.0.0 --aemet-api-key ***REMOVED*** --start-date "1991-05-11" --end-date "2021-09-30" --analysis-stations "6155A,6172O,6156X" --output "/mnt/shared/output.json"
+docker run --rm -v $(pwd)/data:/mnt/shared/ enbic2lab/air/aemet_station_weather_attributes:1.0.0 --aemet-api-key "" --start-date "1991-05-11" --end-date "2021-09-30" --analysis-stations "6155A,6172O,6156X" --output "/mnt/shared/output.json"
 ```
