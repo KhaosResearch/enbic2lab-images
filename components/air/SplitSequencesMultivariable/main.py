@@ -35,7 +35,7 @@ def split_sequences_multivariable(filepath_features: str, filepath_target: str, 
 
     # Save numpy arrays as binary (.npy) files
     sequence_x_path = Path(output_path, "sequenceX.npy")
-    sequence_y_path = Path(output_path, "sequenceY.csv")
+    sequence_y_path = Path(output_path, "sequenceY.npy")
 
     np.save(sequence_x_path, X)
     np.save(sequence_y_path, y)
