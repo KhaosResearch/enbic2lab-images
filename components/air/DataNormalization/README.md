@@ -17,9 +17,9 @@ Fecha;Platanus;feature1;feature2
 2023-03-01;5;7
 ```
 ### OUTPUTS
-Given a pandas dataframe, it's split in two dataframes (features and target) and then they are normalized with MinMaxScaler 
+Given a pandas dataframe, it's split in two dataframes (features and target) and then they are normalized with MinMaxScaler.
     
-Returns two normalized dataframes (features and target) and their scalers
+Returns two normalized dataframes (features and target) and their original values (for later denormalization).
 
 ## Usage
 
@@ -58,7 +58,7 @@ python test_main.py
 Build the image with:
 
 ```sh
-docker build -t enbic2lab/air/data_normalization:1.0.0 .
+docker build -t enbic2lab/air/data_normalization:1.0.1 .
 ```
 
 ### Run
@@ -66,11 +66,11 @@ docker build -t enbic2lab/air/data_normalization:1.0.0 .
 Run the image with (assuming that the CSV file is in the `data` folder from the current directory):
 
 ```sh
-docker run --rm -v $(pwd)/data:/mnt/shared/ enbic2lab/air/data_normalization:1.0.0 --help
+docker run --rm -v $(pwd)/data:/mnt/ enbic2lab/air/data_normalization:1.0.1 --help
 ```
 
 e.g.
 
 ```sh
-docker run --rm -v $(pwd)/data:/mnt/shared/ enbic2lab/air/data_normalization:1.0.0 --filepath "/mnt/shared/split_dataset.csv" --delimiter ";" --date-column "fecha" --pollen-column "Platanus" --output "/mnt/shared/"
+docker run --rm -v $(pwd)/data:/mnt/ enbic2lab/air/data_normalization:1.0.1 --filepath "/mnt/inputs/pca.csv" --delimiter ";" --date-column "fecha" --pollen-column "Platanus" --output "/mnt/outputs/"
 ```

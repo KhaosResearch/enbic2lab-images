@@ -4,8 +4,8 @@
   "label": "Data Normalization Pollen",
   "description": "Normalize pollen time series data",
   "license": "cc by-nc-nd 4.0",
-  "version": "1.0.0",
-  "dockerImage": "192.168.219.5:8098/enbic2lab/air/data_normalization:1.0.0",
+  "version": "1.0.1",
+  "dockerImage": "192.168.219.5:8098/enbic2lab/air/data_normalization:1.0.1",
   "tags": ["enbic2lab-air", "cc by-nc-nd 4.0", "by-nc-nd", "processing"],
   "parameters": [
     {
@@ -21,7 +21,8 @@
       "label": "Output path",
       "description": "Input path.",
       "defaultValue":"/mnt/shared/",
-      "type": "string"
+      "type": "string",
+      "readOnly": true
     },
     {
       "name": "--delimiter",
@@ -55,26 +56,26 @@
   "outputs": [
     {
       "name": "features_csv",
-      "label": "Normalize features CSV",
+      "label": "Features CSV",
       "path": "/mnt/shared/features.csv",
       "type": "tabulardataset"
     },
      {
       "name": "target_csv",
-      "label": "Normalize target pollen CSV",
+      "label": "Target pollen CSV",
       "path": "/mnt/shared/target.csv",
       "type": "tabulardataset"
     },
      {
-      "name": "scaler_features_pkl",
-      "label": "Scaler features PKL format",
-      "path": "/mnt/shared/scaler_features.pkl",
+      "name": "scaled_features_csv",
+      "label": "Normalized features CSV",
+      "path": "/mnt/shared/scaled_features.csv",
       "type": "tempfile"
     },
      {
-      "name": "scaler_target_pkl",
-      "label": "Scaler target PKL format",
-      "path": "/mnt/shared/scaler_target.pkl",
+      "name": "scaled_target_csv",
+      "label": "Normalized target CSV",
+      "path": "/mnt/shared/scaled_target.csv",
       "type": "tempfile"
     }
   ],
@@ -95,21 +96,19 @@
     "gpuMemory": null,
     "estimatedTimeInMin": 4
   },
-  "publicationDate": "2023-10-06T10:00:00.000Z",
+  "publicationDate": "2023-11-02T10:00:00.000Z",
   "author": {
-    "email": "khaos.research@gmail.com",
+    "email": "sandrohr@uma.es",
     "affiliation": "Khaos Research Group"
   },
   "contributor": [
     {
-      "email": "khaos.research@gmail.com",
-      "affiliation": "Khaos Research Group"    }
+      "email": "khaos.research@gmail.com"
+    }
   ],
   "maintainer": [
     {
-      "email": "khaos.research@gmail.com",
-      "affiliation": "Khaos Research Group"    }
+      "email": "khaos.research@gmail.com"
+    }
   ]
 }
-
-
