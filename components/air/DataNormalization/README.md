@@ -66,11 +66,11 @@ docker build -t enbic2lab/air/data_normalization:1.0.1 .
 Run the image with (assuming that the CSV file is in the `data` folder from the current directory):
 
 ```sh
-docker run --rm -v $(pwd)/data:/mnt/ enbic2lab/air/data_normalization:1.0.1 --help
+docker run --rm -v $(pwd)/data:/mnt/shared/ enbic2lab/air/data_normalization:1.0.1 --help
 ```
 
 e.g.
 
 ```sh
-docker run --rm -v $(pwd)/data:/mnt/ enbic2lab/air/data_normalization:1.0.1 --filepath "/mnt/inputs/pca.csv" --delimiter ";" --date-column "fecha" --pollen-column "Platanus" --output "/mnt/outputs/"
+docker run --rm -v $(pwd)/data:/mnt/shared/ enbic2lab/air/data_normalization:1.0.1 --filepath "/mnt/shared/split_dataset.csv" --delimiter ";" --date-column "fecha" --pollen-column "Platanus" --output "/mnt/shared/"
 ```
