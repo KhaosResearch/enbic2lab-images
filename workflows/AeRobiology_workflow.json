@@ -1,0 +1,2044 @@
+{
+    "nodes": [
+        {
+            "width": 200,
+            "height": 236,
+            "id": "task_1700139673899",
+            "type": "custom",
+            "position": {
+                "x": 70,
+                "y": 430
+            },
+            "data": {
+                "_id": "6555dfcafc096bcba9163202",
+                "type": "DataCollection",
+                "name": "importCsvFile",
+                "label": "Import CSV File",
+                "description": "Imports a .csv file from an online resource given its url.",
+                "license": "cc by-nc-nd 4.0",
+                "version": "1.1.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/misc/importfile:1.1.0",
+                "tags": [
+                    "cc by-nc-nd 4.0",
+                    "by-nc-nd",
+                    "conversion"
+                ],
+                "parameters": [
+                    {
+                        "name": "--url",
+                        "label": "URL",
+                        "description": "URL of the file",
+                        "type": "string",
+                        "value": "minio://enbic2lab/aerobiology/munich.csv"
+                    },
+                    {
+                        "name": "--query-string",
+                        "label": "Query string",
+                        "description": "Query string to be added to the URL",
+                        "defaultValue": "''",
+                        "type": "string"
+                    },
+                    {
+                        "name": "--rename",
+                        "label": "Rename to",
+                        "description": "Rename the file to the given name",
+                        "defaultValue": "output.csv",
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "--output",
+                        "label": "Output directory",
+                        "description": "Path to the output directory",
+                        "defaultValue": "/mnt/shared/",
+                        "readOnly": true,
+                        "type": "string"
+                    }
+                ],
+                "inputs": [],
+                "outputs": [
+                    {
+                        "name": "output",
+                        "label": "Output file",
+                        "path": "/mnt/shared/output.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "mainScriptPath": "main.py",
+                "testPath": "test_main.py",
+                "dependencies": [
+                    {
+                        "name": "python",
+                        "version": "3.11.5",
+                        "license": "PSF",
+                        "url": "https://www.python.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-10-06T10:00:00.000Z",
+                "author": {
+                    "email": "ireero99@uma.es",
+                    "affiliation": "Irene Romero; Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "antonio.b@uma.es",
+                        "affiliation": "Antonio BenÃ­tez Hidalgo; Khaos Research Group"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 70,
+                "y": 430
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 332,
+            "id": "task_1700139699523",
+            "type": "custom",
+            "position": {
+                "x": 1090,
+                "y": 10
+            },
+            "data": {
+                "_id": "6555e064fc096bcba9163206",
+                "type": "DataSink",
+                "name": "calculate-ps",
+                "label": "Calculate PS",
+                "description": "Calculate the main parameters of the pollen season with regard to phenology and pollen intensity",
+                "license": "MIT",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/air/calculate_ps:1.0.0",
+                "tags": [
+                    "enbic2lab-air",
+                    "mit-licensed",
+                    "pollen-season"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Input Filepath",
+                        "description": "Input file path",
+                        "type": "string",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true
+                    },
+                    {
+                        "name": "--method",
+                        "label": "Calculation Method",
+                        "description": "Method applied to calculate the pollen season and parameters (options: percentage, logistic, moving, clinical or grains)",
+                        "type": "string",
+                        "value": "percentage"
+                    },
+                    {
+                        "name": "--thDay",
+                        "label": "Number of Days",
+                        "description": "Number of days for pollen concentration calculation",
+                        "type": "number",
+                        "defaultValue": 100
+                    },
+                    {
+                        "name": "--perc",
+                        "label": "Percentage",
+                        "description": "Percentage of total annual pollen for 'percentage' method",
+                        "type": "number",
+                        "defaultValue": 95
+                    },
+                    {
+                        "name": "--defSeason",
+                        "label": "Season Selection Method",
+                        "description": "Method for selecting the best annual period (options: natural, interannual or peak)",
+                        "type": "string",
+                        "defaultValue": "natural"
+                    },
+                    {
+                        "name": "--reduction",
+                        "label": "Data Reduction",
+                        "description": "Reduction of pollen data for 'logistic' method",
+                        "type": "string",
+                        "defaultValue": "false"
+                    },
+                    {
+                        "name": "--redLevel",
+                        "label": "Percentile Level",
+                        "description": "Percentile level for 'logistic' method",
+                        "type": "number",
+                        "defaultValue": 0.9
+                    },
+                    {
+                        "name": "--derivative",
+                        "label": "Derivative",
+                        "description": "Derivative for 'logistic' method (options: 4, 5 or 6)",
+                        "type": "number",
+                        "defaultValue": 5
+                    },
+                    {
+                        "name": "--man",
+                        "label": "Moving Average Order",
+                        "description": "Order of moving average for 'moving' method",
+                        "type": "number",
+                        "defaultValue": 11
+                    },
+                    {
+                        "name": "--thMa",
+                        "label": "Moving Average Threshold",
+                        "description": "Threshold for 'moving' method",
+                        "type": "number",
+                        "defaultValue": 5
+                    },
+                    {
+                        "name": "--nClinical",
+                        "label": "Number of Days for Clinical Method",
+                        "description": "Number of days for 'clinical' method",
+                        "type": "number",
+                        "defaultValue": 5
+                    },
+                    {
+                        "name": "--windowClinical",
+                        "label": "Time Window for Clinical Method",
+                        "description": "Time window for 'clinical' method",
+                        "type": "number",
+                        "defaultValue": 7
+                    },
+                    {
+                        "name": "--windowGrains",
+                        "label": "Time Window for Grains Method",
+                        "description": "Time window for 'grains' method",
+                        "type": "number",
+                        "defaultValue": 5
+                    },
+                    {
+                        "name": "--thPollen",
+                        "label": "Threshold for Clinical or Grains Method",
+                        "description": "Threshold for 'clinical' or 'grains' methods",
+                        "type": "number",
+                        "defaultValue": 10
+                    },
+                    {
+                        "name": "--thSum",
+                        "label": "Pollen Threshold for Clinical Method",
+                        "description": "Pollen threshold for 'clinical' method",
+                        "type": "number",
+                        "defaultValue": 100
+                    },
+                    {
+                        "name": "--type",
+                        "label": "Pollen Type for Clinical Method",
+                        "description": "Pollen type for 'clinical' method (options: birch, grasses, cypress, olive, ragweed or none)",
+                        "type": "string",
+                        "defaultValue": "none"
+                    },
+                    {
+                        "name": "--interpolation",
+                        "label": "Interpolation",
+                        "description": "Interpolation of pollen data",
+                        "type": "string",
+                        "defaultValue": "true"
+                    },
+                    {
+                        "name": "--intMethod",
+                        "label": "Interpolation Method",
+                        "description": "Interpolation method (options: lineal, movingmean, spline or tseries)",
+                        "type": "string",
+                        "defaultValue": "lineal"
+                    },
+                    {
+                        "name": "--maxDays",
+                        "label": "Maximum Consecutive Days for Interpolation",
+                        "description": "Maximum consecutive days for interpolation",
+                        "type": "number",
+                        "defaultValue": 30
+                    },
+                    {
+                        "name": "--result",
+                        "label": "Output Format",
+                        "description": "Output format (options: table or list)",
+                        "type": "string",
+                        "defaultValue": "table"
+                    },
+                    {
+                        "name": "--plot",
+                        "label": "Show Graphical Results",
+                        "description": "Show graphical results",
+                        "type": "string",
+                        "defaultValue": "true"
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "Delimiter",
+                        "description": "Dataframe delimiter",
+                        "type": "string",
+                        "defaultValue": ","
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input CSV file",
+                        "path": "/mnt/shared/input.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output pdf",
+                        "label": "Output PDF file",
+                        "path": "/mnt/shared/output.pdf",
+                        "type": "pdf"
+                    },
+                    {
+                        "name": "output xlsx",
+                        "label": "Output XLSX file",
+                        "path": "/mnt/shared/output.xlsx",
+                        "type": "xlsx"
+                    }
+                ],
+                "mainScriptPath": "main.R",
+                "testPath": "test_main.R",
+                "dependencies": [
+                    {
+                        "name": "r",
+                        "version": "4.3.1",
+                        "license": "PSF",
+                        "url": "https://www.r-project.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-10-31T10:00:00.000Z",
+                "author": {
+                    "email": "khaos.research@gmail.com",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "adrianseor.99@uma.es",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 1090,
+                "y": 10
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 324,
+            "id": "task_1700139709203",
+            "type": "custom",
+            "position": {
+                "x": 1300,
+                "y": 120
+            },
+            "data": {
+                "_id": "6555e0bafc096bcba9163212",
+                "type": "DataSink",
+                "name": "plot-normsummary",
+                "label": "Plot Normsummary",
+                "description": "Plots the pollen data amplitude during several seasons: daily average pollen concentration over the study period, maximum pollen concentration of each day over the study period and minimum pollen concentration of each day value over the study period",
+                "license": "MIT",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/air/plot_normsummary:1.0.0",
+                "tags": [
+                    "enbic2lab-air",
+                    "mit-licensed",
+                    "normsummary"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Input Filepath",
+                        "description": "Input file path",
+                        "type": "string",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true
+                    },
+                    {
+                        "name": "--pollen",
+                        "label": "Particle Name",
+                        "description": "Particle name",
+                        "type": "string",
+                        "value": "Alnus"
+                    },
+                    {
+                        "name": "--mave",
+                        "label": "Order of the Moving Average",
+                        "description": "Order of the moving average",
+                        "type": "number",
+                        "defaultValue": 1
+                    },
+                    {
+                        "name": "--normalized",
+                        "label": "Use Normalized Data",
+                        "description": "Use normalized data",
+                        "type": "string",
+                        "defaultValue": "false"
+                    },
+                    {
+                        "name": "--interpolation",
+                        "label": "Apply Interpolation",
+                        "description": "Apply interpolation",
+                        "type": "string",
+                        "defaultValue": "true"
+                    },
+                    {
+                        "name": "--intMethod",
+                        "label": "Interpolation Method",
+                        "description": "Interpolation method",
+                        "type": "string",
+                        "defaultValue": "lineal"
+                    },
+                    {
+                        "name": "--colorPlot",
+                        "label": "Color Plot",
+                        "description": "Color Plot",
+                        "type": "string",
+                        "defaultValue": "orange2"
+                    },
+                    {
+                        "name": "--axisname",
+                        "label": "Y-axis Title",
+                        "description": "Y-axis title",
+                        "type": "string",
+                        "defaultValue": "Pollen grains / m3"
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "Dataframe Delimiter",
+                        "description": "Dataframe delimiter",
+                        "type": "string",
+                        "defaultValue": ","
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input CSV file",
+                        "path": "/mnt/shared/input.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output pdf",
+                        "label": "Output PDF file",
+                        "path": "/mnt/shared/output.pdf",
+                        "type": "pdf"
+                    }
+                ],
+                "mainScriptPath": "main.R",
+                "testPath": "test_main.R",
+                "dependencies": [
+                    {
+                        "name": "r",
+                        "version": "4.3.1",
+                        "license": "PSF",
+                        "url": "https://www.r-project.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-11-03T10:00:00.000Z",
+                "author": {
+                    "email": "khaos.research@gmail.com",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "adrianseor.99@uma.es",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 1300,
+                "y": 120
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 332,
+            "id": "task_1700139734259",
+            "type": "custom",
+            "position": {
+                "x": 880,
+                "y": -120
+            },
+            "data": {
+                "_id": "6555e0e5fc096bcba9163218",
+                "type": "DataSink",
+                "name": "plot-trend",
+                "label": "Plot Trend",
+                "description": "calculates the main seasonal indexes of the pollen season (Start Date, Peak Date, End Date and Pollen Integral)",
+                "license": "MIT",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/air/plot_trend:1.0.0",
+                "tags": [
+                    "enbic2lab-air",
+                    "mit-licensed",
+                    "plot"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Input Filepath",
+                        "description": "Input file path",
+                        "type": "string",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true
+                    },
+                    {
+                        "name": "--interpolation",
+                        "label": "Apply Interpolation",
+                        "description": "Apply interpolation to fill gaps",
+                        "type": "string",
+                        "defaultValue": "true"
+                    },
+                    {
+                        "name": "--intMethod",
+                        "label": "Interpolation Method",
+                        "description": "Interpolation method (lineal, movingmean, spline, tseries)",
+                        "type": "string",
+                        "defaultValue": "lineal"
+                    },
+                    {
+                        "name": "--method",
+                        "label": "Pollen Season Calculation Method",
+                        "description": "Method for calculating the pollen season",
+                        "type": "string",
+                        "defaultValue": "percentage"
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "Dataframe Delimiter",
+                        "description": "Dataframe delimiter",
+                        "type": "string",
+                        "defaultValue": ","
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input CSV file",
+                        "path": "/mnt/shared/input.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output zip",
+                        "label": "Output ZIP file",
+                        "path": "/mnt/shared/output.zip",
+                        "type": "zip"
+                    },
+                    {
+                        "name": "output xlsx",
+                        "label": "Output XLSX file",
+                        "path": "/mnt/shared/output.xlsx",
+                        "type": "xlsx"
+                    }
+                ],
+                "mainScriptPath": "main.R",
+                "testPath": "test_main.R",
+                "dependencies": [
+                    {
+                        "name": "r",
+                        "version": "4.3.1",
+                        "license": "PSF",
+                        "url": "https://www.r-project.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-10-27T10:00:00.000Z",
+                "author": {
+                    "email": "khaos.research@gmail.com",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "adrianseor.99@uma.es",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 880,
+                "y": -120
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 264,
+            "id": "task_1700139743347",
+            "type": "custom",
+            "position": {
+                "x": 670,
+                "y": -190
+            },
+            "data": {
+                "_id": "6555e070fc096bcba9163208",
+                "type": "DataSink",
+                "name": "iplot-abundance",
+                "label": "Iplot abundance",
+                "description": "Plot relative abundance of each type of pollen in a certain range of years",
+                "license": "MIT",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/air/iplot_abundance:1.0.0",
+                "tags": [
+                    "enbic2lab-air",
+                    "mit-licensed",
+                    "plot",
+                    "relative-abundance"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Input Filepath",
+                        "description": "Input file path",
+                        "type": "string",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true
+                    },
+                    {
+                        "name": "--nTypes",
+                        "label": "Number of Pollen Types",
+                        "description": "Number of most abundant pollen types to be represented in the plot of the relative abundance",
+                        "type": "number",
+                        "defaultValue": 15
+                    },
+                    {
+                        "name": "--yStart",
+                        "label": "Start Year",
+                        "description": "Start year for calculating relative abundances of pollen types",
+                        "type": "number",
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "--yEnd",
+                        "label": "End Year",
+                        "description": "End year for calculating relative abundances of pollen types",
+                        "type": "number",
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "--interpolation",
+                        "label": "Apply Interpolation",
+                        "description": "Apply interpolation to complete gaps with no data",
+                        "type": "string",
+                        "defaultValue": "true"
+                    },
+                    {
+                        "name": "--intMethod",
+                        "label": "Interpolation Method",
+                        "description": "Interpolation method (options: lineal, movingmean, spline or tseries)",
+                        "type": "string",
+                        "defaultValue": "lineal"
+                    },
+                    {
+                        "name": "--colBar",
+                        "label": "Bar Color",
+                        "description": "Color of the bars for the plot",
+                        "type": "string",
+                        "defaultValue": "#E69F00"
+                    },
+                    {
+                        "name": "--exclude",
+                        "label": "Excluded Pollen Types",
+                        "description": "Names of pollen types to be excluded from the plot",
+                        "type": "string",
+                        "defaultValue": ""
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "Dataframe Delimiter",
+                        "description": "Dataframe delimiter",
+                        "type": "string",
+                        "defaultValue": ","
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input CSV file",
+                        "path": "/mnt/shared/input.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output",
+                        "label": "Output PDF file",
+                        "path": "/mnt/shared/output.pdf",
+                        "type": "pdf"
+                    }
+                ],
+                "mainScriptPath": "main.R",
+                "testPath": "test_main.R",
+                "dependencies": [
+                    {
+                        "name": "r",
+                        "version": "4.3.1",
+                        "license": "PSF",
+                        "url": "https://www.r-project.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-11-03T10:00:00.000Z",
+                "author": {
+                    "email": "khaos.research@gmail.com",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "adrianseor.99@uma.es",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 670,
+                "y": -190
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 284,
+            "id": "task_1700139758483",
+            "type": "custom",
+            "position": {
+                "x": 460,
+                "y": -320
+            },
+            "data": {
+                "_id": "6555e0cafc096bcba9163214",
+                "type": "DataSink",
+                "name": "plot-ps",
+                "label": "Plot PS",
+                "description": "Plot pollen grains concentration for one pollen type in a specific year",
+                "license": "MIT",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/air/plot_ps:1.0.0",
+                "tags": [
+                    "enbic2lab-air",
+                    "mit-licensed",
+                    "pollen-season"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Input Filepath",
+                        "description": "Input file path",
+                        "type": "string",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true
+                    },
+                    {
+                        "name": "--pollenType",
+                        "label": "Pollen Type",
+                        "description": "Name of the pollen type to be plotted",
+                        "type": "string",
+                        "value": "Alnus"
+                    },
+                    {
+                        "name": "--year",
+                        "label": "Year",
+                        "description": "Season to be plotted",
+                        "type": "number",
+                        "value": 2010
+                    },
+                    {
+                        "name": "--days",
+                        "label": "Number of Days",
+                        "description": "Number of days beyond each side of the main pollen season to be represented",
+                        "type": "number",
+                        "defaultValue": 30
+                    },
+                    {
+                        "name": "--filCol",
+                        "label": "Fill Color",
+                        "description": "Color to fill the main pollen season in the plot",
+                        "type": "string",
+                        "defaultValue": "turquoise4"
+                    },
+                    {
+                        "name": "--axisname",
+                        "label": "Y Axis Title",
+                        "description": "Y axis title of the plot",
+                        "type": "string",
+                        "defaultValue": "Pollen grains / m ^ 3"
+                    },
+                    {
+                        "name": "--intMethod",
+                        "label": "Interpolation Method",
+                        "description": "Interpolation method (options: lineal, movingmean, spline or tseries)",
+                        "type": "string",
+                        "defaultValue": "lineal"
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "Delimiter",
+                        "description": "Dataframe delimiter",
+                        "type": "string",
+                        "defaultValue": ","
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input CSV file",
+                        "path": "/mnt/shared/input.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output",
+                        "label": "Output PDF file",
+                        "path": "/mnt/shared/output.pdf",
+                        "type": "pdf"
+                    }
+                ],
+                "mainScriptPath": "main.R",
+                "testPath": "test_main.R",
+                "dependencies": [
+                    {
+                        "name": "r",
+                        "version": "4.3.1",
+                        "license": "PSF",
+                        "url": "https://www.r-project.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-11-01T10:00:00.000Z",
+                "author": {
+                    "email": "khaos.research@gmail.com",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "adrianseor.99@uma.es",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 460,
+                "y": -320
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 272,
+            "id": "task_1700139805291",
+            "type": "custom",
+            "position": {
+                "x": 1510,
+                "y": 300
+            },
+            "data": {
+                "_id": "6555e056fc096bcba9163204",
+                "type": "DataSink",
+                "name": "analyse-trend",
+                "label": "Analyse Trend",
+                "description": "Perform Analyse Trend over pollen data",
+                "license": "MIT",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/air/analyse_trend:1.0.0",
+                "tags": [
+                    "enbic2lab-air",
+                    "mit-licensed",
+                    "analyse-trend"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Input Filepath",
+                        "description": "Input file path",
+                        "type": "string",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true
+                    },
+                    {
+                        "name": "--interpolation",
+                        "label": "Apply Interpolation",
+                        "description": "Apply interpolation to fill gaps in data",
+                        "type": "string",
+                        "defaultValue": "true"
+                    },
+                    {
+                        "name": "--intMethod",
+                        "label": "Interpolation Method",
+                        "description": "Interpolation method (options: lineal, movingmean, tseries or spline)",
+                        "type": "string",
+                        "defaultValue": "lineal"
+                    },
+                    {
+                        "name": "--method",
+                        "label": "Pollen Season Calculation Method",
+                        "description": "Method for calculating pollen season (options: percentage, logistic, moving, clinical or grains)",
+                        "type": "string",
+                        "defaultValue": "percentage"
+                    },
+                    {
+                        "name": "--quantil",
+                        "label": "Quantile",
+                        "description": "Quantile of data to display (between 0 and 1)",
+                        "type": "number",
+                        "defaultValue": 0.75
+                    },
+                    {
+                        "name": "--significant",
+                        "label": "Significance Level",
+                        "description": "Significance level for linear trends analysis",
+                        "type": "number",
+                        "defaultValue": 0.05
+                    },
+                    {
+                        "name": "--split",
+                        "label": "Split Plot",
+                        "description": "Split the plot based on variable nature",
+                        "type": "string",
+                        "defaultValue": "true"
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "Dataframe Delimiter",
+                        "description": "Dataframe delimiter",
+                        "type": "string",
+                        "defaultValue": ","
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input CSV file",
+                        "path": "/mnt/shared/input.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output pdf",
+                        "label": "Output PDF file",
+                        "path": "/mnt/shared/output.pdf",
+                        "type": "pdf"
+                    },
+                    {
+                        "name": "output xlsx",
+                        "label": "Output XLSX file",
+                        "path": "/mnt/shared/output.xlsx",
+                        "type": "xlsx"
+                    }
+                ],
+                "mainScriptPath": "main.R",
+                "testPath": "test_main.R",
+                "dependencies": [
+                    {
+                        "name": "r",
+                        "version": "4.3.1",
+                        "license": "PSF",
+                        "url": "https://www.r-project.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-11-03T10:00:00.000Z",
+                "author": {
+                    "email": "khaos.research@gmail.com",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "adrianseor.99@uma.es",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 1510,
+                "y": 300
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 244,
+            "id": "task_1700139815314",
+            "type": "custom",
+            "position": {
+                "x": 1510,
+                "y": 580
+            },
+            "data": {
+                "_id": "6555e0d8fc096bcba9163216",
+                "type": "DataSink",
+                "name": "plot-summary",
+                "label": "Plot Summary",
+                "description": "Plot pollen data during several seasons",
+                "license": "MIT",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/air/plot_summary:1.0.0",
+                "tags": [
+                    "enbic2lab-air",
+                    "mit-licensed",
+                    "summary"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Input Filepath",
+                        "description": "Input file path",
+                        "type": "string",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true
+                    },
+                    {
+                        "name": "--pollen",
+                        "label": "Particle Name",
+                        "description": "Particle name (mandatory)",
+                        "type": "string",
+                        "value": "Alnus"
+                    },
+                    {
+                        "name": "--mave",
+                        "label": "Order of the Moving Average",
+                        "description": "Order of the moving average (default: 1)",
+                        "type": "number",
+                        "defaultValue": 1
+                    },
+                    {
+                        "name": "--normalized",
+                        "label": "Use Normalized Data",
+                        "description": "Use normalized data (default: TRUE)",
+                        "type": "string",
+                        "defaultValue": "true"
+                    },
+                    {
+                        "name": "--interpolation",
+                        "label": "Apply Interpolation",
+                        "description": "Apply interpolation (default: TRUE)",
+                        "type": "string",
+                        "defaultValue": "true"
+                    },
+                    {
+                        "name": "--intMethod",
+                        "label": "Interpolation Method",
+                        "description": "Interpolation method",
+                        "type": "string",
+                        "defaultValue": "lineal"
+                    },
+                    {
+                        "name": "--axisname",
+                        "label": "Y-axis Title",
+                        "description": "Y-axis title (default: 'Pollen grains / m3')",
+                        "type": "string",
+                        "defaultValue": "Pollen grains / m3"
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "Dataframe Delimiter",
+                        "description": "Dataframe delimiter",
+                        "type": "string",
+                        "defaultValue": ","
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input CSV file",
+                        "path": "/mnt/shared/input.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output pdf",
+                        "label": "Output PDF file",
+                        "path": "/mnt/shared/output.pdf",
+                        "type": "pdf"
+                    }
+                ],
+                "mainScriptPath": "main.R",
+                "testPath": "test_main.R",
+                "dependencies": [
+                    {
+                        "name": "r",
+                        "version": "4.3.1",
+                        "license": "PSF",
+                        "url": "https://www.r-project.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-11-03T10:00:00.000Z",
+                "author": {
+                    "email": "khaos.research@gmail.com",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "adrianseor.99@uma.es",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 1510,
+                "y": 580
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 244,
+            "id": "task_1700139843482",
+            "type": "custom",
+            "position": {
+                "x": 1300,
+                "y": 750
+            },
+            "data": {
+                "_id": "6555e082fc096bcba916320a",
+                "type": "DataSink",
+                "name": "iplot-pheno",
+                "label": "Iplot Pheno",
+                "description": "Plot phenological parameters",
+                "license": "MIT",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/air/iplot_pheno:1.0.0",
+                "tags": [
+                    "enbic2lab-air",
+                    "mit-licensed",
+                    "plot",
+                    "pheno"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Input Filepath",
+                        "description": "Input file path",
+                        "type": "string",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true
+                    },
+                    {
+                        "name": "--method",
+                        "label": "Pollen Season Calculation Method",
+                        "description": "Method for calculating the pollen season",
+                        "type": "string",
+                        "defaultValue": "percentage"
+                    },
+                    {
+                        "name": "--nTypes",
+                        "label": "Number of Abundant Pollen Types",
+                        "description": "Number of abundant pollen types in the calendar",
+                        "type": "number",
+                        "defaultValue": 15
+                    },
+                    {
+                        "name": "--thDay",
+                        "label": "Threshold for Counting Days",
+                        "description": "Threshold for counting days when pollen level is exceeded",
+                        "type": "number",
+                        "defaultValue": 100
+                    },
+                    {
+                        "name": "--perc",
+                        "label": "Percentage of Total Annual Pollen",
+                        "description": "Percentage of total annual pollen for pollen season",
+                        "type": "number",
+                        "defaultValue": 95
+                    },
+                    {
+                        "name": "--defSeason",
+                        "label": "Method for Selecting Annual Period",
+                        "description": "Method for selecting annual period (natural, interannual, peak)",
+                        "type": "string",
+                        "defaultValue": "natural"
+                    },
+                    {
+                        "name": "--reduction",
+                        "label": "Reduce Peaks in Pollen Data",
+                        "description": "Reduce peaks in pollen data (only for logistic method)",
+                        "type": "string",
+                        "defaultValue": "false"
+                    },
+                    {
+                        "name": "--redLevel",
+                        "label": "Percentile for Reducing Peaks",
+                        "description": "Percentile for reducing peaks (only for logistic method)",
+                        "type": "number",
+                        "defaultValue": 0.9
+                    },
+                    {
+                        "name": "--derivative",
+                        "label": "Derivative for Logistic Method",
+                        "description": "Derivative for logistic method",
+                        "type": "number",
+                        "defaultValue": 5
+                    },
+                    {
+                        "name": "--man",
+                        "label": "Order of Moving Average",
+                        "description": "Order of moving average (only for moving method)",
+                        "type": "number",
+                        "defaultValue": 11
+                    },
+                    {
+                        "name": "--thMa",
+                        "label": "Threshold for Moving Method",
+                        "description": "Threshold for moving method",
+                        "type": "number",
+                        "defaultValue": 5
+                    },
+                    {
+                        "name": "--nClinical",
+                        "label": "Number of Days for Clinical Method",
+                        "description": "Number of days for clinical method",
+                        "type": "number",
+                        "defaultValue": 5
+                    },
+                    {
+                        "name": "--windowClinical",
+                        "label": "Time Window for Clinical Method",
+                        "description": "Time window for clinical method",
+                        "type": "number",
+                        "defaultValue": 7
+                    },
+                    {
+                        "name": "--windowGrains",
+                        "label": "Time Window for Grains Method",
+                        "description": "Time window for grains method",
+                        "type": "number",
+                        "defaultValue": 5
+                    },
+                    {
+                        "name": "--thPollen",
+                        "label": "Threshold for Clinical and Grains Methods",
+                        "description": "Threshold for clinical and grains methods",
+                        "type": "number",
+                        "defaultValue": 10
+                    },
+                    {
+                        "name": "--thSum",
+                        "label": "Pollen Threshold for Sum in Clinical Method",
+                        "description": "Pollen threshold for sum in clinical method",
+                        "type": "number",
+                        "defaultValue": 100
+                    },
+                    {
+                        "name": "--type",
+                        "label": "Pollen Type for Clinical Method",
+                        "description": "Pollen type for clinical method (birch, grasses, cypress, olive, ragweed)",
+                        "type": "string",
+                        "defaultValue": "none"
+                    },
+                    {
+                        "name": "--interpolation",
+                        "label": "Apply Interpolation",
+                        "description": "Apply interpolation to fill gaps (default: TRUE)",
+                        "type": "string",
+                        "defaultValue": "true"
+                    },
+                    {
+                        "name": "--intMethod",
+                        "label": "Interpolation Method",
+                        "description": "Interpolation method (lineal, movingmean, spline, tseries)",
+                        "type": "string",
+                        "defaultValue": "lineal"
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "Dataframe Delimiter",
+                        "description": "Dataframe delimiter",
+                        "type": "string",
+                        "defaultValue": ","
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input CSV file",
+                        "path": "/mnt/shared/input.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output",
+                        "label": "Output PDF file",
+                        "path": "/mnt/shared/output.pdf",
+                        "type": "pdf"
+                    }
+                ],
+                "mainScriptPath": "main.R",
+                "testPath": "test_main.R",
+                "dependencies": [
+                    {
+                        "name": "r",
+                        "version": "4.3.1",
+                        "license": "PSF",
+                        "url": "https://www.r-project.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-11-07T10:00:00.000Z",
+                "author": {
+                    "email": "khaos.research@gmail.com",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "adrianseor.99@uma.es",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 1300,
+                "y": 750
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 264,
+            "id": "task_1700139858770",
+            "type": "custom",
+            "position": {
+                "x": 1090,
+                "y": 920
+            },
+            "data": {
+                "_id": "6555e08ffc096bcba916320c",
+                "type": "DataSink",
+                "name": "iplot-pollen",
+                "label": "Iplot pollen",
+                "description": "Plot the pollen samples for each day in a specific year",
+                "license": "MIT",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/air/iplot_pollen:1.0.0",
+                "tags": [
+                    "enbic2lab-air",
+                    "mit-licensed",
+                    "plot"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Input Filepath",
+                        "description": "Input file path",
+                        "type": "string",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true
+                    },
+                    {
+                        "name": "--year",
+                        "label": "Year",
+                        "description": "Year of samples",
+                        "type": "number",
+                        "value": 2010
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "Delimiter",
+                        "description": "Delimiter of the CSV file",
+                        "defaultValue": ",",
+                        "type": "string"
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input CSV file",
+                        "path": "/mnt/shared/input.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output",
+                        "label": "Output HTML file",
+                        "path": "/mnt/shared/output.html",
+                        "type": "html"
+                    }
+                ],
+                "mainScriptPath": "main.R",
+                "testPath": "test_main.R",
+                "dependencies": [
+                    {
+                        "name": "r",
+                        "version": "4.3.1",
+                        "license": "PSF",
+                        "url": "https://www.r-project.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-10-27T10:00:00.000Z",
+                "author": {
+                    "email": "khaos.research@gmail.com",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "adrianseor.99@uma.es",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 1090,
+                "y": 920
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 264,
+            "id": "task_1700139871082",
+            "type": "custom",
+            "position": {
+                "x": 880,
+                "y": 1120
+            },
+            "data": {
+                "_id": "6555e09bfc096bcba916320e",
+                "type": "DataSink",
+                "name": "iplot-year",
+                "label": "Iplot Year",
+                "description": "Plot the pollen samples for each day for a specific pollen",
+                "license": "MIT",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/air/iplot_year:1.0.0",
+                "tags": [
+                    "enbic2lab-air",
+                    "mit-licensed",
+                    "plot"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Input Filepath",
+                        "description": "Input file path",
+                        "type": "string",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true
+                    },
+                    {
+                        "name": "--pollen",
+                        "label": "Pollen",
+                        "description": "Pollen of samples to plot",
+                        "type": "string",
+                        "value": "Alnus"
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "Delimiter",
+                        "description": "Delimiter of the CSV file",
+                        "defaultValue": ",",
+                        "type": "string"
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input CSV file",
+                        "path": "/mnt/shared/input.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output",
+                        "label": "Output HTML file",
+                        "path": "/mnt/shared/output.html",
+                        "type": "html"
+                    }
+                ],
+                "mainScriptPath": "main.R",
+                "testPath": "test_main.R",
+                "dependencies": [
+                    {
+                        "name": "r",
+                        "version": "4.3.1",
+                        "license": "PSF",
+                        "url": "https://www.r-project.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-10-27T10:00:00.000Z",
+                "author": {
+                    "email": "khaos.research@gmail.com",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "adrianseor.99@uma.es",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 880,
+                "y": 1120
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 272,
+            "id": "task_1700139910571",
+            "type": "custom",
+            "position": {
+                "x": 460,
+                "y": 1480
+            },
+            "data": {
+                "_id": "6555e100fc096bcba916321c",
+                "type": "DataSink",
+                "name": "quality-control",
+                "label": "Quality Control",
+                "description": "Perform quality control over pollen data",
+                "license": "MIT",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/air/quality_control:1.0.0",
+                "tags": [
+                    "enbic2lab-air",
+                    "mit-licensed",
+                    "quality"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Input Filepath",
+                        "description": "Input file path",
+                        "type": "string",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true
+                    },
+                    {
+                        "name": "--window",
+                        "label": "Window",
+                        "description": "A numeric (integer) value bigger or equal to 1",
+                        "type": "number",
+                        "defaultValue": 2
+                    },
+                    {
+                        "name": "--perc_miss",
+                        "label": "Percentage of Missing Data",
+                        "description": "A numeric (integer) value between 0 and 100",
+                        "type": "number",
+                        "defaultValue": 20
+                    },
+                    {
+                        "name": "--ps_method",
+                        "label": "Pollen Season Calculation Method",
+                        "description": "A character string specifying the method applied to calculate the pollen season",
+                        "type": "string",
+                        "defaultValue": "percentage"
+                    },
+                    {
+                        "name": "--perc",
+                        "label": "Percentage",
+                        "description": "A numeric (integer) value between 0 and 100",
+                        "type": "number",
+                        "defaultValue": 95
+                    },
+                    {
+                        "name": "--result",
+                        "label": "Result Format",
+                        "description": "A character string specifying the format of the results (table or plot)",
+                        "type": "string",
+                        "defaultValue": "plot"
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "Delimiter",
+                        "description": "Dataframe delimiter",
+                        "type": "string",
+                        "defaultValue": ","
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input CSV file",
+                        "path": "/mnt/shared/input.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output pdf",
+                        "label": "Output PDF file",
+                        "path": "/mnt/shared/output.pdf",
+                        "type": "pdf"
+                    },
+                    {
+                        "name": "output csv",
+                        "label": "Output CSV file",
+                        "path": "/mnt/shared/output.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "mainScriptPath": "main.R",
+                "testPath": "test_main.R",
+                "dependencies": [
+                    {
+                        "name": "r",
+                        "version": "4.3.1",
+                        "license": "PSF",
+                        "url": "https://www.r-project.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-10-31T10:00:00.000Z",
+                "author": {
+                    "email": "khaos.research@gmail.com",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "adrianseor.99@uma.es",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 460,
+                "y": 1480
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 244,
+            "id": "task_1700638614568",
+            "type": "custom",
+            "position": {
+                "x": 670,
+                "y": 1310
+            },
+            "data": {
+                "_id": "6555e0f2fc096bcba916321a",
+                "type": "DataSink",
+                "name": "pollen-calendar",
+                "label": "Pollen Calendar",
+                "description": "Plot pollen callendar for a specific range of years",
+                "license": "MIT",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/air/pollen_calendar:1.0.0",
+                "tags": [
+                    "enbic2lab-air",
+                    "mit-licensed",
+                    "plot",
+                    "calendar"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Input Filepath",
+                        "description": "Input file path",
+                        "type": "string",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true
+                    },
+                    {
+                        "name": "--method",
+                        "label": "Method",
+                        "description": "Method to calculate and generate the pollen calendar (options: heatplot, violinplot or phenological, default: heatplot)",
+                        "type": "string",
+                        "defaultValue": "heatplot"
+                    },
+                    {
+                        "name": "--nTypes",
+                        "label": "Number of Types",
+                        "description": "Number of most abundant pollen types to be represented in the pollen calendar (default: 15)",
+                        "type": "number",
+                        "defaultValue": 15
+                    },
+                    {
+                        "name": "--startMonth",
+                        "label": "Start Month",
+                        "description": "Month (1-12) when the pollen calendar starts (default: 1)",
+                        "type": "number",
+                        "defaultValue": 1
+                    },
+                    {
+                        "name": "--yStart",
+                        "label": "Start Year",
+                        "description": "Start year for the pollen calendar (default: NULL)",
+                        "type": "number",
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "--yEnd",
+                        "label": "End Year",
+                        "description": "End year for the pollen calendar (default: NULL)",
+                        "type": "number",
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "--perc1",
+                        "label": "Percentage 1",
+                        "description": "Percentage (0-100) for main pollination period (default: 80)",
+                        "type": "number",
+                        "defaultValue": 80
+                    },
+                    {
+                        "name": "--perc2",
+                        "label": "Percentage 2",
+                        "description": "Percentage (0-100) for early/late pollination period (default: 99)",
+                        "type": "number",
+                        "defaultValue": 99
+                    },
+                    {
+                        "name": "--thPollen",
+                        "label": "Pollen Threshold",
+                        "description": "Minimum threshold of average pollen concentration (default: 1)",
+                        "type": "number",
+                        "defaultValue": 1
+                    },
+                    {
+                        "name": "--averageMethod",
+                        "label": "Average Method",
+                        "description": "Moment of the application of the average (options: avg_before or avg_after, default: avg_before)",
+                        "type": "string",
+                        "defaultValue": "avg_before"
+                    },
+                    {
+                        "name": "--period",
+                        "label": "Period",
+                        "description": "Interval time for the pollen calendar (options: daily or weekly, default: daily)",
+                        "type": "string",
+                        "defaultValue": "daily"
+                    },
+                    {
+                        "name": "--methodClasses",
+                        "label": "Method for Classes",
+                        "description": "Method to define classes for classifying average pollen concentrations (default: exponential)",
+                        "type": "string",
+                        "defaultValue": "exponential"
+                    },
+                    {
+                        "name": "--nClasses",
+                        "label": "Number of Classes",
+                        "description": "Number of classes for classifying average pollen concentrations (default: 5)",
+                        "type": "number",
+                        "defaultValue": 5
+                    },
+                    {
+                        "name": "--classes",
+                        "label": "Classes",
+                        "description": "Thresholds for defining different classes (comma-separated)",
+                        "type": "string",
+                        "defaultValue": "25, 50, 100, 300"
+                    },
+                    {
+                        "name": "--color",
+                        "label": "Color Palette",
+                        "description": "Color palette for the pollen calendar plot (options: green, red, blue, purple or black, default: green)",
+                        "type": "string",
+                        "defaultValue": "green"
+                    },
+                    {
+                        "name": "--interpolation",
+                        "label": "Interpolation",
+                        "description": "Apply interpolation to complete gaps in the pollen data (default: TRUE)",
+                        "type": "string",
+                        "defaultValue": "true"
+                    },
+                    {
+                        "name": "--intMethod",
+                        "label": "Interpolation Method",
+                        "description": "Interpolation method (options: lineal, movingmean, spline or tseries, default: lineal)",
+                        "type": "string",
+                        "defaultValue": "lineal"
+                    },
+                    {
+                        "name": "--naRemove",
+                        "label": "Remove NA Values",
+                        "description": "Remove NA values for the pollen calendar (default: TRUE)",
+                        "type": "string",
+                        "defaultValue": "true"
+                    },
+                    {
+                        "name": "--result",
+                        "label": "Result Type",
+                        "description": "Output type for the function (options: plot or table, default: plot)",
+                        "type": "string",
+                        "defaultValue": "plot"
+                    },
+                    {
+                        "name": "--legendName",
+                        "label": "Legend Title",
+                        "description": "Title of the legend in the plot (default: Pollen / m3)",
+                        "type": "string",
+                        "defaultValue": "Pollen / m3"
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "Delimiter",
+                        "description": "Dataframe delimiter (default: ,)",
+                        "type": "string",
+                        "defaultValue": ","
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input CSV file",
+                        "path": "/mnt/shared/input.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output",
+                        "label": "Output PDF file",
+                        "path": "/mnt/shared/output.pdf",
+                        "type": "pdf"
+                    }
+                ],
+                "mainScriptPath": "main.R",
+                "testPath": "test_main.R",
+                "dependencies": [
+                    {
+                        "name": "r",
+                        "version": "4.3.1",
+                        "license": "PSF",
+                        "url": "https://www.r-project.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-11-01T10:00:00.000Z",
+                "author": {
+                    "email": "khaos.research@gmail.com",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "adrianseor.99@uma.es",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 670,
+                "y": 1310
+            },
+            "selected": false,
+            "dragging": false
+        }
+    ],
+    "edges": [
+        {
+            "animated": true,
+            "source": "task_1700139673899",
+            "sourceHandle": "output",
+            "target": "task_1700139758483",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1700139673899output-task_1700139758483input"
+        },
+        {
+            "animated": true,
+            "source": "task_1700139673899",
+            "sourceHandle": "output",
+            "target": "task_1700139743347",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1700139673899output-task_1700139743347input"
+        },
+        {
+            "animated": true,
+            "source": "task_1700139673899",
+            "sourceHandle": "output",
+            "target": "task_1700139734259",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1700139673899output-task_1700139734259input"
+        },
+        {
+            "animated": true,
+            "source": "task_1700139673899",
+            "sourceHandle": "output",
+            "target": "task_1700139699523",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1700139673899output-task_1700139699523input"
+        },
+        {
+            "animated": true,
+            "source": "task_1700139673899",
+            "sourceHandle": "output",
+            "target": "task_1700139709203",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1700139673899output-task_1700139709203input"
+        },
+        {
+            "animated": true,
+            "source": "task_1700139673899",
+            "sourceHandle": "output",
+            "target": "task_1700139805291",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1700139673899output-task_1700139805291input"
+        },
+        {
+            "animated": true,
+            "source": "task_1700139673899",
+            "sourceHandle": "output",
+            "target": "task_1700139815314",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1700139673899output-task_1700139815314input"
+        },
+        {
+            "animated": true,
+            "source": "task_1700139673899",
+            "sourceHandle": "output",
+            "target": "task_1700139843482",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1700139673899output-task_1700139843482input"
+        },
+        {
+            "animated": true,
+            "source": "task_1700139673899",
+            "sourceHandle": "output",
+            "target": "task_1700139858770",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1700139673899output-task_1700139858770input"
+        },
+        {
+            "animated": true,
+            "source": "task_1700139673899",
+            "sourceHandle": "output",
+            "target": "task_1700139910571",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1700139673899output-task_1700139910571input"
+        },
+        {
+            "animated": true,
+            "source": "task_1700139673899",
+            "sourceHandle": "output",
+            "target": "task_1700139871082",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1700139673899output-task_1700139871082input"
+        },
+        {
+            "animated": true,
+            "source": "task_1700139673899",
+            "sourceHandle": "output",
+            "target": "task_1700638614568",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1700139673899output-task_1700638614568input"
+        }
+    ],
+    "viewport": {
+        "x": 82,
+        "y": 41,
+        "zoom": 0.5
+    }
+}
