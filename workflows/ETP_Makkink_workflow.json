@@ -1,0 +1,1704 @@
+{
+    "nodes": [
+        {
+            "width": 200,
+            "height": 236,
+            "id": "task_1702974591024",
+            "type": "custom",
+            "position": {
+                "x": -200,
+                "y": -20
+            },
+            "data": {
+                "_id": "6552369a463534326f118d2d",
+                "type": "DataCollection",
+                "name": "importXlsxFile",
+                "label": "Import Excel File",
+                "description": "Imports a .xlsx file from an online resource given its url.",
+                "license": "cc by-nc-nd 4.0",
+                "version": "1.1.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/misc/importfile:1.1.0",
+                "tags": [
+                    "cc by-nc-nd 4.0",
+                    "by-nc-nd",
+                    "conversion"
+                ],
+                "parameters": [
+                    {
+                        "name": "--url",
+                        "label": "URL",
+                        "description": "URL of the file",
+                        "type": "string",
+                        "value": "minio://enbic2lab/data-set/PreprocessingETP/inputs/input_etp.xlsx"
+                    },
+                    {
+                        "name": "--query-string",
+                        "label": "Query string",
+                        "description": "Query string to be added to the URL",
+                        "defaultValue": null,
+                        "type": "string"
+                    },
+                    {
+                        "name": "--rename",
+                        "label": "Rename to",
+                        "description": "Rename the file to the given name",
+                        "defaultValue": "output.xlsx",
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "--output",
+                        "label": "Output directory",
+                        "description": "Path to the output directory",
+                        "defaultValue": "/mnt/shared/",
+                        "readOnly": true,
+                        "type": "string"
+                    }
+                ],
+                "inputs": [],
+                "outputs": [
+                    {
+                        "name": "output",
+                        "label": "Output file",
+                        "path": "/mnt/shared/output.xlsx",
+                        "type": "xlsx"
+                    }
+                ],
+                "mainScriptPath": "main.py",
+                "testPath": "test_main.py",
+                "dependencies": [
+                    {
+                        "name": "python",
+                        "version": "3.11.5",
+                        "license": "PSF",
+                        "url": "https://www.python.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-10-06T10:00:00.000Z",
+                "author": {
+                    "email": "ireero99@uma.es",
+                    "affiliation": "Irene Romero; Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "antonio.b@uma.es",
+                        "affiliation": "Antonio Benítez Hidalgo; Khaos Research Group"
+                    }
+                ],
+                "contact": {
+                    "email": "khaos.research@gmail.com",
+                    "url": "https://www.khaos.uma.es"
+                },
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": -200,
+                "y": -20
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 236,
+            "id": "task_1702974592664",
+            "type": "custom",
+            "position": {
+                "x": -200,
+                "y": 230
+            },
+            "data": {
+                "_id": "6552369a463534326f118d2d",
+                "type": "DataCollection",
+                "name": "importXlsxFile",
+                "label": "Import Excel File",
+                "description": "Imports a .xlsx file from an online resource given its url.",
+                "license": "cc by-nc-nd 4.0",
+                "version": "1.1.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/misc/importfile:1.1.0",
+                "tags": [
+                    "cc by-nc-nd 4.0",
+                    "by-nc-nd",
+                    "conversion"
+                ],
+                "parameters": [
+                    {
+                        "name": "--url",
+                        "label": "URL",
+                        "description": "URL of the file",
+                        "type": "string",
+                        "value": "minio://enbic2lab/data-set/XLSX2CSV/inputs/precipitation_data.xlsx"
+                    },
+                    {
+                        "name": "--query-string",
+                        "label": "Query string",
+                        "description": "Query string to be added to the URL",
+                        "defaultValue": null,
+                        "type": "string"
+                    },
+                    {
+                        "name": "--rename",
+                        "label": "Rename to",
+                        "description": "Rename the file to the given name",
+                        "defaultValue": "output.xlsx",
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "--output",
+                        "label": "Output directory",
+                        "description": "Path to the output directory",
+                        "defaultValue": "/mnt/shared/",
+                        "readOnly": true,
+                        "type": "string"
+                    }
+                ],
+                "inputs": [],
+                "outputs": [
+                    {
+                        "name": "output",
+                        "label": "Output file",
+                        "path": "/mnt/shared/output.xlsx",
+                        "type": "xlsx"
+                    }
+                ],
+                "mainScriptPath": "main.py",
+                "testPath": "test_main.py",
+                "dependencies": [
+                    {
+                        "name": "python",
+                        "version": "3.11.5",
+                        "license": "PSF",
+                        "url": "https://www.python.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-10-06T10:00:00.000Z",
+                "author": {
+                    "email": "ireero99@uma.es",
+                    "affiliation": "Irene Romero; Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "antonio.b@uma.es",
+                        "affiliation": "Antonio Benítez Hidalgo; Khaos Research Group"
+                    }
+                ],
+                "contact": {
+                    "email": "khaos.research@gmail.com",
+                    "url": "https://www.khaos.uma.es"
+                },
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": -200,
+                "y": 230
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 244,
+            "id": "task_1702974646105",
+            "type": "custom",
+            "position": {
+                "x": 40,
+                "y": -20
+            },
+            "data": {
+                "_id": "655daf4e1f1270c43471e6b3",
+                "type": "DataProcessing",
+                "name": "preprocessingetp",
+                "label": "Preprocessing ETP",
+                "description": "Preprocessing the ETP file.",
+                "license": "MIT",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/water/preprocessing_etp:1.0.0",
+                "tags": [
+                    "enbic2lab-water",
+                    "mit-licensed",
+                    "processing"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Filepath",
+                        "description": "Path to the XLSX file",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "--cte1",
+                        "label": "CTE1",
+                        "description": "CTE1",
+                        "type": "string",
+                        "value": "37.59"
+                    },
+                    {
+                        "name": "--cte2",
+                        "label": "CTE2",
+                        "description": "CTE2",
+                        "type": "string",
+                        "value": "0.01745"
+                    },
+                    {
+                        "name": "--kt",
+                        "label": "kt",
+                        "description": "kt",
+                        "type": "string",
+                        "value": "0.175"
+                    },
+                    {
+                        "name": "--output",
+                        "label": "Output path",
+                        "description": "Output path of the file",
+                        "defaultValue": "/mnt/shared/ETP_preprocessing.csv",
+                        "type": "string",
+                        "readOnly": true
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input file",
+                        "path": "/mnt/shared/input.xlsx",
+                        "type": "xlsx"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output",
+                        "label": "Output CSV file",
+                        "path": "/mnt/shared/ETP_preprocessing.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "mainScriptPath": "main.py",
+                "testPath": "test_main.py",
+                "dependencies": [
+                    {
+                        "name": "python",
+                        "version": "3.11.5",
+                        "license": "PSF",
+                        "url": "https://www.python.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 1
+                },
+                "publicationDate": "2023-11-06T11:30:00.000Z",
+                "author": {
+                    "email": "khaos.research@gmail.com",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "ireero99@uma.es",
+                        "affiliation": "Khaos Research Group"
+                    },
+                    {
+                        "email": "iresanjim@uma.es",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 40,
+                "y": -20
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 161,
+            "height": 224,
+            "id": "task_1702974709360",
+            "type": "custom",
+            "position": {
+                "x": 60,
+                "y": 240
+            },
+            "data": {
+                "_id": "65576e6f642a5fcfea893460",
+                "type": "DataProcessing",
+                "name": "XLSX2CSV",
+                "label": "XLSX to CSV",
+                "description": "Convert xlsx to csv",
+                "license": "MIT",
+                "version": "1.0.1",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/misc/xlsx2csv:1.0.1",
+                "tags": [
+                    "enbic2lab-misc",
+                    "mit-licensed",
+                    "conversion"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Filepath",
+                        "description": "Path to the XLSX file",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "--header",
+                        "label": "header",
+                        "description": "If the first row of the file is a header",
+                        "required": true,
+                        "type": "string",
+                        "value": "true"
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "delimiter",
+                        "description": "Delimiter of the output file",
+                        "defaultValue": ";",
+                        "type": "string"
+                    },
+                    {
+                        "name": "--output-path",
+                        "readOnly": true,
+                        "label": "Output path",
+                        "description": "Path to the output CSV file",
+                        "defaultValue": "/mnt/shared",
+                        "type": "string"
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input file",
+                        "path": "/mnt/shared/input.xlsx",
+                        "type": "xlsx"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output",
+                        "label": "Output file",
+                        "path": "/mnt/shared/output.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "mainScriptPath": "main.py",
+                "testPath": "test_main.py",
+                "dependencies": [
+                    {
+                        "name": "python",
+                        "version": "3.11.5",
+                        "license": "PSF",
+                        "url": "https://www.python.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-10-06T10:00:00.000Z",
+                "author": {
+                    "email": "khaos.research@gmail.com",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "juancaruru@uma.es",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 60,
+                "y": 240
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 272,
+            "id": "task_1702974745401",
+            "type": "custom",
+            "position": {
+                "x": 280,
+                "y": 90
+            },
+            "data": {
+                "_id": "658019807e5540a172ab24d3",
+                "type": "DataProcessing",
+                "name": "JoinDataset",
+                "label": "Join Dataset",
+                "description": "Join two csv datasets using columns as keys.",
+                "license": "MIT",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/misc/join_dataset:1.0.0",
+                "tags": [
+                    "enbic2lab-misc",
+                    "mit-licensed",
+                    "processing"
+                ],
+                "parameters": [
+                    {
+                        "name": "--first-file-path",
+                        "label": "First filepath",
+                        "description": "File path of the first file",
+                        "type": "string",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true
+                    },
+                    {
+                        "name": "--index-column-first-file",
+                        "label": "First column name to merge",
+                        "description": "Name of the column of the first file. This will be use for merge datasets using index column as keys",
+                        "type": "string",
+                        "value": "Fecha"
+                    },
+                    {
+                        "name": "--second-file-path",
+                        "label": "Second filepath",
+                        "description": "File path of the second file",
+                        "type": "string",
+                        "defaultValue": "{{.inputs.input2.path}}",
+                        "readOnly": true
+                    },
+                    {
+                        "name": "--index-column-second-file",
+                        "label": "Second column name to merge",
+                        "description": "Name of the column of the second file. This will be use for merge datasets using index column as keys",
+                        "type": "string",
+                        "value": "Fecha"
+                    },
+                    {
+                        "name": "--delimiter-file-1",
+                        "label": "Delimiter of the first file",
+                        "description": "Delimiter of the first file.",
+                        "type": "string",
+                        "value": ";"
+                    },
+                    {
+                        "name": "--delimiter-file-2",
+                        "label": "Delimiter of the second file.",
+                        "description": "Delimiter of the second file.",
+                        "type": "string",
+                        "value": ";"
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "Output Delimiter",
+                        "description": "Delimiter of the output file.",
+                        "type": "string",
+                        "value": ";"
+                    },
+                    {
+                        "name": "--join-how-parameter",
+                        "label": "How handle join operation",
+                        "description": "How to handle the operation of the two objects. left (DEFAULT): use calling frame’s index (or column if on is specified.) right: use other’s index. outer: form union of calling frame’s index (or column if on is specified) with other’s index, and sort it. lexicographically. inner: form intersection of calling frame’s index (or column if on is specified) with other’s index, preserving the order of the calling’s one.",
+                        "type": "string",
+                        "value": "left"
+                    },
+                    {
+                        "name": "--output",
+                        "label": "Output path",
+                        "description": "Output path of the file",
+                        "defaultValue": "/mnt/shared/output.csv",
+                        "type": "string",
+                        "readOnly": true
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Fisrt Input CSV file",
+                        "path": "/mnt/shared/input.csv",
+                        "type": "tabulardataset"
+                    },
+                    {
+                        "name": "input2",
+                        "label": "Secont Input CSV file",
+                        "path": "/mnt/shared/input2.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output",
+                        "label": "Output CSV file",
+                        "path": "/mnt/shared/output.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "mainScriptPath": "main.py",
+                "testPath": "test_main.py",
+                "dependencies": [
+                    {
+                        "name": "python",
+                        "version": "3.11.5",
+                        "license": "PSF",
+                        "url": "https://www.python.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 1
+                },
+                "publicationDate": "2023-10-31T11:30:00.000Z",
+                "author": {
+                    "email": "khaos.research@gmail.com",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "ireero99@uma.es",
+                        "affiliation": "Khaos Research Group"
+                    },
+                    {
+                        "email": "dandobjim@uma.es",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 280,
+                "y": 90
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 324,
+            "id": "task_1702974847248",
+            "type": "custom",
+            "position": {
+                "x": 760,
+                "y": 70
+            },
+            "data": {
+                "_id": "65814e6ad002946ce61121ef",
+                "type": "DataProcessing",
+                "name": "llu",
+                "label": "LLU",
+                "description": "Calculates the Liquid Limit Update (LLU) using an input CSV file containing essential meteorological data. The script utilizes parameters such as useful rainfall (ru) and the name of the Evapotranspiration (ETP) variable to perform the calculation",
+                "license": "MIT",
+                "version": "1.0.1",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/water/llu:1.0.1",
+                "tags": [
+                    "enbic2lab-water",
+                    "mit-licensed",
+                    "conversion"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Filepath",
+                        "description": "Path to the csv file",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "Delimiter",
+                        "description": "Delimiter of the csv file",
+                        "defaultValue": ";",
+                        "type": "string"
+                    },
+                    {
+                        "name": "--ru",
+                        "label": "Ru",
+                        "description": "LLU constant",
+                        "defaultValue": "50",
+                        "type": "string"
+                    },
+                    {
+                        "name": "--etpname",
+                        "label": "ETP Name",
+                        "description": "ETP Name",
+                        "defaultValue": "Hargreaves",
+                        "type": "string",
+                        "value": "Makkink"
+                    },
+                    {
+                        "name": "--output",
+                        "label": "Output",
+                        "description": "Path to the csv file",
+                        "defaultValue": "/mnt/shared/ComponentLLU.csv",
+                        "readOnly": true,
+                        "type": "string"
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input CSV file",
+                        "path": "/mnt/shared/ETP_Hargreaves_complete.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output",
+                        "label": "Output CSV file",
+                        "path": "/mnt/shared/ComponentLLU.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "mainScriptPath": "main.py",
+                "testPath": "test_main.py",
+                "dependencies": [
+                    {
+                        "name": "python",
+                        "version": "3.11.5",
+                        "license": "PSF",
+                        "url": "https://www.python.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-11-09T10:00:00.000Z",
+                "author": {
+                    "email": "juanasanchezrodriguez1999@uma.es",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "khaos.research@gmail.com"
+                    }
+                ],
+                "maintainer": [
+                    {
+                        "email": "khaos.research@gmail.com"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 760,
+                "y": 70
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 244,
+            "id": "task_1702974869200",
+            "type": "custom",
+            "position": {
+                "x": 1000,
+                "y": 110
+            },
+            "data": {
+                "_id": "65814e8cd002946ce61121f1",
+                "type": "DataProcessing",
+                "name": "inf",
+                "label": "INF",
+                "description": "Calculate infiltration from an input CSV file.",
+                "license": "MIT",
+                "version": "1.0.1",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/water/inf:1.0.1",
+                "tags": [
+                    "enbic2lab-water",
+                    "mit-licensed",
+                    "conversion"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Filepath",
+                        "description": "Path to the csv file",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "Delimiter",
+                        "description": "Delimiter of the csv file",
+                        "defaultValue": ";",
+                        "type": "string"
+                    },
+                    {
+                        "name": "--p_zero",
+                        "label": "P_Zero",
+                        "description": "Inf constant",
+                        "defaultValue": "0",
+                        "type": "string"
+                    },
+                    {
+                        "name": "--output",
+                        "label": "Output",
+                        "description": "Path to the csv file",
+                        "defaultValue": "/mnt/shared/InfiltrationData.csv",
+                        "readOnly": true,
+                        "type": "string"
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input CSV file",
+                        "path": "/mnt/shared/ComponentLLU.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output",
+                        "label": "Output CSV file",
+                        "path": "/mnt/shared/InfiltrationData.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "mainScriptPath": "main.py",
+                "testPath": "test_main.py",
+                "dependencies": [
+                    {
+                        "name": "python",
+                        "version": "3.11.5",
+                        "license": "PSF",
+                        "url": "https://www.python.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-11-09T10:00:00.000Z",
+                "author": {
+                    "email": "juanasanchezrodriguez1999@uma.es",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "khaos.research@gmail.com"
+                    }
+                ],
+                "maintainer": [
+                    {
+                        "email": "khaos.research@gmail.com"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 1000,
+                "y": 110
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 348,
+            "id": "task_1702974903809",
+            "type": "custom",
+            "position": {
+                "x": 1240,
+                "y": -360
+            },
+            "data": {
+                "_id": "65814f1dd002946ce61121f9",
+                "type": "DataAnalysing",
+                "name": "precipitationcdfmlot",
+                "label": "Precipitation CDFM Plot",
+                "description": "From the input CSV file, this component is responsible for plotting the deviation of precipitation accumulated per year in a graph.",
+                "license": "MIT",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/water/cdfm_precipitation_plot_component:1.0.0",
+                "tags": [
+                    "enbic2lab-water",
+                    "mit-licensed",
+                    "conversion"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Filepath",
+                        "description": "Path to the csv file",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "Delimiter",
+                        "description": "Delimiter of the csv file",
+                        "defaultValue": ";",
+                        "type": "string"
+                    },
+                    {
+                        "name": "--output",
+                        "label": "Output",
+                        "description": "Path to the html file",
+                        "defaultValue": "/mnt/shared/CDFM_Precipitation_plot.html",
+                        "readOnly": true,
+                        "type": "string"
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input CSV file",
+                        "path": "/mnt/shared/ComponentINF.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output",
+                        "label": "Output HTML file",
+                        "path": "/mnt/shared/CDFM_Precipitation_plot.html",
+                        "type": "html"
+                    }
+                ],
+                "mainScriptPath": "main.py",
+                "testPath": "test_main.py",
+                "dependencies": [
+                    {
+                        "name": "python",
+                        "version": "3.11.5",
+                        "license": "PSF",
+                        "url": "https://www.python.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-11-09T10:00:00.000Z",
+                "author": {
+                    "email": "juansanchezrodriguez1999@uma.es",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "khaos.research@gmail.com"
+                    }
+                ],
+                "maintainer": [
+                    {
+                        "email": "khaos.research@gmail.com"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 1240,
+                "y": -360
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 304,
+            "id": "task_1702974914576",
+            "type": "custom",
+            "position": {
+                "x": 1680,
+                "y": -90
+            },
+            "data": {
+                "_id": "65814ec9d002946ce61121f3",
+                "type": "DataAnalysing",
+                "name": "etpplot",
+                "label": "ETP Plot",
+                "description": "From the input CSV file, this component is responsible for plotting the evapotranspiration per day on a graph.",
+                "license": "MIT",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/water/etp_plot_component:1.0.0",
+                "tags": [
+                    "enbic2lab-water",
+                    "mit-licensed",
+                    "conversion"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Filepath",
+                        "description": "Path to the csv file",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "Delimiter",
+                        "description": "Delimiter of the csv file",
+                        "defaultValue": ";",
+                        "type": "string"
+                    },
+                    {
+                        "name": "--mode",
+                        "label": "Mode",
+                        "description": "Mode of Plot",
+                        "defaultValue": "both",
+                        "type": "string"
+                    },
+                    {
+                        "name": "--output",
+                        "label": "Output",
+                        "description": "Path to the html file",
+                        "defaultValue": "/mnt/shared/ETP_plot.html",
+                        "readOnly": true,
+                        "type": "string"
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input CSV file",
+                        "path": "/mnt/shared/ComponentINF.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output",
+                        "label": "Output HTML file",
+                        "path": "/mnt/shared/ETP_plot.html",
+                        "type": "html"
+                    }
+                ],
+                "mainScriptPath": "main.py",
+                "testPath": "test_main.py",
+                "dependencies": [
+                    {
+                        "name": "python",
+                        "version": "3.11.5",
+                        "license": "PSF",
+                        "url": "https://www.python.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-11-09T10:00:00.000Z",
+                "author": {
+                    "email": "juanasanchezrodriguez1999@uma.es",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "khaos.research@gmail.com"
+                    }
+                ],
+                "maintainer": [
+                    {
+                        "email": "khaos.research@gmail.com"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 1680,
+                "y": -90
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 328,
+            "id": "task_1702974980505",
+            "type": "custom",
+            "position": {
+                "x": 1240,
+                "y": 690
+            },
+            "data": {
+                "_id": "65814ee6d002946ce61121f5",
+                "type": "DataAnalysing",
+                "name": "monthlyprecipitationplot",
+                "label": "Monthly Precipitation Plot",
+                "description": "From the input CSV file, this component is in charge of plotting the precipitation grouped by month on a graph.",
+                "license": "MIT",
+                "version": "1.0.1",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/water/monthly_precipitation_plot_component:1.0.1",
+                "tags": [
+                    "enbic2lab-water",
+                    "mit-licensed",
+                    "conversion"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Filepath",
+                        "description": "Path to the csv file",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "Delimiter",
+                        "description": "Delimiter of the csv file",
+                        "defaultValue": ";",
+                        "type": "string"
+                    },
+                    {
+                        "name": "--mode",
+                        "label": "Mode",
+                        "description": "Plot mode",
+                        "defaultValue": "both",
+                        "type": "string"
+                    },
+                    {
+                        "name": "--output",
+                        "label": "Output",
+                        "description": "Path to the html file",
+                        "defaultValue": "/mnt/shared/Monthly_precipitation_plot.html",
+                        "readOnly": true,
+                        "type": "string"
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input CSV file",
+                        "path": "/mnt/shared/ComponentINF.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output",
+                        "label": "Output HTML file",
+                        "path": "/mnt/shared/Monthly_precipitation_plot.html",
+                        "type": "html"
+                    }
+                ],
+                "mainScriptPath": "main.py",
+                "testPath": "test_main.py",
+                "dependencies": [
+                    {
+                        "name": "python",
+                        "version": "3.11.5",
+                        "license": "PSF",
+                        "url": "https://www.python.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-11-09T10:00:00.000Z",
+                "author": {
+                    "email": "juansanchezrodriguez1999@uma.es",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "khaos.research@gmail.com"
+                    }
+                ],
+                "maintainer": [
+                    {
+                        "email": "khaos.research@gmail.com"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 1240,
+                "y": 690
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 304,
+            "id": "task_1702975004761",
+            "type": "custom",
+            "position": {
+                "x": 1680,
+                "y": 220
+            },
+            "data": {
+                "_id": "65814f02d002946ce61121f7",
+                "type": "DataAnalysing",
+                "name": "precipitationplot",
+                "label": "Precipitation Plot",
+                "description": "From the input CSV file, this component is responsible for plotting the precipitation per day on a graph.",
+                "license": "MIT",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/water/precipitation_plot_component:1.0.0",
+                "tags": [
+                    "enbic2lab-water",
+                    "mit-licensed",
+                    "conversion"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Filepath",
+                        "description": "Path to the csv file",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "Delimiter",
+                        "description": "Delimiter of the csv file",
+                        "defaultValue": ";",
+                        "type": "string"
+                    },
+                    {
+                        "name": "--mode",
+                        "label": "Mode",
+                        "description": "Plot mode",
+                        "defaultValue": "both",
+                        "type": "string"
+                    },
+                    {
+                        "name": "--output",
+                        "label": "Output",
+                        "description": "Path to the html file",
+                        "defaultValue": "/mnt/shared/Precipitation_plot.html",
+                        "readOnly": true,
+                        "type": "string"
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input CSV file",
+                        "path": "/mnt/shared/ComponentINF.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output",
+                        "label": "Output HTML file",
+                        "path": "/mnt/shared/Precipitation_plot.html",
+                        "type": "html"
+                    }
+                ],
+                "mainScriptPath": "main.py",
+                "testPath": "test_main.py",
+                "dependencies": [
+                    {
+                        "name": "python",
+                        "version": "3.11.5",
+                        "license": "PSF",
+                        "url": "https://www.python.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-11-09T10:00:00.000Z",
+                "author": {
+                    "email": "juansanchezrodriguez1999@uma.es",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "khaos.research@gmail.com"
+                    }
+                ],
+                "maintainer": [
+                    {
+                        "email": "khaos.research@gmail.com"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 1680,
+                "y": 220
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 348,
+            "id": "task_1702975018017",
+            "type": "custom",
+            "position": {
+                "x": 1460,
+                "y": -250
+            },
+            "data": {
+                "_id": "65814f3ed002946ce61121fb",
+                "type": "DataAnalysing",
+                "name": "precipitationseriesplot",
+                "label": "Precipitation Series Plot",
+                "description": "From the input CSV file, this component is responsible for plotting different measures (ETP, LLU, INF, ESC) by year on a graph.",
+                "license": "MIT",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/water/precipitation_series_plot_component:1.0.0",
+                "tags": [
+                    "enbic2lab-water",
+                    "mit-licensed",
+                    "conversion"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Filepath",
+                        "description": "Path to the csv file",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "Delimiter",
+                        "description": "Delimiter of the csv file",
+                        "defaultValue": ";",
+                        "type": "string"
+                    },
+                    {
+                        "name": "--output",
+                        "label": "Output",
+                        "description": "Path to the html file",
+                        "defaultValue": "/mnt/shared/Precipitation_series_plot.html",
+                        "readOnly": true,
+                        "type": "string"
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input CSV file",
+                        "path": "/mnt/shared/ComponentINF.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output",
+                        "label": "Output HTML file",
+                        "path": "/mnt/shared/Precipitation_series_plot.html",
+                        "type": "html"
+                    }
+                ],
+                "mainScriptPath": "main.py",
+                "testPath": "test_main.py",
+                "dependencies": [
+                    {
+                        "name": "python",
+                        "version": "3.11.5",
+                        "license": "PSF",
+                        "url": "https://www.python.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-11-09T10:00:00.000Z",
+                "author": {
+                    "email": "juansanchezrodriguez1999@uma.es",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "khaos.research@gmail.com"
+                    }
+                ],
+                "maintainer": [
+                    {
+                        "email": "khaos.research@gmail.com"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 1460,
+                "y": -250
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 324,
+            "id": "task_1702975045931",
+            "type": "custom",
+            "position": {
+                "x": 1460,
+                "y": 450
+            },
+            "data": {
+                "_id": "65814f64d002946ce61121fd",
+                "type": "DataAnalysing",
+                "name": "temperatureplot",
+                "label": "Temperature Plot",
+                "description": "From the input CSV file, this component is responsible for plotting the maximum and minimum temperature per day on a graph.",
+                "license": "MIT",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/water/temperature_plot_component:1.0.0",
+                "tags": [
+                    "enbic2lab-water",
+                    "mit-licensed",
+                    "conversion"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Filepath",
+                        "description": "Path to the csv file",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "Delimiter",
+                        "description": "Delimiter of the csv file",
+                        "defaultValue": ";",
+                        "type": "string"
+                    },
+                    {
+                        "name": "--mode",
+                        "label": "Mode",
+                        "description": "Plot mode",
+                        "defaultValue": "both",
+                        "type": "string"
+                    },
+                    {
+                        "name": "--output",
+                        "label": "Output",
+                        "description": "Path to the html file",
+                        "defaultValue": "/mnt/shared/Temperature_plot.html",
+                        "readOnly": true,
+                        "type": "string"
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input CSV file",
+                        "path": "/mnt/shared/ComponentINF.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output",
+                        "label": "Output HTML file",
+                        "path": "/mnt/shared/Temperature_plot.html",
+                        "type": "html"
+                    }
+                ],
+                "mainScriptPath": "main.py",
+                "testPath": "test_main.py",
+                "dependencies": [
+                    {
+                        "name": "python",
+                        "version": "3.11.5",
+                        "license": "PSF",
+                        "url": "https://www.python.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-11-09T10:00:00.000Z",
+                "author": {
+                    "email": "juansanchezrodriguez1999@uma.es",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "khaos.research@gmail.com"
+                    }
+                ],
+                "maintainer": [
+                    {
+                        "email": "khaos.research@gmail.com"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 1460,
+                "y": 450
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 284,
+            "id": "task-1703154726866",
+            "type": "custom",
+            "position": {
+                "x": 520,
+                "y": 80
+            },
+            "data": {
+                "_id": "65840bf3bf978eb910c17b43",
+                "type": "DataProcessing",
+                "name": "ETPMakkink",
+                "label": "ETP Makkink",
+                "description": "Makkink calculation method for estimating evapotranspiration from an input CSV file.",
+                "license": "cc by-nc-nd 4.0",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/water/etp_makkink:1.0.0",
+                "tags": [
+                    "enbic2lab-water",
+                    "cc by-nc-nd 4.0",
+                    "by-nc-nd"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "CSV file path",
+                        "description": "CSV file path",
+                        "type": "string",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true
+                    },
+                    {
+                        "name": "--delimiter",
+                        "label": "CSV delimiter",
+                        "description": "delimiter",
+                        "type": "string",
+                        "defaultValue": ";"
+                    },
+                    {
+                        "name": "--output",
+                        "label": "Output path",
+                        "description": "Output path of the file",
+                        "defaultValue": "/mnt/shared/",
+                        "type": "string",
+                        "readOnly": true
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input CSV",
+                        "path": "/mnt/shared/input.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output",
+                        "label": "Output CSV",
+                        "path": "/mnt/shared/output.csv",
+                        "type": "tabulardataset"
+                    }
+                ],
+                "mainScriptPath": "main.py",
+                "testPath": "test_main.py",
+                "dependencies": [
+                    {
+                        "name": "python",
+                        "version": "3.11.5",
+                        "license": "PSF",
+                        "url": "https://www.python.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-11-02T10:00:00.000Z",
+                "author": {
+                    "email": "khaos.research@gmail.com",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "khaos.research@gmail.com",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "maintainer": [
+                    {
+                        "email": "khaos.research@gmail.com",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 520,
+                "y": 80
+            },
+            "selected": true,
+            "dragging": false
+        }
+    ],
+    "edges": [
+        {
+            "animated": true,
+            "source": "task_1702974591024",
+            "sourceHandle": "output",
+            "target": "task_1702974646105",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1702974591024output-task_1702974646105input"
+        },
+        {
+            "animated": true,
+            "source": "task_1702974592664",
+            "sourceHandle": "output",
+            "target": "task_1702974709360",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1702974592664output-task_1702974709360input"
+        },
+        {
+            "animated": true,
+            "source": "task_1702974646105",
+            "sourceHandle": "output",
+            "target": "task_1702974745401",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1702974646105output-task_1702974745401input"
+        },
+        {
+            "animated": true,
+            "source": "task_1702974709360",
+            "sourceHandle": "output",
+            "target": "task_1702974745401",
+            "targetHandle": "input2",
+            "id": "reactflow__edge-task_1702974709360output-task_1702974745401input2"
+        },
+        {
+            "animated": true,
+            "source": "task_1702974847248",
+            "sourceHandle": "output",
+            "target": "task_1702974869200",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1702974847248output-task_1702974869200input"
+        },
+        {
+            "animated": true,
+            "source": "task_1702974869200",
+            "sourceHandle": "output",
+            "target": "task_1702974903809",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1702974869200output-task_1702974903809input"
+        },
+        {
+            "animated": true,
+            "source": "task_1702974869200",
+            "sourceHandle": "output",
+            "target": "task_1702975018017",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1702974869200output-task_1702975018017input"
+        },
+        {
+            "animated": true,
+            "source": "task_1702974869200",
+            "sourceHandle": "output",
+            "target": "task_1702974914576",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1702974869200output-task_1702974914576input"
+        },
+        {
+            "animated": true,
+            "source": "task_1702974869200",
+            "sourceHandle": "output",
+            "target": "task_1702975004761",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1702974869200output-task_1702975004761input"
+        },
+        {
+            "animated": true,
+            "source": "task_1702974869200",
+            "sourceHandle": "output",
+            "target": "task_1702975045931",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1702974869200output-task_1702975045931input"
+        },
+        {
+            "animated": true,
+            "source": "task_1702974869200",
+            "sourceHandle": "output",
+            "target": "task_1702974980505",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1702974869200output-task_1702974980505input"
+        },
+        {
+            "animated": true,
+            "source": "task_1702974745401",
+            "sourceHandle": "output",
+            "target": "task-1703154726866",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1702974745401output-task-1703154726866input"
+        },
+        {
+            "animated": true,
+            "source": "task-1703154726866",
+            "sourceHandle": "output",
+            "target": "task_1702974847248",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task-1703154726866output-task_1702974847248input"
+        }
+    ],
+    "viewport": {
+        "x": 107,
+        "y": 234.5,
+        "zoom": 0.5
+    }
+}
