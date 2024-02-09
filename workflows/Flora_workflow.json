@@ -1,0 +1,463 @@
+{
+    "nodes": [
+        {
+            "width": 200,
+            "height": 236,
+            "id": "task_1702542511735",
+            "type": "custom",
+            "position": {
+                "x": -480,
+                "y": 190
+            },
+            "data": {
+                "_id": "6552369a463534326f118d2d",
+                "type": "DataCollection",
+                "name": "importXlsxFile",
+                "label": "Import Excel File",
+                "description": "Imports a .xlsx file from an online resource given its url.",
+                "license": "cc by-nc-nd 4.0",
+                "version": "1.1.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/misc/importfile:1.1.0",
+                "tags": [
+                    "cc by-nc-nd 4.0",
+                    "by-nc-nd",
+                    "conversion"
+                ],
+                "parameters": [
+                    {
+                        "name": "--url",
+                        "label": "URL",
+                        "description": "URL of the file",
+                        "type": "string",
+                        "value": ""
+                    },
+                    {
+                        "name": "--query-string",
+                        "label": "Query string",
+                        "description": "Query string to be added to the URL",
+                        "defaultValue": null,
+                        "type": "string"
+                    },
+                    {
+                        "name": "--rename",
+                        "label": "Rename to",
+                        "description": "Rename the file to the given name",
+                        "defaultValue": "output.xlsx",
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "--output",
+                        "label": "Output directory",
+                        "description": "Path to the output directory",
+                        "defaultValue": "/mnt/shared/",
+                        "readOnly": true,
+                        "type": "string"
+                    }
+                ],
+                "inputs": [],
+                "outputs": [
+                    {
+                        "name": "output",
+                        "label": "Output file",
+                        "path": "/mnt/shared/output.xlsx",
+                        "type": "xlsx"
+                    }
+                ],
+                "mainScriptPath": "main.py",
+                "testPath": "test_main.py",
+                "dependencies": [
+                    {
+                        "name": "python",
+                        "version": "3.11.5",
+                        "license": "PSF",
+                        "url": "https://www.python.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-10-06T10:00:00.000Z",
+                "author": {
+                    "email": "ireero99@uma.es",
+                    "affiliation": "Irene Romero; Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "antonio.b@uma.es",
+                        "affiliation": "Antonio Benítez Hidalgo; Khaos Research Group"
+                    }
+                ],
+                "contact": {
+                    "email": "khaos.research@gmail.com",
+                    "url": "https://www.khaos.uma.es"
+                },
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": -480,
+                "y": 190
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 356,
+            "id": "task_1702542578605",
+            "type": "custom",
+            "position": {
+                "x": -190,
+                "y": 170
+            },
+            "data": {
+                "_id": "657abb90c845d3d2d798b2e8",
+                "type": "DataProcessing",
+                "name": "excel-2-sample-and-taxon-jsons",
+                "label": "Excel 2 Sample and Taxon JSONs",
+                "description": "Convert Excel file to JSON files with samples and taxons",
+                "license": "MIT",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/flora/excel_2_sample_and_taxon_jsons:1.0.0",
+                "tags": [
+                    "enbic2lab",
+                    "flora",
+                    "samples",
+                    "taxons"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Input XLSX file",
+                        "description": "Input XLSX file",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "--output-folder",
+                        "label": "Output directory",
+                        "description": "Path to the output directory",
+                        "defaultValue": "/mnt/shared/",
+                        "readOnly": true,
+                        "type": "string"
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input XLSX file",
+                        "path": "/mnt/shared/input.xlsx",
+                        "type": "xlsx"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output_sample",
+                        "label": "Output JSON file with samples",
+                        "path": "/mnt/shared/sample.json",
+                        "type": "json"
+                    },
+                    {
+                        "name": "output_taxon",
+                        "label": "Output JSON file with taxons",
+                        "path": "/mnt/shared/taxon.json",
+                        "type": "json"
+                    }
+                ],
+                "mainScriptPath": "main.py",
+                "testPath": "test_main.py",
+                "dependencies": [
+                    {
+                        "name": "python",
+                        "version": "3.11.5",
+                        "license": "PSF",
+                        "url": "https://www.python.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-12-13T10:00:00.000Z",
+                "author": {
+                    "email": "khaos.research@gmail.com",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "khaos.research@gmail.com",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "maintainer": [
+                    {
+                        "email": "khaos.research@gmail.com",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": -190,
+                "y": 170
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 236,
+            "id": "task_1702559131519",
+            "type": "custom",
+            "position": {
+                "x": 90,
+                "y": 90
+            },
+            "data": {
+                "_id": "657af58dc845d3d2d798b2f7",
+                "type": "DataSink",
+                "name": "json2db",
+                "label": "JSON2DB",
+                "description": "Upload the json provided as input to a database",
+                "license": "MIT",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/flora/json2db:1.0.0",
+                "tags": [
+                    "enbic2lab",
+                    "flora",
+                    "samples",
+                    "taxons"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Input JSON file",
+                        "description": "Input JSON file",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "--collection-name",
+                        "label": "Collection name",
+                        "description": "Name of the collection in the database to which documents are to be uploaded. Options: floras_samples, floras_taxones",
+                        "type": "string",
+                        "choices": [
+                            "floras_samples",
+                            "floras_taxones"
+                        ],
+                        "value": "floras_samples"
+                    },
+                    {
+                        "name": "--collision-policy",
+                        "label": "Collision policy",
+                        "description": "Strategy to be used in case of database collision. Options: replace, ignore",
+                        "type": "string",
+                        "choices": [
+                            "replace",
+                            "ignore"
+                        ],
+                        "value": "replace"
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input JSON file",
+                        "path": "/mnt/shared/input.json",
+                        "type": "json"
+                    }
+                ],
+                "outputs": [],
+                "mainScriptPath": "main.py",
+                "testPath": "test_main.py",
+                "dependencies": [
+                    {
+                        "name": "python",
+                        "version": "3.11.5",
+                        "license": "PSF",
+                        "url": "https://www.python.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-12-14T10:00:00.000Z",
+                "author": {
+                    "email": "khaos.research@gmail.com",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "khaos.research@gmail.com",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "maintainer": [
+                    {
+                        "email": "khaos.research@gmail.com",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 90,
+                "y": 90
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "width": 200,
+            "height": 236,
+            "id": "task_1702559133847",
+            "type": "custom",
+            "position": {
+                "x": 90,
+                "y": 350
+            },
+            "data": {
+                "_id": "657af58dc845d3d2d798b2f7",
+                "type": "DataSink",
+                "name": "json2db",
+                "label": "JSON2DB",
+                "description": "Upload the json provided as input to a database",
+                "license": "MIT",
+                "version": "1.0.0",
+                "dockerImage": "192.168.219.5:8098/enbic2lab/flora/json2db:1.0.0",
+                "tags": [
+                    "enbic2lab",
+                    "flora",
+                    "samples",
+                    "taxons"
+                ],
+                "parameters": [
+                    {
+                        "name": "--filepath",
+                        "label": "Input JSON file",
+                        "description": "Input JSON file",
+                        "defaultValue": "{{.inputs.input.path}}",
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "--collection-name",
+                        "label": "Collection name",
+                        "description": "Name of the collection in the database to which documents are to be uploaded. Options: floras_samples, floras_taxones",
+                        "type": "string",
+                        "choices": [
+                            "floras_samples",
+                            "floras_taxones"
+                        ],
+                        "value": "floras_taxones"
+                    },
+                    {
+                        "name": "--collision-policy",
+                        "label": "Collision policy",
+                        "description": "Strategy to be used in case of database collision. Options: replace, ignore",
+                        "type": "string",
+                        "choices": [
+                            "replace",
+                            "ignore"
+                        ],
+                        "value": "ignore"
+                    }
+                ],
+                "inputs": [
+                    {
+                        "name": "input",
+                        "label": "Input JSON file",
+                        "path": "/mnt/shared/input.json",
+                        "type": "json"
+                    }
+                ],
+                "outputs": [],
+                "mainScriptPath": "main.py",
+                "testPath": "test_main.py",
+                "dependencies": [
+                    {
+                        "name": "python",
+                        "version": "3.11.5",
+                        "license": "PSF",
+                        "url": "https://www.python.org/"
+                    }
+                ],
+                "resources": {
+                    "cores": 1,
+                    "memory": 128,
+                    "gpuNeeded": false,
+                    "gpuMemory": null,
+                    "estimatedTimeInMin": 4
+                },
+                "publicationDate": "2023-12-14T10:00:00.000Z",
+                "author": {
+                    "email": "khaos.research@gmail.com",
+                    "affiliation": "Khaos Research Group"
+                },
+                "contributor": [
+                    {
+                        "email": "khaos.research@gmail.com",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "maintainer": [
+                    {
+                        "email": "khaos.research@gmail.com",
+                        "affiliation": "Khaos Research Group"
+                    }
+                ],
+                "errors": {}
+            },
+            "positionAbsolute": {
+                "x": 90,
+                "y": 350
+            },
+            "selected": true,
+            "dragging": false
+        }
+    ],
+    "edges": [
+        {
+            "animated": true,
+            "source": "task_1702542511735",
+            "sourceHandle": "output",
+            "target": "task_1702542578605",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1702542511735output-task_1702542578605input"
+        },
+        {
+            "animated": true,
+            "source": "task_1702542578605",
+            "sourceHandle": "output_sample",
+            "target": "task_1702559131519",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1702542578605output_sample-task_1702559131519input"
+        },
+        {
+            "animated": true,
+            "source": "task_1702542578605",
+            "sourceHandle": "output_taxon",
+            "target": "task_1702559133847",
+            "targetHandle": "input",
+            "id": "reactflow__edge-task_1702542578605output_taxon-task_1702559133847input"
+        }
+    ],
+    "viewport": {
+        "x": 645.2172373081464,
+        "y": -21.604486422668174,
+        "zoom": 1.2443919716646987
+    }
+}
